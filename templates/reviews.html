@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Client Reviews - Sortiq Solutions Pvt. Ltd.{% endblock %}
+
+{% block content %}
+<div class="video-gallery-banner">
+    <h1>Reviews</h1>
+    <p>What Our Clients Say About Us</p>
+</div>
+
+<div id="reviews-ajax-container" class="video-gallery-wrapper">
+    <div class="loader-overlay">
+        <div class="review-spinner"></div>
+        <p>Loading...</p>
+    </div>
+    <div id="reviews-content">
+        {% include 'reviews_partial.html' %}
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+jQuery(document).ready(function($) {
+    function observeReviewCards() {
+        var cards = document.querySelectorAll('#reviews-content .review-card');
+        if (!cards.length) return;
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('review-card-visible');
+                }
+            });
+        }, { rootMargin: '0px 0px -40px 0px', threshold: 0.05 });
+        cards.forEach(function(card) {
+            observer.observe(card);
+        });
+    }
+    observeReviewCards();
+
+    $(document).on('click', '.video-gallery-pagination a', function(e) {
+        e.preventDefault();
+        
+        var link = $(this).attr('href');
+        var page = 1;
+        
+        var match = link.match(/\/page\/(\d+)\//);
+        if (match) {
+            page = match[1];
+        }
+
+        $('#reviews-ajax-container').addClass('loading');
+
+        $.ajax({
+            url: '/reviews/ajax/' + page,
+            type: 'GET',
+            success: function(response) {
+                $('#reviews-content').html(response);
+                $('#reviews-ajax-container').removeClass('loading');
+                observeReviewCards();
+                $('html, body').animate({
+                    scrollTop: $("#reviews-ajax-container").offset().top - 100
+                }, 500);
+            },
+            error: function(error) {
+                console.log(error);
+                $('#reviews-ajax-container').removeClass('loading');
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Clients | Sortiq Solutions{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Client Page Banner */
+.clients-banner {
+    background: var(--primary);
+    background-image: linear-gradient(135deg, #00173e 0%, #000c24 100%);
+    color: var(--white);
+    padding: 60px 10%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.clients-banner h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.clients-banner p {
+    color: #cbd5e1;
+    font-size: 16px;
+}
+
+/* Client Logos Grid */
+.clients-grid-container {
+    padding: 80px 10%;
+    background-color: var(--bg-light);
+}
+
+.clients-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    justify-items: center;
+}
+
+.client-logo-card {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 260px;
+    height: 120px;
+    border: 1px solid #f1f5f9;
+    transition: all 0.3s ease;
+}
+
+.client-logo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.client-logo-card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Pagination */
+.clients-pagination {
+    margin: 50px 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.clients-pagination .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    color: var(--white) !important;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.clients-pagination .page-numbers.current {
+    background-color: var(--primary);
+    cursor: default;
+}
+
+.clients-pagination a.page-numbers:hover {
+    background-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.clients-pagination .next, 
+.clients-pagination .prev {
+    font-size: 20px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="clients-banner">
+    <h1>Our Clients</h1>
+    <p>We are proud to showcase the brands that trust us</p>
+</div>
+
+<div class="clients-grid-container">
+    <div class="clients-grid">
+        {% for logo in logos %}
+        <div class="client-logo-card">
+            <img src="{{ logo }}" alt="Client Partner Logo">
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination Controls matching user screenshots -->
+    <div class="clients-pagination">
+        {% if current_page > 1 %}
+        <a class="prev page-numbers" href="/clients/page/{{ current_page - 1 }}/">&larr;</a>
+        {% endif %}
+
+        {% for p in [1, 2, 3] %}
+            {% if p == current_page %}
+            <span aria-current="page" class="page-numbers current">{{ p }}</span>
+            {% else %}
+            <a class="page-numbers" href="/clients/page/{{ p }}/">{{ p }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if current_page < 3 %}
+        <a class="next page-numbers" href="/clients/page/{{ current_page + 1 }}/">&rarr;</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

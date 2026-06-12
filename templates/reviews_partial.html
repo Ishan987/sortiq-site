@@ -1,0 +1,50 @@
+<div class="video-gallery-container">
+    {% for review in reviews %}
+    <div class="review-card">
+        <div class="review-quote-open">“</div>
+        <div class="review-text">
+            <p>{{ review.text|safe }}</p>
+            <div class="review-quote-close">”</div>
+        </div>
+
+        <div class="review-footer">
+            <div class="review-author">
+                <strong>{{ review.author }}</strong>
+            </div>
+
+            <div class="review-platform">
+                {% if review.platform_logo %}
+                <img src="{{ review.platform_logo }}" alt="{{ review.platform }}" class="review-platform-img">
+                {% else %}
+                <span style="font-weight: 600; font-size: 14px; display: block; margin-bottom: 5px; color: #777;">{{ review.platform }}</span>
+                {% endif %}
+                <div class="review-stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="video-gallery-pagination">
+    {% if current_page > 1 %}
+    <a class="page-numbers" href="/reviews/page/{{ current_page - 1 }}/">&larr;</a>
+    {% endif %}
+
+    {% for p in range(1, total_pages + 1) %}
+        {% if p == current_page %}
+        <span aria-current="page" class="page-numbers current">{{ p }}</span>
+        {% else %}
+        <a class="page-numbers" href="/reviews/page/{{ p }}/">{{ p }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if current_page < total_pages %}
+    <a class="next page-numbers" href="/reviews/page/{{ current_page + 1 }}/">&rarr;</a>
+    {% endif %}
+</div>

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Portfolio | Sortiq Solutions{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary); color: var(--white); padding: 60px 10%; text-align: center;">
+    <h1 style="font-size: 36px; font-weight: 700;">Our Work Portfolio</h1>
+    <p style="color: #cbd5e1; margin-top: 10px;">A showcase of our successfully delivered projects globally.</p>
+</div>
+
+<section class="section">
+    <h2 class="section-title">Recent <span>Projects</span></h2>
+    <span class="line"></span>
+    <div class="services-grid">
+        <div class="service-card" style="text-align: left; padding: 20px;">
+            <img src="https://sortiqsolutions.com/wp-content/uploads/2025/03/tech-expertise-image.webp" alt="ERP Portal" style="width:100%; height: 200px; object-fit: cover; border-radius: 4px;">
+            <h4 style="margin-top: 15px;">Enterprise Resource Planning Portal</h4>
+            <p>A web-based portal developed in Laravel for resource allocation, client management, and payroll integrations.</p>
+        </div>
+        <div class="service-card" style="text-align: left; padding: 20px;">
+            <img src="https://sortiqsolutions.com/wp-content/uploads/2025/02/web-development-cover.webp" alt="E-Commerce Store" style="width:100%; height: 200px; object-fit: cover; border-radius: 4px;">
+            <h4 style="margin-top: 15px;">B2B E-Commerce Marketplace</h4>
+            <p>A multi-vendor retail store built using Shopify API integrations and custom theme templates.</p>
+        </div>
+        <div class="service-card" style="text-align: left; padding: 20px;">
+            <img src="https://sortiqsolutions.com/wp-content/uploads/2026/04/The-Importance-of-UIUX-Design-in-Modern-Web-Development.webp" alt="Mobile App" style="width:100%; height: 200px; object-fit: cover; border-radius: 4px;">
+            <h4 style="margin-top: 15px;">On-Demand Service Mobile App</h4>
+            <p>Cross-platform Android and iOS application engineered using React Native and Firebase backend services.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

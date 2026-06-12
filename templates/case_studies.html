@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Case Studies | Sortiq Solutions{% endblock %}
+
+{% block content %}
+<div style="background: var(--primary); color: var(--white); padding: 60px 10%; text-align: center;">
+    <h1 style="font-size: 36px; font-weight: 700;">Case Studies</h1>
+    <p style="color: #cbd5e1; margin-top: 10px;">Deep dives into how we solved complex technological challenges.</p>
+</div>
+
+<section class="section">
+    <div style="max-width: 800px; margin: 0 auto;">
+        <div style="background: #fff; border: 1px solid #f1f5f9; padding: 30px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+            <h3 style="color: var(--primary); font-size: 22px; margin-bottom: 10px;">Scaling a Multi-vendor Retail Brand to 10k Active Daily Orders</h3>
+            <span style="color: var(--accent); font-size: 13px; font-weight: bold; text-transform: uppercase;">E-commerce & Cloud Scaling</span>
+            <p style="margin-top: 15px; color: var(--text-color);">
+                We migrated a Legacy PHP store to a headless Laravel/React storefront integrated with optimized database indices and redis caching, increasing speed by 40% and cutting infrastructure expenses.
+            </p>
+        </div>
+        
+        <div style="background: #fff; border: 1px solid #f1f5f9; padding: 30px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+            <h3 style="color: var(--primary); font-size: 22px; margin-bottom: 10px;">Improving SEO Performance by 300% for a Leading Real Estate Portal</h3>
+            <span style="color: var(--accent); font-size: 13px; font-weight: bold; text-transform: uppercase;">SEO & Digital Strategy</span>
+            <p style="margin-top: 15px; color: var(--text-color);">
+                Through technical SEO audits, site speed optimization, schema graphs implementation, and link building, we pushed major search queries to Page 1 of Google.
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block title %}Videos | Explore IT Insights & Solutions by Sortiq Solutions{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Video Gallery Banner styling matching other subpages */
+.video-gallery-banner {
+    background: var(--primary);
+    color: var(--white);
+    padding: 60px 10%;
+    text-align: center;
+}
+
+.video-gallery-banner h1 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.video-gallery-banner p {
+    color: #cbd5e1;
+    margin-top: 10px;
+}
+
+/* Video Gallery Grid Container */
+.video-gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 65px 10%;
+    background-color: var(--bg-light);
+}
+
+.video-gallery-box {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-gallery-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.video-gallery-box iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: none;
+}
+
+/* Pagination Section */
+.video-gallery-pagination {
+    margin: 40px 0 60px 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.video-gallery-pagination .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    color: var(--white) !important;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.video-gallery-pagination .page-numbers.current {
+    background-color: var(--primary);
+    cursor: default;
+}
+
+.video-gallery-pagination a.page-numbers:hover {
+    background-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.video-gallery-pagination .page-numbers.dots {
+    background-color: transparent;
+    color: var(--dark) !important;
+    width: auto;
+}
+
+.video-gallery-pagination .next, 
+.video-gallery-pagination .prev {
+    font-size: 20px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="video-gallery-banner">
+    <h1>Our Video Gallery</h1>
+    <p>Watch expert videos from Sortiq Solutions covering Web Development, Software Solutions & IT Trends.</p>
+</div>
+
+<div class="video-gallery-container">
+    {% for video in videos %}
+    <div class="video-gallery-box">
+        <iframe title="{{ video.title }}" src="{{ video.src }}" allowfullscreen="allowfullscreen"></iframe>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="video-gallery-pagination">
+    {% if current_page == 2 %}
+    <a class="prev page-numbers" href="/videos/page/1/">&larr;</a>
+    <a class="page-numbers" href="/videos/page/1/">1</a>
+    <span aria-current="page" class="page-numbers current">2</span>
+    {% else %}
+    <span aria-current="page" class="page-numbers current">1</span>
+    <a class="page-numbers" href="/videos/page/2/">2</a>
+    <a class="next page-numbers" href="/videos/page/2/">&rarr;</a>
+    {% endif %}
+</div>
+{% endblock %}

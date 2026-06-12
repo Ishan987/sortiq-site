@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Best IT Company in Chandigarh | #1 Web Development Company{% endblock %}</title>
+    <meta name="description" content="Looking for the Best IT Company in Chandigarh? We offer software development, website design, and digital services tailored to business needs.">
+    <link rel="icon" href="https://sortiqsolutions.com/wp-content/uploads/2018/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://sortiqsolutions.com/wp-content/uploads/2018/favicon.ico" type="image/x-icon">
+    
+    <!-- CSS imports -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="xs-top-bar">
+        <div class="xs-top-bar-info">
+            <a href="tel:+919646522110" class="top-tel"><i class="fas fa-phone-volume"></i> +91 9646522110</a>
+            <span class="separator">|</span>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@sortiqsolutions.com" target="_blank" class="top-mail"><i class="fas fa-envelope"></i> info@sortiqsolutions.com</a>
+            <span class="separator">|</span>
+            <a href="/internship/" class="apply-internship"><i class="fas fa-paper-plane"></i> <span class="blink">Apply Internship</span></a>
+        </div>
+        <ul class="xs-list">
+            <li><a href="https://www.facebook.com/SortiqSolutions/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="https://www.linkedin.com/company/sortiq-solutions/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="https://www.instagram.com/sortiqsolutions/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="https://www.youtube.com/@SortiqSolutions" target="_blank"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="https://x.com/SortiqSolutions" target="_blank"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://in.pinterest.com/sortiqsolutions/" target="_blank"><i class="fab fa-pinterest"></i></a></li>
+            <li><a href="https://medium.com/@sortiqsolutions" target="_blank"><i class="fab fa-medium"></i></a></li>
+            <li><a href="#" target="_blank"><i class="bi bi-microsoft-teams"></i></a></li>
+        </ul>
+    </div>
+
+    <!-- Main Header -->
+    <header class="header-main">
+        <a href="/" class="xs-logo">
+            <img src="https://sortiqsolutions.com/wp-content/uploads/2025/11/final-logo.png" alt="Sortiq Solutions">
+        </a>
+        <nav class="xs-menus">
+            <ul class="nav-menu">
+                <li class="menu-item"><a href="/">Home</a></li>
+                <li class="menu-item">
+                    <a href="#">About Us <i class="fa fa-chevron-down" style="font-size: 10px;"></i></a>
+                    <ul class="nav-dropdown about-mega-menu">
+                        <li><a href="/about-us/"><i class="fa-solid fa-circle-info"></i> Company Overview</a></li>
+                        <li><a href="/clients/"><i class="fa-solid fa-user-group"></i> Our Clients</a></li>
+                        <li><a href="/why-choose-us/"><i class="fa-solid fa-circle-question"></i> Why Choose Us</a></li>
+                        <li><a href="/our-career/"><i class="fa-solid fa-briefcase"></i> Career with Us</a></li>
+                        <li><a href="/our-expertise/"><i class="fa-solid fa-lightbulb"></i> Our Expertise</a></li>
+                        <li><a href="/videos/"><i class="fa-solid fa-video"></i> Video</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="#">Services <i class="fa fa-chevron-down" style="font-size: 10px;"></i></a>
+                    <ul class="nav-dropdown services-mega-menu">
+                        <li><a href="/website-development-company/"><i class="fa-solid fa-code"></i> Web Development</a></li>
+                        <li><a href="/website-designing-company/"><i class="fa-solid fa-desktop"></i> Website Designing</a></li>
+                        <li><a href="/laravel-development-company/"><i class="fa-solid fa-database"></i> Laravel Development</a></li>
+                        <li><a href="/wordpress-development-company/"><i class="fab fa-wordpress"></i> WordPress Development</a></li>
+                        <li><a href="/ecommerce-development-company/"><i class="fa-solid fa-cart-shopping"></i> E-commerce Development</a></li>
+                        <li><a href="/digital-marketing-company/"><i class="fa-solid fa-globe"></i> Digital Marketing</a></li>
+                        <li><a href="/seo-company/"><i class="fa-solid fa-circle-dot"></i> SEO</a></li>
+                        <li><a href="/smo-company/"><i class="fa-solid fa-globe"></i> SMO</a></li>
+                        <li><a href="/graphic-designing-company/"><i class="fa-solid fa-paint-brush"></i> Graphic Designing</a></li>
+                        <li><a href="/banner-designing-company/"><i class="fa-solid fa-camera"></i> Banner Designing</a></li>
+                        <li><a href="/logo-designing-company/"><i class="fa-solid fa-gears"></i> Logo Designing</a></li>
+                        <li><a href="/website-maintenance/"><i class="fa-solid fa-wrench"></i> Website Maintenance</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="#">Our Work <i class="fa fa-chevron-down" style="font-size: 10px;"></i></a>
+                    <ul class="nav-dropdown">
+                        <li><a href="/portfolios/"><i class="fa-solid fa-briefcase"></i> Portfolio</a></li>
+                        <li><a href="/case-studies/"><i class="fa-solid fa-chart-line"></i> Case Studies</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item"><a href="/blog/">Blog</a></li>
+                <li class="menu-item"><a href="/contact/">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="xs-menu-tools">
+            <a href="/reviews/" class="xs-reviews-btn"><span class="dot">•</span> Reviews</a>
+            <button class="btn-danger" data-toggle="modal" data-target="#fresherModal">Fresher Hiring</button>
+            <a href="/contact/" class="enquiryNow">Enquiry Now</a>
+        </div>
+    </header>
+
+    <!-- Main Content Block -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="xs-footer-section">
+        <div class="footer-top-area">
+            <div class="footer-logos-wrapper">
+                <a href="https://www.goodfirms.co/" target="_blank">
+                    <img src="https://sortiqsolutions.com/wp-content/uploads/2025/11/GF-min.png" alt="GoodFirms Logo">
+                </a>
+                <a href="https://www.upwork.com/agencies/sortiqsolutions/" target="_blank">
+                    <img src="https://sortiqsolutions.com/wp-content/uploads/2025/11/digital-marketing-logo-min.png" alt="Digital Marketing Logo">
+                </a>
+                <a href="https://www.upwork.com/agencies/sortiqsolutions/" target="_blank">
+                    <img src="https://sortiqsolutions.com/wp-content/uploads/2025/11/upwork-logo-min.png" alt="Upwork Logo">
+                </a>
+                <a href="#" id="iso-certified-link">
+                    <img src="https://sortiqsolutions.com/wp-content/uploads/2025/06/iso-certified-company-image.webp" alt="ISO Certified">
+                </a>
+                <a target="_blank" href="https://www.wix.com/studio/community/partners/sortiq-solutions-pvt-ltd">
+                    <img src="https://sortiqsolutions.com/wp-content/uploads/2025/11/EN_legend_small.png" alt="Wix Partner">
+                </a>
+            </div>
+            <ul class="address-info-list addr-top-align">
+                <li>
+                    <a href="https://www.google.com/maps/dir/30.7083739,76.7031682/30.7085084,76.7032048/@30.7084268,76.7026001,19z/data=!3m1!4b1!4m5!4m4!1m1!4e1!1m1!4e1?entry=ttu" target="_blank" style="color: inherit; text-decoration: none;">
+                        <div class="footer-contact-item">
+                            <i class="fa fa-map-marker-alt"></i>
+                            <div class="address-info">E-51, Second Floor, Phase - 8, Industrial Area,<br>S.A.S. Nagar, Mohali, Punjab 160071</div>
+                        </div>
+                    </a>
+                </li>
+                <li class="contact-inline-group">
+                    <div class="footer-contact-item" style="margin-bottom: 5px;">
+                        <i class="fa fa-phone"></i>
+                        <div class="address-info"><a href="tel:+919646522110">+91 9646522110</a></div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fa fa-envelope"></i>
+                        <div class="address-info"><a href="https://mail.google.com/mail/?view=cm&fs=1&to=sortiqsolutions@gmail.com" target="_blank">sortiqsolutions@gmail.com</a></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="footer-main">
+             <div class="footer-widget">
+                <h4>Our Company</h4>
+                <ul>
+                    <li><a href="/"><i class="fa fa-chevron-right"></i> Home</a></li>
+                    <li><a href="/about"><i class="fa fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="/why-choose-us/"><i class="fa fa-chevron-right"></i> Why Choose Us</a></li>
+                    <li><a href="/terms/"><i class="fa fa-chevron-right"></i> Terms</a></li>
+                    <li><a href="/portfolios/"><i class="fa fa-chevron-right"></i> Portfolio</a></li>
+                    <li><a href="/our-career/"><i class="fa fa-chevron-right"></i> Our Career</a></li>
+                    <li><a href="/clients/"><i class="fa fa-chevron-right"></i> Our Clients</a></li>
+                    <li><a href="/blog/"><i class="fa fa-chevron-right"></i> Blog</a></li>
+                    <li><a href="/contact/"><i class="fa fa-chevron-right"></i> Contact Sortiq Solutions</a></li>
+                    <li><a href="/faq/"><i class="fa fa-chevron-right"></i> FAQ</a></li>
+                    <li><a href="/our-expertise/"><i class="fa fa-chevron-right"></i> Our Expertise</a></li>
+                    <li><a href="/support/"><i class="fa fa-chevron-right"></i> Support</a></li>
+                    <li><a href="/privacy-policy/"><i class="fa fa-chevron-right"></i> Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-widget">
+                <h4>Our Services</h4>
+                <ul>
+                    <li><a href="/website-designing-company/"><i class="fa fa-chevron-right"></i> Web Designing</a></li>
+                    <li><a href="/website-development-company/"><i class="fa fa-chevron-right"></i> Web Development</a></li>
+                    <li><a href="/seo-company/"><i class="fa fa-chevron-right"></i> SEO</a></li>
+                    <li><a href="/smo-company/"><i class="fa fa-chevron-right"></i> SMO</a></li>
+                    <li><a href="/digital-marketing-company/"><i class="fa fa-chevron-right"></i> Digital Marketing</a></li>
+                    <li><a href="/ecommerce-development-company/"><i class="fa fa-chevron-right"></i> eCommerce Development</a></li>
+                    <li><a href="/bigcommerce-development-company/"><i class="fa fa-chevron-right"></i> BigCommerce Development</a></li>
+                    <li><a href="/mern-stack-development-company/"><i class="fa fa-chevron-right"></i> Mern Stack</a></li>
+                    <li><a href="/app-development-company/"><i class="fa fa-chevron-right"></i> App Development</a></li>
+                    <li><a href="/software-testing-company/"><i class="fa fa-chevron-right"></i> Software Testing</a></li>
+                    <li><a href="/website-maintenance-company/"><i class="fa fa-chevron-right"></i> Website Maintenance</a></li>
+                    <li><a href="/cyber-security-development/"><i class="fa fa-chevron-right"></i> Cyber Security Development</a></li>
+                    <li><a href="/hubspot-crm-services/"><i class="fa fa-chevron-right"></i> hubspot crm services</a></li>
+                    <li><a href="/zoho-crm-services/"><i class="fa fa-chevron-right"></i> zoho crm services</a></li>
+                </ul>
+            </div>
+            <div class="footer-widget">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="/php-development-company/"><i class="fa fa-chevron-right"></i> PHP Development</a></li>
+                    <li><a href="/laravel-development-company/"><i class="fa fa-chevron-right"></i> Laravel Development</a></li>
+                    <li><a href="/codeigniter-development-company/"><i class="fa fa-chevron-right"></i> CodeIgniter</a></li>
+                    <li><a href="/shopify-development-company/"><i class="fa fa-chevron-right"></i> Shopify Development</a></li>
+                    <li><a href="/wordpress-development-company/"><i class="fa fa-chevron-right"></i> WordPress Development</a></li>
+                    <li><a href="/react-js-development-company/"><i class="fa fa-chevron-right"></i> React JS Development</a></li>
+                    <li><a href="/node-js-development-company/"><i class="fa fa-chevron-right"></i> Node JS Development</a></li>
+                    <li><a href="/vue-js-development-company/"><i class="fa fa-chevron-right"></i> Vue JS Development</a></li>
+                    <li><a href="/graphic-designing-company/"><i class="fa fa-chevron-right"></i> Graphic Designing</a></li>
+                    <li><a href="/logo-designing-company/"><i class="fa fa-chevron-right"></i> Best Logo Designing Company</a></li>
+                    <li><a href="/banner-designing-company/"><i class="fa fa-chevron-right"></i> Banner Designing</a></li>
+                    <li><a href="/data-science-development/"><i class="fa fa-chevron-right"></i> Data Science Development</a></li>
+                </ul>
+            </div>
+            <div class="footer-widget">
+                <h4>Recent Articles</h4>
+                <div class="recent-article-item" style="margin-bottom: 20px;">
+                    <a href="/blog/how-to-choose-the-right-technology-stack-for-your-website/" style="font-weight: 600; font-size: 14px; color: #fff;">How to Choose the Right Technology Stack for Your Website</a>
+                    <div style="font-size: 12px; color: #7A7A7A; margin-top: 5px;"><i class="fa fa-calendar-alt"></i> April 30, 2026</div>
+                </div>
+                <div class="recent-article-item" style="margin-bottom: 30px;">
+                    <a href="/blog/how-a-fast-website-improves-google-ranking-user-experience/" style="font-weight: 600; font-size: 14px; color: #fff;">How a Fast Website Improves Google Ranking & User Experience</a>
+                    <div style="font-size: 12px; color: #7A7A7A; margin-top: 5px;"><i class="fa fa-calendar-alt"></i> April 22, 2026</div>
+                </div>
+                <div style="background-color: #000c24; border: 1px solid rgba(255,255,255,0.1); padding: 25px 20px; border-radius: 4px; text-align: center;">
+                    <p style="font-size: 13px; color: #cbd5e1; margin-bottom: 15px;">Verify your certificate's authenticity now.</p>
+                    <a href="https://erp.sortiqsolutions.com/certificate-verify" target="_blank" class="verify-btn" style="background-color: var(--accent); color: var(--white); border-radius: 25px; padding: 10px 30px; font-size: 14px; font-weight: bold; border: none; transition: background-color 0.3s; display: inline-block;">Verify Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <div>© 2026 | Powered by <a href="/" style="color: var(--accent); font-weight:600;">Sortiq Solutions Pvt. Ltd.</a></div>
+            <ul class="xs-list social-bottom">
+                <li><a href="https://www.facebook.com/SortiqSolutions/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://www.linkedin.com/company/sortiq-solutions/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                <li><a href="https://www.youtube.com/@SortiqSolutions" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                <li><a href="https://www.instagram.com/sortiqsolutions/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://x.com/SortiqSolutions" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="https://in.pinterest.com/sortiqsolutions/" target="_blank"><i class="fab fa-pinterest"></i></a></li>
+                <li><a href="https://medium.com/@sortiqsolutions" target="_blank"><i class="fab fa-medium"></i></a></li>
+                <li><a href="#"><i class="bi bi-microsoft-teams"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+
+
+    <!-- Fixed WhatsApp Widget -->
+    <div id="whatsapp-widget" class="footer-fixed-whatsapp">
+        <a href="https://wa.me/+919646522110?text=Hello, I would like to know more about your services!" target="_blank" class="footer-fixed-whatsapp-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20" fill="white" class="whatsapp-svg-icon">
+                <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+            </svg>
+            <span>Chat with us</span>
+        </a>
+    </div>
+
+
+
+
+    <!-- Fresher Hiring Modal -->
+    <div class="modal" id="fresherModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="color: var(--primary); margin-bottom: 20px;">Hiring Freshers - Lets' Connect</h2>
+            <form action="/submit-fresher" method="POST" enctype="multipart/form-data">
+                <div class="form-item">
+                    <input type="text" name="name" placeholder="Enter Your Name" required>
+                </div>
+                <div class="form-item">
+                    <input type="email" name="email" placeholder="Enter Your Email" required>
+                </div>
+                <div class="form-item">
+                    <input type="tel" name="phone" placeholder="Enter Your Phone Number" required>
+                </div>
+                <div class="form-item">
+                    <input type="text" name="subject" placeholder="Subject" required>
+                </div>
+                <div class="form-item">
+                    <label style="display:block; font-size:12px; margin-bottom:5px;">Upload CV (PDF/Doc/Image):</label>
+                    <input type="file" name="cv" accept=".pdf,.doc,.docx,image/*" required>
+                </div>
+                <div class="form-textarea" style="margin-bottom: 20px;">
+                    <textarea name="message" rows="4" placeholder="Enter your message" required style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:4px;"></textarea>
+                </div>
+                <button type="submit" class="custom-btn">Send Application</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Crisp Chat SDK Integration -->
+    <script type="text/javascript">
+        window.$crisp=[];
+        window.CRISP_WEBSITE_ID="5131cb3e-0e95-4a6f-8f4f-b7487300d9da";
+        (function(){
+            d=document;
+            s=d.createElement("script");
+            s.src="https://client.crisp.chat/l.js";
+            s.async=1;
+            d.getElementsByTagName("head")[0].appendChild(s);
+        })();
+    </script>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+
+    <!-- Upwork / ISO Certified Modal -->
+    <div id="upworkModal" class="custom-modal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.7); align-items: center; justify-content: center;">
+        <div class="custom-modal-content" style="background-color: #fefefe; margin: auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 800px; border-radius: 8px; position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+            <span class="custom-close" style="color: #aaaaaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; position: absolute; right: 20px; top: 10px;">&times;</span>
+            <div class="custom-modal-body" style="padding-top: 15px;">
+                <iframe src="https://sortiqsolutions.com/wp-content/uploads/2025/11/sortiqsolutions-isocertified.pdf" width="100%" height="500px" style="border:none;"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ISO Certified Modal toggle logic
+        document.getElementById('iso-certified-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('upworkModal').style.display = 'flex';
+        });
+        document.querySelector('.custom-close').addEventListener('click', function() {
+            document.getElementById('upworkModal').style.display = 'none';
+        });
+        window.addEventListener('click', function(event) {
+            var modal = document.getElementById('upworkModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>

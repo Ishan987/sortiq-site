@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }} | Sortiq Solutions{% endblock %}
+
+{% block content %}
+<!-- Premium Service Hero Banner -->
+<div class="service-hero-banner" style="background: linear-gradient(135deg, #010e28 0%, #031c4b 100%); color: var(--white); padding: 80px 0; overflow: hidden; position: relative;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;">
+        <!-- Left Column: Content -->
+        <div class="hero-left-col" style="animation: fadeInLeft 0.8s ease-out;">
+            <h1 style="font-size: 44px; font-weight: 800; line-height: 1.2; margin-bottom: 20px; font-family: 'Outfit', sans-serif;">
+                {{ title }}
+            </h1>
+            <span style="background: #FF5800; display: block; width: 60px; height: 4px; margin-bottom: 25px; border-radius: 2px;"></span>
+            <p style="color: #cbd5e1; font-size: 1.15rem; line-height: 1.8; margin-bottom: 35px; text-align: justify;">
+                {{ intro_text }}
+            </p>
+            <div style="display: inline-block;">
+                <a href="/contact/" class="cta-orange-btn" style="background-color: #FF5800; color: #FFFFFF; font-size: 16px; font-weight: 700; padding: 15px 35px; border-radius: 30px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 88, 0, 0.4);">
+                    Get Started Today <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <!-- Right Column: Image -->
+        <div class="hero-right-col" style="text-align: center; animation: fadeInRight 0.8s ease-out; position: relative;">
+            {% if cover_image %}
+            <div class="hero-image-wrapper" style="position: relative; display: inline-block; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+                <img src="{{ cover_image }}" alt="{{ title }}" style="max-width: 100%; height: auto; display: block; border-radius: 12px;">
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Why Choose Us Grid Section -->
+{% if cards %}
+<section class="why-choose-us-section" style="background-color: #FFFFFF; padding: 90px 0;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        
+        <!-- Section Header -->
+        <div class="section-header" style="text-align: center; margin-bottom: 60px;">
+            <h2 class="section-title" style="font-size: 36px; font-weight: 800; color: #010e28; margin-bottom: 15px; font-family: 'Outfit', sans-serif;">
+                Why Choose Us
+            </h2>
+            <span class="header-line" style="background: #FF5800; display: inline-block; width: 50px; height: 3px; border-radius: 2px;"></span>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="why-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px;">
+            {% for card in cards %}
+            <div class="service-info-card" style="background: #FFFFFF; border: 1px solid #e2e8f0; border-radius: 8px; padding: 40px 30px; text-align: center; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); cursor: pointer;">
+                <!-- Icon -->
+                {% if card.icon %}
+                <div class="card-icon-container" style="margin-bottom: 25px; display: inline-block; transition: transform 0.3s ease;">
+                    <img src="{{ card.icon }}" alt="{{ card.title }}" style="width: 80px; height: auto; display: block; margin: 0 auto;">
+                </div>
+                {% endif %}
+                <!-- Title -->
+                <h3 class="card-title" style="font-size: 20px; font-weight: 700; color: #010e28; margin-bottom: 15px; font-family: 'Outfit', sans-serif;">
+                    {{ card.title }}
+                </h3>
+                <!-- Description -->
+                <p class="card-desc" style="color: #64748b; font-size: 0.95rem; line-height: 1.6; text-align: justify; margin: 0;">
+                    {{ card.description }}
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+{% endif %}
+
+<!-- Add inline CSS for animations & hovers -->
+<style>
+    @keyframes fadeInLeft {
+        from { opacity: 0; transform: translateX(-30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeInRight {
+        from { opacity: 0; transform: translateX(30px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    .cta-orange-btn:hover {
+        background-color: #E04E00 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 88, 0, 0.6) !important;
+    }
+    .service-info-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        border-color: #FF5800 !important;
+    }
+    .service-info-card:hover .card-icon-container {
+        transform: scale(1.1);
+    }
+    @media (max-width: 991px) {
+        .service-hero-banner .container {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+            text-align: center !important;
+        }
+        .hero-left-col {
+            text-align: center !important;
+        }
+        .hero-left-col span {
+            margin: 0 auto 25px auto !important;
+        }
+        .card-desc {
+            text-align: center !important;
+        }
+    }
+</style>
+{% endblock %}

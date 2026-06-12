@@ -1,0 +1,383 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- INNER BANNER -->
+<section class="inner-banner-area">
+    <div class="container">
+        <h1 class="inner-banner-title">{{ title }}</h1>
+        <ul class="breadcumbs">
+            <li><a href="{{ url_for('index') }}">Home</a> / {{ page_type | capitalize }}</li>
+        </ul>
+    </div>
+</section>
+
+<!-- MAIN CONTENT BLOCK -->
+<div class="main-content section-padding">
+    <div class="container">
+
+        <!-- --- ABOUT PAGE --- -->
+        {% if page_type == 'about' %}
+        <div class="ideas-grid" style="margin-bottom: 50px;">
+            <div class="ideas-content">
+                <h2>Overview of <span>Sortiq Solutions</span></h2>
+                <p>Sortiq Solutions Pvt. Ltd. is an established IT solutions provider based in Chandigarh, Mohali, India. We help startups, SMEs, and large brands establish, expand, and optimize their digital ecosystem.</p>
+                <p>We are a certified Wix Partner and excel in MERN Stack, WordPress CMS, Laravel Framework development, and tailored graphic designing solutions. Our mission is to combine strategic design with cutting-edge engineering to deliver real, measurable business growth.</p>
+            </div>
+            <div class="ideas-image">
+                <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="400" height="300" rx="10" fill="#00173E" />
+                    <circle cx="200" cy="150" r="70" fill="#FF5800" opacity="0.8"/>
+                    <text x="130" y="158" fill="#FFFFFF" font-family="'Nunito', sans-serif" font-weight="900" font-size="24">OVERVIEW</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- --- WHY CHOOSE US PAGE --- -->
+        {% elif page_type == 'why-choose-us' %}
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h2>We Deliver Strategy-First & Conversion-Driven Solutions</h2>
+            <p style="margin-top: 20px; font-size: 1.1rem; color: #666;">At Sortiq, we don't just build websites. We craft digital environments built to capture leads, elevate branding, and scale. We rely on performance data and Core Web Vitals optimizations to make sure your site stands out from competitors.</p>
+        </div>
+
+        <!-- --- OUR EXPERTISE --- -->
+        {% elif page_type == 'our-expertise' %}
+        <div class="services-grid">
+            <div class="service-card">
+                <h4>Wix Studio & Partner Integration</h4>
+                <p>Delivering high-performing, fluid layouts using Wix and Wix Studio systems.</p>
+            </div>
+            <div class="service-card">
+                <h4>PHP Framework Scalability</h4>
+                <p>Constructing solid Laravel databases, customized dashboards, and systems.</p>
+            </div>
+            <div class="service-card">
+                <h4>Full Stack Engineering</h4>
+                <p>Engineering premium Javascript apps using MERN (MongoDB, Express, React, Node).</p>
+            </div>
+        </div>
+
+        <!-- --- CLIENTS PAGE --- -->
+        {% elif page_type == 'clients' %}
+        <div class="text-center" style="margin-bottom: 50px;">
+            <h2>Partnering with Brands Across the Globe</h2>
+            <p>We are proud to serve over 225+ clients across 30+ countries, including Kebaonish, Helium, Agentiiv, Kore Training, and Bondi Business Women.</p>
+        </div>
+        <div class="blog-grid">
+            <!-- Render client cards -->
+            <div class="why-choose-us-block">
+                <h4>Kebaonish</h4>
+                <p>Custom E-commerce development & branding support.</p>
+            </div>
+            <div class="why-choose-us-block">
+                <h4>Helium</h4>
+                <p>SaaS application UI wireframing and frontend development.</p>
+            </div>
+            <div class="why-choose-us-block">
+                <h4>Agentiiv</h4>
+                <p>Digital marketing SEO strategy & Google Analytics integration.</p>
+            </div>
+        </div>
+
+        <!-- --- CAREER PAGE --- -->
+        {% elif page_type == 'career' %}
+        <div class="ideas-grid">
+            <div class="ideas-content">
+                <h2>Build Your Future with <span>Sortiq Solutions</span></h2>
+                <p>We are looking for creative designers, detail-oriented frontend developers, and data-driven marketing analysts to join our Chandigarh team. We offer a progressive workspace, continuous learning budgets, and global project exposure.</p>
+                <button class="btn btn-primary" onclick="openHiringModal()">Apply For Positions</button>
+            </div>
+            <div class="ideas-image">
+                <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="400" height="300" rx="10" fill="#FF5800" />
+                    <text x="120" y="160" fill="#FFFFFF" font-family="'Nunito', sans-serif" font-weight="900" font-size="28">WE ARE HIRING</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- --- VIDEOS PAGE --- -->
+        {% elif page_type == 'video' %}
+        <div class="workflow-grid">
+            <div class="video-card">
+                <div class="video-thumbnail-placeholder">
+                    <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                </div>
+                <div class="video-info">
+                    <h4>Wix Partner Collaboration Video</h4>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-thumbnail-placeholder">
+                    <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                </div>
+                <div class="video-info">
+                    <h4>Sortiq Office Culture Walkthrough</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- --- SERVICE DETAIL PAGES --- -->
+        {% elif page_type == 'service' %}
+        <div class="ideas-grid">
+            <div class="ideas-content">
+                {% if service_id == 'web_design' %}
+                <h2>Creative <span>Website Designing</span></h2>
+                <p>Elevate your digital footprint with custom website design layouts. We deliver mobile-responsive, beautifully animated, and intuitive wireframes that mirror your core corporate identity.</p>
+                {% elif service_id == 'web_dev' %}
+                <h2>Full Stack <span>Web Development</span></h2>
+                <p>Scalable web infrastructure constructed to perform. We utilize modern stacks to develop highly robust databases, clean APIs, and secure transaction workflows.</p>
+                {% elif service_id == 'laravel' %}
+                <h2>Premium <span>Laravel Development</span></h2>
+                <p>Utilizing the PHP framework Laravel, we code high-velocity SaaS applications, robust CRM portals, and database management systems optimized for efficiency.</p>
+                {% elif service_id == 'ecommerce' %}
+                <h2>Scalable <span>E-commerce Solutions</span></h2>
+                <p>Launch an online storefront built to transact. We construct custom shopping cart systems, Shopify interfaces, and Wix e-commerce integrations with smooth checkout flows.</p>
+                {% elif service_id == 'seo' %}
+                <h2>Strategic <span>SEO Services</span></h2>
+                <p>Achieve Page 1 rankings on Google search engine result pages. We execute technical Core Web Vitals optimization, domain backlink creation, and competitive content indexing.</p>
+                {% else %}
+                <h2>Dynamic <span>IT Service Solutions</span></h2>
+                <p>We provide full-service digital transformation, graphic branding design, logo identity design, SMO marketing campaigns, and continuous web hosting maintenance.</p>
+                {% endif %}
+                <p style="margin-top: 15px;">Our team works collaboratively to make sure your solution is delivered on time, within budget guidelines, and performs seamlessly.</p>
+                <a href="{{ url_for('contact') }}" class="btn btn-primary">Book Consultation</a>
+            </div>
+            <div class="ideas-image">
+                <svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="400" height="300" rx="10" fill="#00173E" />
+                    <circle cx="200" cy="150" r="60" fill="#FF5800"/>
+                    <text x="150" y="158" fill="#FFFFFF" font-family="'Nunito', sans-serif" font-weight="900" font-size="24">SERVICE</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- --- PORTFOLIO / CASE STUDIES PAGE --- -->
+        {% elif page_type in ['portfolio', 'case-studies'] %}
+        <div class="text-center" style="margin-bottom: 50px;">
+            <h2>Explore Our Behance & Custom Projects</h2>
+            <p>Below is a curated selection of our digital design and development projects. We continuously push bounds in aesthetic wireframing, e-commerce checkouts, and custom systems.</p>
+        </div>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="blog-image">
+                    <svg viewBox="0 0 100 100" fill="none" stroke="#00173E" stroke-width="4"><rect x="20" y="20" width="60" height="60" rx="10"/><circle cx="50" cy="50" r="15"/></svg>
+                </div>
+                <div class="blog-body">
+                    <h4>Kebaonish E-commerce Redesign</h4>
+                    <p style="font-size: 0.9rem; color: #666; margin: 10px 0;">A premium storefront redesign using certified Wix Studio systems, resulting in +40% user retention increase.</p>
+                    <a href="https://www.behance.net/sortiqsolutions71" target="_blank" class="apply-internship">View on Behance <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-image">
+                    <svg viewBox="0 0 100 100" fill="none" stroke="#00173E" stroke-width="4"><rect x="20" y="20" width="60" height="60" rx="10"/><line x1="30" y1="50" x2="70" y2="50"/></svg>
+                </div>
+                <div class="blog-body">
+                    <h4>Helium Mobile App Prototype</h4>
+                    <p style="font-size: 0.9rem; color: #666; margin: 10px 0;">Creative mobile app UX wireframe mockups and cross-platform Flutter integration blueprint.</p>
+                    <a href="https://www.behance.net/sortiqsolutions71" target="_blank" class="apply-internship">View on Behance <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- --- BLOG PAGE --- -->
+        {% elif page_type == 'blog' %}
+        <div class="blog-grid">
+            {% for blog in blogs %}
+            <div class="blog-card">
+                <div class="blog-image">
+                    <svg viewBox="0 0 100 100" fill="none" stroke="#FF5800" stroke-width="3">
+                        <rect x="20" y="20" width="60" height="60" rx="5"/>
+                        <line x1="30" y1="40" x2="70" y2="40"/>
+                        <line x1="30" y1="55" x2="60" y2="55"/>
+                    </svg>
+                </div>
+                <div class="blog-body">
+                    <div class="blog-meta">
+                        <span><i class="fa-solid fa-clock"></i> {{ blog.date }}</span>
+                        <span><i class="fa-solid fa-folder"></i> {{ blog.category }}</span>
+                    </div>
+                    <h3 class="blog-title"><a href="{{ url_for('blog_post', slug=blog.slug) }}">{{ blog.title }}</a></h3>
+                    <p class="blog-excerpt">{{ blog.excerpt }}</p>
+                    <a href="{{ url_for('blog_post', slug=blog.slug) }}" class="btn btn-secondary" style="padding: 6px 15px; font-size: 0.8rem;">Read Post</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- --- BLOG POST DETAIL --- -->
+        {% elif page_type == 'blog-post' %}
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="blog-meta" style="margin-bottom: 20px;">
+                <span><i class="fa-solid fa-clock"></i> {{ post.date }}</span> | 
+                <span><i class="fa-solid fa-folder"></i> {{ post.category }}</span>
+            </div>
+            <p style="font-size: 1.25rem; line-height: 1.8; color: #333; margin-bottom: 30px; font-weight: 500;">{{ post.excerpt }}</p>
+            <div style="font-size: 1.1rem; line-height: 1.7; color: #555; text-align: justify;">
+                <p>{{ post.content }}</p>
+            </div>
+            <a href="{{ url_for('blog') }}" class="btn btn-secondary" style="margin-top: 40px;"><i class="fa-solid fa-arrow-left"></i> Back to Blogs</a>
+        </div>
+
+        <!-- --- CONTACT PAGE --- -->
+        {% elif page_type == 'contact' %}
+        <div class="ideas-grid">
+            <div class="ideas-content">
+                <h2>Let's <span>Connect</span></h2>
+                <p>Have a project in mind or want to explore customized options? Submit our inquiry form below and a technical coordinator will contact you.</p>
+                
+                <form action="{{ url_for('contact') }}" method="POST" style="margin-top: 30px;">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Enter Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="Enter Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" class="form-control" placeholder="Enter Your Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" class="form-control form-textarea" placeholder="Enter your query details..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+            <div class="ideas-image" style="background-color: var(--light-bg); border-radius: 10px; padding: 30px;">
+                <h3>Our Offices</h3>
+                <p style="margin-top: 15px;"><strong>Chandigarh Office:</strong><br>Sortiq Solutions Pvt. Ltd.<br>IT Park, Block B, Chandigarh, 160101</p>
+                <p style="margin-top: 15px;"><strong>Support Email:</strong><br><a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ email }}" target="_blank">{{ email }}</a></p>
+                <p style="margin-top: 15px;"><strong>Calling Support:</strong><br><a href="tel:{{ phone }}">{{ phone }}</a></p>
+                <!-- Embedded SVG map symbol -->
+                <svg viewBox="0 0 100 100" fill="none" stroke="#FF5800" stroke-width="2" style="width: 100%; height: auto; margin-top: 20px;">
+                    <rect width="100" height="100" fill="#00173E" rx="5"/>
+                    <circle cx="50" cy="50" r="10" fill="#FF5800"/>
+                    <path d="M 20 20 L 80 80 M 80 20 L 20 80" stroke="#FFFFFF" stroke-dasharray="2,2"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- --- INTERNSHIP APPLICATION --- -->
+        {% elif page_type == 'internship' %}
+        <div style="max-width: 600px; margin: 0 auto; background-color: var(--light-bg); padding: 40px; border-radius: 10px;">
+            <h2 class="text-center" style="margin-bottom: 20px;">Fresher Internship Application</h2>
+            <form action="{{ url_for('internship') }}" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="Your Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" class="form-control" placeholder="Mobile Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="subject" class="form-control" placeholder="Applying for Domain (e.g. Flask, SEO, Design)" required>
+                </div>
+                <div class="form-group">
+                    <label style="display: block; margin-bottom: 5px; color: #555;">Attach CV / Resume (PDF / Word):</label>
+                    <input type="file" name="cv" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" class="form-control form-textarea" placeholder="Tell us why you want to intern with us..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Internship Request</button>
+            </form>
+        </div>
+
+        <!-- --- REVIEWS PAGE --- -->
+        {% elif page_type == 'reviews' %}
+        <div class="text-center" style="margin-bottom: 40px;">
+            <h2>Reviews from Google & Wix Studio Community</h2>
+            <p>We hold a 4.9 out of 5 average rating based on our performance metrics and feedback.</p>
+        </div>
+        <div class="services-grid">
+            <div class="why-choose-us-block">
+                <h4>"Highly Recommend!"</h4>
+                <p style="margin: 10px 0; font-style: italic;">"Sortiq team designed our Wix e-commerce solution in less than 3 weeks. Conversion rate went up."</p>
+                <strong>- David J. Martin</strong>
+            </div>
+            <div class="why-choose-us-block">
+                <h4>"Excellent Support Framework"</h4>
+                <p style="margin: 10px 0; font-style: italic;">"They scaled our custom backend portal. Communication was flawless throughout."</p>
+                <strong>- David G. Mullins</strong>
+            </div>
+        </div>
+
+        <!-- --- ADMIN DASHBOARD --- -->
+        {% elif page_type == 'admin' %}
+        <h2>Admin Review Dashboard</h2>
+        <p style="margin-bottom: 30px;">Review query messages and fresher submissions stored inside database file systems.</p>
+        
+        <h3 style="margin-bottom: 15px;">1. Customer Inquiries</h3>
+        <div style="overflow-x: auto; margin-bottom: 40px;">
+            <table style="width: 100%; border-collapse: collapse; background: #FFF; border: 1px solid #ddd;">
+                <thead>
+                    <tr style="background-color: var(--primary-color); color: #FFF; text-align: left;">
+                        <th style="padding: 12px; border: 1px solid #ddd;">Name</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Email</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Phone</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Subject</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in contacts %}
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #ddd;">{{ c.name }}</td>
+                        <td style="padding: 12px; border: 1px solid #ddd;"><a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ c.email }}" target="_blank">{{ c.email }}</a></td>
+                        <td style="padding: 12px; border: 1px solid #ddd;"><a href="tel:{{ c.phone }}">{{ c.phone }}</a></td>
+                        <td style="padding: 12px; border: 1px solid #ddd;">{{ c.subject }}</td>
+                        <td style="padding: 12px; border: 1px solid #ddd;">{{ c.message }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5" style="padding: 12px; text-align: center;">No contact requests yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="margin-bottom: 15px;">2. Freshers & Intern Applications</h3>
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; background: #FFF; border: 1px solid #ddd;">
+                <thead>
+                    <tr style="background-color: var(--primary-color); color: #FFF; text-align: left;">
+                        <th style="padding: 12px; border: 1px solid #ddd;">Name</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Email</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Phone</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">Subject</th>
+                        <th style="padding: 12px; border: 1px solid #ddd;">CV Resume File</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in interns %}
+                    <tr>
+                        <td style="padding: 12px; border: 1px solid #ddd;">{{ i.name }}</td>
+                        <td style="padding: 12px; border: 1px solid #ddd;"><a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ i.email }}" target="_blank">{{ i.email }}</a></td>
+                        <td style="padding: 12px; border: 1px solid #ddd;"><a href="tel:{{ i.phone }}">{{ i.phone }}</a></td>
+                        <td style="padding: 12px; border: 1px solid #ddd;">{{ i.subject }}</td>
+                        <td style="padding: 12px; border: 1px solid #ddd;">
+                            {% if i.cv_filename %}
+                            <a href="{{ url_for('static', filename='uploads/' + i.cv_filename) }}" target="_blank" style="color: var(--accent-color); font-weight: 700;">Download Resume</a>
+                            {% else %}
+                            No CV attached
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5" style="padding: 12px; text-align: center;">No intern applications yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}

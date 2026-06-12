@@ -1,0 +1,321 @@
+{% extends 'base.html' %}
+
+{% block title %}Career with Us | Sortiq Solutions{% endblock %}
+
+{% block content %}
+<!-- Premium Banner -->
+<div class="career-hero-banner" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://sortiqsolutions.com/wp-content/uploads/2025/02/about_us_background.jpg') no-repeat center center; background-size: cover; color: var(--white); padding: 90px 0; text-align: center; position: relative;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <h1 style="font-size: 44px; font-weight: 800; line-height: 1.2; margin-bottom: 15px; font-family: 'Outfit', sans-serif; letter-spacing: 0.02em;">
+            Join Our Team at Sortiq Solutions
+        </h1>
+        <span style="background: #FF5800; display: inline-block; width: 60px; height: 4px; border-radius: 2px; margin-bottom: 15px;"></span>
+        <p style="color: #cbd5e1; font-size: 1.1rem; margin: 0;">Explore exciting opportunities & take the next step in your career with us.</p>
+    </div>
+</div>
+
+<!-- Job Listings Section -->
+<section style="background-color: #FFFFFF; padding: 90px 0;">
+    <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 style="font-size: 36px; font-weight: 800; color: #010e28; margin-bottom: 20px; font-family: 'Outfit', sans-serif;">
+                Current Openings <span style="color: #FF5800;">(8 Positions)</span>
+            </h2>
+            <span style="background: #FF5800; display: inline-block; width: 50px; height: 3px; border-radius: 2px;"></span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 25px;">
+            
+            <!-- Job 1 -->
+            <div class="job-accordion-box" style="border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #FFFFFF; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
+                <div class="job-header" onclick="toggleJob(this)" style="padding: 24px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #F8FAFC; border-bottom: 1px solid #e2e8f0; transition: background 0.3s;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <i class="fa-solid fa-chart-line" style="font-size: 24px; color: #FF5800;"></i>
+                        <h3 style="font-size: 20px; font-weight: 700; color: #010e28; margin: 0; font-family: 'Outfit', sans-serif;">Business Development Executive (BDE)</h3>
+                    </div>
+                    <i class="fa fa-chevron-down toggle-icon" style="color: #64748b; font-size: 16px; transition: transform 0.3s;"></i>
+                </div>
+                <div class="job-details" style="display: none; padding: 30px; border-top: none;">
+                    <h4 style="font-size: 17px; font-weight: 700; color: #010e28; margin-bottom: 15px;">Key Responsibilities:</h4>
+                    <ul style="list-style: none; margin-bottom: 25px; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> As a BDE one should have clear understanding of Technical requirements and the time-frame to be worked on while converting clients both Online (e.g. Upwork, Guru, Freelancer etc.) and offline (through various public directories, direct, telephonic).</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> The Business Development Executive should be capable and aware of International Sales and International Marketing.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Client Interaction, Negotiations, Closing the deal.</li>
+                    </ul>
+                    <div style="background-color: #F8FAFC; border-left: 4px solid #FF5800; padding: 15px 20px; border-radius: 4px; margin-bottom: 25px;">
+                        <p style="margin: 5px 0;"><strong>Role Category:</strong> Pre sales</p>
+                        <p style="margin: 5px 0;"><strong>Employment Type:</strong> Permanent and a Full-Time Job</p>
+                        <p style="margin: 5px 0;"><strong>Education:</strong> UG: Any Graduate – Any Specialization, B.Tech/B.E. | PG: M.Tech, MCA – Computers</p>
+                        <p style="margin: 5px 0;"><strong>Experience:</strong> 2+ years</p>
+                        <p style="margin: 5px 0;"><strong>Vacancies:</strong> 5</p>
+                    </div>
+                    <p style="margin: 0; color: #444;"><strong>How to Apply:</strong> If you believe that you have the capability to help us and you wish to build your Career with Aron Web Solutions, then, send your CV at the mail id <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sortiqsolutions@gmail.com" target="_blank" style="color: #FF5800; font-weight: 600;">sortiqsolutions@gmail.com</a> and a cover email telling us why you are the ideal candidate for the job.</p>
+                </div>
+            </div>
+
+            <!-- Job 2 -->
+            <div class="job-accordion-box" style="border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #FFFFFF; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
+                <div class="job-header" onclick="toggleJob(this)" style="padding: 24px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #F8FAFC; border-bottom: 1px solid #e2e8f0; transition: background 0.3s;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <i class="fa-solid fa-user-tie" style="font-size: 24px; color: #FF5800;"></i>
+                        <h3 style="font-size: 20px; font-weight: 700; color: #010e28; margin: 0; font-family: 'Outfit', sans-serif;">HR Executive</h3>
+                    </div>
+                    <i class="fa fa-chevron-down toggle-icon" style="color: #64748b; font-size: 16px; transition: transform 0.3s;"></i>
+                </div>
+                <div class="job-details" style="display: none; padding: 30px; border-top: none;">
+                    <h4 style="font-size: 17px; font-weight: 700; color: #010e28; margin-bottom: 15px;">Key Responsibilities:</h4>
+                    <ul style="list-style: none; margin-bottom: 25px; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> As an HR Executive, you will be responsible for managing key aspects of recruitment, employee relations, and performance management within the organization.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Understanding Organizational Needs: Gain a clear understanding of the technical and cultural requirements of the company to help build a strong, capable workforce.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Talent Acquisition: Handle both online (e.g., job portals, LinkedIn) and offline (through job fairs, public directories, direct recruitment) sourcing for top talent.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Recruitment and Onboarding: Lead recruitment efforts, managing the entire hiring process from screening to interview scheduling, and conducting onboarding for new hires.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Employee Engagement: Maintain strong communication with employees, ensuring a productive, happy work environment.</li>
+                    </ul>
+                    <div style="background-color: #F8FAFC; border-left: 4px solid #FF5800; padding: 15px 20px; border-radius: 4px; margin-bottom: 25px;">
+                        <p style="margin: 5px 0;"><strong>Employment Type:</strong> Permanent and a Full-Time Job</p>
+                        <p style="margin: 5px 0;"><strong>Education:</strong> UG: Any Graduate | PG: MCA, M.Tech – Computers</p>
+                        <p style="margin: 5px 0;"><strong>Experience:</strong> 2+ years</p>
+                        <p style="margin: 5px 0;"><strong>Vacancies:</strong> 5</p>
+                    </div>
+                    <p style="margin: 0; color: #444;"><strong>How to Apply:</strong> Please send your CV and a cover email explaining why you're the perfect fit for the HR Executive role to: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sortiqsolutions@gmail.com" target="_blank" style="color: #FF5800; font-weight: 600;">sortiqsolutions@gmail.com</a></p>
+                </div>
+            </div>
+
+            <!-- Job 3 -->
+            <div class="job-accordion-box" style="border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #FFFFFF; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
+                <div class="job-header" onclick="toggleJob(this)" style="padding: 24px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #F8FAFC; border-bottom: 1px solid #e2e8f0; transition: background 0.3s;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <i class="fa-solid fa-palette" style="font-size: 24px; color: #FF5800;"></i>
+                        <h3 style="font-size: 20px; font-weight: 700; color: #010e28; margin: 0; font-family: 'Outfit', sans-serif;">Web Designer</h3>
+                    </div>
+                    <i class="fa fa-chevron-down toggle-icon" style="color: #64748b; font-size: 16px; transition: transform 0.3s;"></i>
+                </div>
+                <div class="job-details" style="display: none; padding: 30px; border-top: none;">
+                    <h4 style="font-size: 17px; font-weight: 700; color: #010e28; margin-bottom: 15px;">Key Responsibilities:</h4>
+                    <ul style="list-style: none; margin-bottom: 25px; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Designing User-Centric Websites: Develop responsive and visually attractive website designs using the latest web design principles and technologies.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Collaborating with Development Teams: Work closely with developers to ensure that designs are implemented accurately, and functionality is optimized across platforms.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Creating Wireframes & Mockups: Design wireframes, prototypes, and high-fidelity mockups to communicate design concepts clearly.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Optimizing for User Experience: Focus on improving overall user experience (UX), making sure sites are intuitive.</li>
+                    </ul>
+                    <div style="background-color: #F8FAFC; border-left: 4px solid #FF5800; padding: 15px 20px; border-radius: 4px; margin-bottom: 25px;">
+                        <p style="margin: 5px 0;"><strong>Employment Type:</strong> Permanent and a Full-Time Job</p>
+                        <p style="margin: 5px 0;"><strong>Education:</strong> UG: Any Graduate - Any Specialization</p>
+                        <p style="margin: 5px 0;"><strong>Experience:</strong> 2+ years</p>
+                    </div>
+                    <p style="margin: 0; color: #444;"><strong>How to Apply:</strong> Please send your CV and a cover email explaining why you're the perfect fit for this role to: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sortiqsolutions@gmail.com" target="_blank" style="color: #FF5800; font-weight: 600;">sortiqsolutions@gmail.com</a></p>
+                </div>
+            </div>
+
+            <!-- Job 4 -->
+            <div class="job-accordion-box" style="border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #FFFFFF; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
+                <div class="job-header" onclick="toggleJob(this)" style="padding: 24px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #F8FAFC; border-bottom: 1px solid #e2e8f0; transition: background 0.3s;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <i class="fa-solid fa-code" style="font-size: 24px; color: #FF5800;"></i>
+                        <h3 style="font-size: 20px; font-weight: 700; color: #010e28; margin: 0; font-family: 'Outfit', sans-serif;">PHP Developer</h3>
+                    </div>
+                    <i class="fa fa-chevron-down toggle-icon" style="color: #64748b; font-size: 16px; transition: transform 0.3s;"></i>
+                </div>
+                <div class="job-details" style="display: none; padding: 30px; border-top: none;">
+                    <h4 style="font-size: 17px; font-weight: 700; color: #010e28; margin-bottom: 15px;">Key Responsibilities:</h4>
+                    <ul style="list-style: none; margin-bottom: 25px; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Understanding Project Requirements: Collaborate with team members and clients to understand technical requirements for PHP-based applications.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Development and Maintenance: Write clean, scalable, and efficient code for PHP websites and web applications.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Database Management: Utilize MySQL and other databases for managing and storing data effectively.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Security and Best Practices: Implement web security standards and follow best coding practices.</li>
+                    </ul>
+                    <div style="background-color: #F8FAFC; border-left: 4px solid #FF5800; padding: 15px 20px; border-radius: 4px; margin-bottom: 25px;">
+                        <p style="margin: 5px 0;"><strong>Employment Type:</strong> Permanent and a Full-Time Job</p>
+                        <p style="margin: 5px 0;"><strong>Experience:</strong> 2+ years</p>
+                    </div>
+                    <p style="margin: 0; color: #444;"><strong>How to Apply:</strong> Please send your CV and a cover email explaining why you're the ideal candidate for this role to: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sortiqsolutions@gmail.com" target="_blank" style="color: #FF5800; font-weight: 600;">sortiqsolutions@gmail.com</a></p>
+                </div>
+            </div>
+
+            <!-- Job 5 -->
+            <div class="job-accordion-box" style="border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #FFFFFF; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
+                <div class="job-header" onclick="toggleJob(this)" style="padding: 24px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #F8FAFC; border-bottom: 1px solid #e2e8f0; transition: background 0.3s;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <i class="fa-brands fa-wordpress" style="font-size: 24px; color: #FF5800;"></i>
+                        <h3 style="font-size: 20px; font-weight: 700; color: #010e28; margin: 0; font-family: 'Outfit', sans-serif;">WordPress Developer</h3>
+                    </div>
+                    <i class="fa fa-chevron-down toggle-icon" style="color: #64748b; font-size: 16px; transition: transform 0.3s;"></i>
+                </div>
+                <div class="job-details" style="display: none; padding: 30px; border-top: none;">
+                    <h4 style="font-size: 17px; font-weight: 700; color: #010e28; margin-bottom: 15px;">Key Responsibilities:</h4>
+                    <ul style="list-style: none; margin-bottom: 25px; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Custom WordPress Development: Develop custom themes and plugins to enhance website functionality and user experience.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Front-End & Back-End Integration: Work with HTML, CSS, JavaScript, and PHP to build responsive, high-performance WordPress websites.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Website Optimization: Improve website speed, SEO, and overall performance using best practices.</li>
+                    </ul>
+                    <div style="background-color: #F8FAFC; border-left: 4px solid #FF5800; padding: 15px 20px; border-radius: 4px; margin-bottom: 25px;">
+                        <p style="margin: 5px 0;"><strong>Employment Type:</strong> Permanent and a Full-Time Job</p>
+                        <p style="margin: 5px 0;"><strong>Experience:</strong> 2+ years</p>
+                    </div>
+                    <p style="margin: 0; color: #444;"><strong>How to Apply:</strong> Please send your CV and a cover email explaining why you're the ideal candidate for this role to: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sortiqsolutions@gmail.com" target="_blank" style="color: #FF5800; font-weight: 600;">sortiqsolutions@gmail.com</a></p>
+                </div>
+            </div>
+
+            <!-- Job 6 -->
+            <div class="job-accordion-box" style="border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #FFFFFF; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
+                <div class="job-header" onclick="toggleJob(this)" style="padding: 24px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #F8FAFC; border-bottom: 1px solid #e2e8f0; transition: background 0.3s;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <i class="fa-solid fa-globe" style="font-size: 24px; color: #FF5800;"></i>
+                        <h3 style="font-size: 20px; font-weight: 700; color: #010e28; margin: 0; font-family: 'Outfit', sans-serif;">Wix Developer</h3>
+                    </div>
+                    <i class="fa fa-chevron-down toggle-icon" style="color: #64748b; font-size: 16px; transition: transform 0.3s;"></i>
+                </div>
+                <div class="job-details" style="display: none; padding: 30px; border-top: none;">
+                    <h4 style="font-size: 17px; font-weight: 700; color: #010e28; margin-bottom: 15px;">Key Responsibilities:</h4>
+                    <ul style="list-style: none; margin-bottom: 25px; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Custom Wix Website Development: Build responsive and visually appealing websites using Wix Studio and Editor X.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Velo by Wix Scripting: Use JavaScript and Wix Velo (Corvid) to develop custom functionalities and dynamic web applications.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Database Management: Work with Wix Data Collections to structure and manage website content effectively.</li>
+                    </ul>
+                    <div style="background-color: #F8FAFC; border-left: 4px solid #FF5800; padding: 15px 20px; border-radius: 4px; margin-bottom: 25px;">
+                        <p style="margin: 5px 0;"><strong>Employment Type:</strong> Permanent and a Full-Time Job</p>
+                        <p style="margin: 5px 0;"><strong>Experience:</strong> 2+ years</p>
+                    </div>
+                    <p style="margin: 0; color: #444;"><strong>How to Apply:</strong> Send your CV and a cover email explaining why you're the ideal candidate to: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sortiqsolutions@gmail.com" target="_blank" style="color: #FF5800; font-weight: 600;">sortiqsolutions@gmail.com</a></p>
+                </div>
+            </div>
+
+            <!-- Job 7 -->
+            <div class="job-accordion-box" style="border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #FFFFFF; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
+                <div class="job-header" onclick="toggleJob(this)" style="padding: 24px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #F8FAFC; border-bottom: 1px solid #e2e8f0; transition: background 0.3s;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <i class="fa-solid fa-server" style="font-size: 24px; color: #FF5800;"></i>
+                        <h3 style="font-size: 20px; font-weight: 700; color: #010e28; margin: 0; font-family: 'Outfit', sans-serif;">Laravel Developer</h3>
+                    </div>
+                    <i class="fa fa-chevron-down toggle-icon" style="color: #64748b; font-size: 16px; transition: transform 0.3s;"></i>
+                </div>
+                <div class="job-details" style="display: none; padding: 30px; border-top: none;">
+                    <h4 style="font-size: 17px; font-weight: 700; color: #010e28; margin-bottom: 15px;">Key Responsibilities:</h4>
+                    <ul style="list-style: none; margin-bottom: 25px; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Application Development: Develop and maintain high-quality web applications using Laravel and related technologies.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> API Development & Integration: Build and integrate RESTful APIs for seamless data exchange.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Database Management: Design, optimize, and manage MySQL/PostgreSQL databases efficiently.</li>
+                    </ul>
+                    <div style="background-color: #F8FAFC; border-left: 4px solid #FF5800; padding: 15px 20px; border-radius: 4px; margin-bottom: 25px;">
+                        <p style="margin: 5px 0;"><strong>Employment Type:</strong> Permanent and a Full-Time Job</p>
+                        <p style="margin: 5px 0;"><strong>Experience:</strong> 2+ years</p>
+                    </div>
+                    <p style="margin: 0; color: #444;"><strong>How to Apply:</strong> Send your CV and a cover email explaining why you're the ideal candidate to: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sortiqsolutions@gmail.com" target="_blank" style="color: #FF5800; font-weight: 600;">sortiqsolutions@gmail.com</a></p>
+                </div>
+            </div>
+
+            <!-- Job 8 -->
+            <div class="job-accordion-box" style="border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #FFFFFF; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
+                <div class="job-header" onclick="toggleJob(this)" style="padding: 24px 30px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #F8FAFC; border-bottom: 1px solid #e2e8f0; transition: background 0.3s;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <i class="fa-solid fa-database" style="font-size: 24px; color: #FF5800;"></i>
+                        <h3 style="font-size: 20px; font-weight: 700; color: #010e28; margin: 0; font-family: 'Outfit', sans-serif;">MERN Stack Developer</h3>
+                    </div>
+                    <i class="fa fa-chevron-down toggle-icon" style="color: #64748b; font-size: 16px; transition: transform 0.3s;"></i>
+                </div>
+                <div class="job-details" style="display: none; padding: 30px; border-top: none;">
+                    <h4 style="font-size: 17px; font-weight: 700; color: #010e28; margin-bottom: 15px;">Key Responsibilities:</h4>
+                    <ul style="list-style: none; margin-bottom: 25px; padding: 0; display: flex; flex-direction: column; gap: 12px;">
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Full-Stack Development: Build and maintain scalable web applications using MERN stack (MongoDB, Express, React, Node.js).</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Front-End Development: Develop responsive and dynamic user interfaces using React.js.</li>
+                        <li><i class="fa-solid fa-circle-check" style="color: #FF5800; margin-right: 8px;"></i> Back-End Development: Implement server-side logic, RESTful APIs, and authentication.</li>
+                    </ul>
+                    <div style="background-color: #F8FAFC; border-left: 4px solid #FF5800; padding: 15px 20px; border-radius: 4px; margin-bottom: 25px;">
+                        <p style="margin: 5px 0;"><strong>Employment Type:</strong> Permanent and a Full-Time Job</p>
+                        <p style="margin: 5px 0;"><strong>Experience:</strong> 2+ years</p>
+                    </div>
+                    <p style="margin: 0; color: #444;"><strong>How to Apply:</strong> Send your CV and a cover email explaining why you're the ideal candidate to: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sortiqsolutions@gmail.com" target="_blank" style="color: #FF5800; font-weight: 600;">sortiqsolutions@gmail.com</a></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Submit Application / Fresher Opening Callout -->
+<section style="background-color: #F8FAFC; padding: 90px 0; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; text-align: center;">
+    <div class="container" style="max-width: 900px; margin: 0 auto; padding: 0 20px;">
+        <h2 style="font-size: 36px; font-weight: 800; color: #010e28; margin-bottom: 20px; font-family: 'Outfit', sans-serif;">
+            Join Our <span style="color: #FF5800;">Team</span>
+        </h2>
+        <span style="background: #FF5800; display: inline-block; width: 50px; height: 3px; margin-bottom: 25px; border-radius: 2px;"></span>
+        <p style="color: #555; font-size: 1.1rem; margin-bottom: 35px;">
+            Explore exciting opportunities & take the next step in your career with us. Submit your application below!
+        </p>
+        <button class="cta-orange-btn" data-toggle="modal" data-target="#fresherModal" style="background-color: #FF5800; border: none; color: #FFFFFF; font-size: 16px; font-weight: 700; padding: 15px 35px; border-radius: 30px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(255, 88, 0, 0.4);">
+            Submit Your Application <i class="fa fa-paper-plane" style="margin-left: 8px;"></i>
+        </button>
+    </div>
+</section>
+
+<!-- Contact Info Boxes -->
+<section style="background-color: #FFFFFF; padding: 90px 0;">
+    <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        <!-- Call Box -->
+        <div class="contact-info-card" style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 40px 30px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
+            <div style="width: 60px; height: 60px; background-color: rgba(255, 88, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto;">
+                <i class="fa-solid fa-phone" style="font-size: 24px; color: #FF5800;"></i>
+            </div>
+            <h4 style="font-size: 20px; font-weight: 700; color: #010e28; margin-bottom: 15px; font-family: 'Outfit', sans-serif;">CALL US</h4>
+            <p style="color: #64748b; font-size: 1.05rem; margin: 0;"><a href="tel:+919646522110" style="color: inherit; text-decoration: none;">+91 9646522110</a></p>
+        </div>
+
+        <!-- Write Box -->
+        <div class="contact-info-card" style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 40px 30px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
+            <div style="width: 60px; height: 60px; background-color: rgba(255, 88, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto;">
+                <i class="fa-solid fa-envelope" style="font-size: 24px; color: #FF5800;"></i>
+            </div>
+            <h4 style="font-size: 20px; font-weight: 700; color: #010e28; margin-bottom: 15px; font-family: 'Outfit', sans-serif;">WRITE US</h4>
+            <p style="color: #64748b; font-size: 1.02rem; margin: 0; line-height: 1.6;">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@sortiqsolutions.com" target="_blank" style="color: inherit; text-decoration: none;">info@sortiqsolutions.com</a><br>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sortiqsolutions@gmail.com" target="_blank" style="color: inherit; text-decoration: none;">sortiqsolutions@gmail.com</a>
+            </p>
+        </div>
+
+        <!-- Visit Box -->
+        <div class="contact-info-card" style="border: 1px solid #e2e8f0; border-radius: 12px; padding: 40px 30px; text-align: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03); transition: all 0.3s ease;">
+            <div style="width: 60px; height: 60px; background-color: rgba(255, 88, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto;">
+                <i class="fa-solid fa-location-dot" style="font-size: 24px; color: #FF5800;"></i>
+            </div>
+            <h4 style="font-size: 20px; font-weight: 700; color: #010e28; margin-bottom: 15px; font-family: 'Outfit', sans-serif;">VISIT US</h4>
+            <p style="color: #64748b; font-size: 0.95rem; margin: 0; line-height: 1.6;">E-51, Second Floor, Phase - 8, Industrial Area, S.A.S. Nagar, Mohali, Punjab 160071</p>
+        </div>
+    </div>
+</section>
+
+<!-- Script to handle accordion toggling -->
+<script>
+function toggleJob(header) {
+    var details = header.nextElementSibling;
+    var icon = header.querySelector('.toggle-icon');
+    
+    // Toggle details
+    if (details.style.display === "block") {
+        details.style.display = "none";
+        header.style.background = "#F8FAFC";
+        icon.style.transform = "rotate(0deg)";
+    } else {
+        details.style.display = "block";
+        header.style.background = "#FFF2EC";
+        icon.style.transform = "rotate(180deg)";
+    }
+}
+</script>
+
+<style>
+    .cta-orange-btn:hover {
+        background-color: #E04E00 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 88, 0, 0.6) !important;
+    }
+    .job-accordion-box:hover {
+        border-color: #FF5800 !important;
+        box-shadow: 0 8px 16px rgba(255, 88, 0, 0.05) !important;
+    }
+    .contact-info-card:hover {
+        border-color: #FF5800 !important;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
+        transform: translateY(-5px);
+    }
+</style>
+{% endblock %}
