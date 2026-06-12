@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask_compress import Compress
 import os
 
 app = Flask(__name__)
+Compress(app)
 app.secret_key = 'sortiq_clone_secret_key'
 
 @app.after_request
