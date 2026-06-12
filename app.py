@@ -4,6 +4,12 @@ import os
 app = Flask(__name__)
 app.secret_key = 'sortiq_clone_secret_key'
 
+@app.after_request
+def add_header(response):
+    if request.path.startswith('/static/'):
+        response.headers['Cache-Control'] = 'public, max-age=31536000'
+    return response
+
 import json
 
 def load_blogs():

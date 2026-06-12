@@ -14,7 +14,7 @@
 
             <div class="review-platform">
                 {% if review.platform_logo %}
-                <img src="{{ review.platform_logo }}" alt="{{ review.platform }}" class="review-platform-img">
+                <img loading="lazy" src="{{ review.platform_logo }}" alt="{{ review.platform }}" class="review-platform-img">
                 {% else %}
                 <span style="font-weight: 600; font-size: 14px; display: block; margin-bottom: 5px; color: #777;">{{ review.platform }}</span>
                 {% endif %}

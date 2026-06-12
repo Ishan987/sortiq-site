@@ -25,7 +25,7 @@
         <div class="hero-right-col" style="text-align: center; animation: fadeInRight 0.8s ease-out; position: relative;">
             {% if cover_image %}
             <div class="hero-image-wrapper" style="position: relative; display: inline-block; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
-                <img src="{{ cover_image }}" alt="{{ title }}" style="max-width: 100%; height: auto; display: block; border-radius: 12px;">
+                <img loading="lazy" src="{{ cover_image }}" alt="{{ title }}" style="max-width: 100%; height: auto; display: block; border-radius: 12px;">
             </div>
             {% endif %}
         </div>
@@ -52,7 +52,7 @@
                 <!-- Icon -->
                 {% if card.icon %}
                 <div class="card-icon-container" style="margin-bottom: 25px; display: inline-block; transition: transform 0.3s ease;">
-                    <img src="{{ card.icon }}" alt="{{ card.title }}" style="width: 80px; height: auto; display: block; margin: 0 auto;">
+                    <img loading="lazy" src="{{ card.icon }}" alt="{{ card.title }}" style="width: 80px; height: auto; display: block; margin: 0 auto;">
                 </div>
                 {% endif %}
                 <!-- Title -->

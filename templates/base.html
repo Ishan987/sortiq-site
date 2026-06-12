@@ -7,10 +7,12 @@
     <meta name="description" content="Looking for the Best IT Company in Chandigarh? We offer software development, website design, and digital services tailored to business needs.">
     <link rel="icon" href="https://sortiqsolutions.com/wp-content/uploads/2018/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="https://sortiqsolutions.com/wp-content/uploads/2018/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     
     <!-- CSS imports -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     {% block extra_css %}{% endblock %}
 </head>
@@ -40,7 +42,7 @@
     <!-- Main Header -->
     <header class="header-main">
         <a href="/" class="xs-logo">
-            <img src="https://sortiqsolutions.com/wp-content/uploads/2025/11/final-logo.png" alt="Sortiq Solutions">
+            <img loading="lazy" src="https://sortiqsolutions.com/wp-content/uploads/2025/11/final-logo.png" alt="Sortiq Solutions">
         </a>
         <nav class="xs-menus">
             <ul class="nav-menu">
@@ -101,19 +103,19 @@
         <div class="footer-top-area">
             <div class="footer-logos-wrapper">
                 <a href="https://www.goodfirms.co/" target="_blank">
-                    <img src="https://sortiqsolutions.com/wp-content/uploads/2025/11/GF-min.png" alt="GoodFirms Logo">
+                    <img loading="lazy" src="https://sortiqsolutions.com/wp-content/uploads/2025/11/GF-min.png" alt="GoodFirms Logo">
                 </a>
                 <a href="https://www.upwork.com/agencies/sortiqsolutions/" target="_blank">
-                    <img src="https://sortiqsolutions.com/wp-content/uploads/2025/11/digital-marketing-logo-min.png" alt="Digital Marketing Logo">
+                    <img loading="lazy" src="https://sortiqsolutions.com/wp-content/uploads/2025/11/digital-marketing-logo-min.png" alt="Digital Marketing Logo">
                 </a>
                 <a href="https://www.upwork.com/agencies/sortiqsolutions/" target="_blank">
-                    <img src="https://sortiqsolutions.com/wp-content/uploads/2025/11/upwork-logo-min.png" alt="Upwork Logo">
+                    <img loading="lazy" src="https://sortiqsolutions.com/wp-content/uploads/2025/11/upwork-logo-min.png" alt="Upwork Logo">
                 </a>
                 <a href="#" id="iso-certified-link">
-                    <img src="https://sortiqsolutions.com/wp-content/uploads/2025/06/iso-certified-company-image.webp" alt="ISO Certified">
+                    <img loading="lazy" src="https://sortiqsolutions.com/wp-content/uploads/2025/06/iso-certified-company-image.webp" alt="ISO Certified">
                 </a>
                 <a target="_blank" href="https://www.wix.com/studio/community/partners/sortiq-solutions-pvt-ltd">
-                    <img src="https://sortiqsolutions.com/wp-content/uploads/2025/11/EN_legend_small.png" alt="Wix Partner">
+                    <img loading="lazy" src="https://sortiqsolutions.com/wp-content/uploads/2025/11/EN_legend_small.png" alt="Wix Partner">
                 </a>
             </div>
             <ul class="address-info-list addr-top-align">
@@ -269,21 +271,29 @@
         </div>
     </div>
 
-    <!-- Crisp Chat SDK Integration -->
+    <!-- Crisp Chat SDK Integration (Deferred for Performance) -->
     <script type="text/javascript">
         window.$crisp=[];
         window.CRISP_WEBSITE_ID="5131cb3e-0e95-4a6f-8f4f-b7487300d9da";
-        (function(){
-            d=document;
-            s=d.createElement("script");
+        function loadCrisp() {
+            if (window.crispLoaded) return;
+            window.crispLoaded = true;
+            var d=document;
+            var s=d.createElement("script");
             s.src="https://client.crisp.chat/l.js";
             s.async=1;
             d.getElementsByTagName("head")[0].appendChild(s);
-        })();
+        }
+        // Load Crisp on user interaction (scroll, mousemove, touchstart)
+        window.addEventListener('scroll', loadCrisp, { passive: true });
+        window.addEventListener('mousemove', loadCrisp, { passive: true });
+        window.addEventListener('touchstart', loadCrisp, { passive: true });
+        // Fallback: load after 5 seconds of idle time
+        setTimeout(loadCrisp, 5000);
     </script>
 
     <!-- Scripts -->
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
     {% block extra_js %}{% endblock %}
 
     <!-- Upwork / ISO Certified Modal -->
