@@ -13,7 +13,7 @@
     <!-- CSS imports -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=1.0.2">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=1.0.4">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
@@ -243,31 +243,59 @@
 
     <!-- Fresher Hiring Modal -->
     <div class="modal" id="fresherModal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 style="color: var(--primary); margin-bottom: 20px;">Hiring Freshers - Lets' Connect</h2>
-            <form action="/submit-fresher" method="POST" enctype="multipart/form-data">
-                <div class="form-item">
-                    <input aria-label="Enter Your Name" type="text" name="name" placeholder="Enter Your Name" required>
-                </div>
-                <div class="form-item">
-                    <input aria-label="Enter Your Email" type="email" name="email" placeholder="Enter Your Email" required>
-                </div>
-                <div class="form-item">
-                    <input aria-label="Enter Your Phone Number" type="tel" name="phone" placeholder="Enter Your Phone Number" required>
-                </div>
-                <div class="form-item">
-                    <input aria-label="Subject" type="text" name="subject" placeholder="Subject" required>
-                </div>
-                <div class="form-item">
-                    <label style="display:block; font-size:12px; margin-bottom:5px;">Upload CV (PDF/Doc/Image):</label>
-                    <input aria-label="Cv" type="file" name="cv" accept=".pdf,.doc,.docx,image/*" required>
-                </div>
-                <div class="form-textarea" style="margin-bottom: 20px;">
-                    <textarea aria-label="Enter your message" name="message" rows="4" placeholder="Enter your message" required style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:4px;"></textarea>
-                </div>
-                <button type="submit" class="custom-btn">Send Application</button>
-            </form>
+        <div class="fresher-modal-container">
+            <!-- Left Panel -->
+            <div class="fresher-modal-left">
+                <h2 class="fresher-hiring-head">HIRING FRESHERS</h2>
+            </div>
+            <!-- Right Panel -->
+            <div class="fresher-modal-right">
+                <span class="close" data-dismiss="modal">&times;</span>
+                <h3 class="lets-connect-title">Lets'Connect</h3>
+                <form id="fresherHiringForm" action="/submit-fresher" method="POST" enctype="multipart/form-data">
+                    <div class="fresher-form-grid">
+                        <div class="fresher-form-group">
+                            <input aria-label="Enter Your Name" type="text" name="your-name" placeholder="Enter Your Name" required>
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div class="fresher-form-group">
+                            <input aria-label="Enter Your Email" type="email" name="email" placeholder="Enter Your Email" required>
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                        <div class="fresher-form-group">
+                            <input aria-label="Enter Your Phone Number" type="tel" name="phone" placeholder="Enter Your Phone Number" required>
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div class="fresher-form-group">
+                            <input aria-label="Subject" type="text" name="subject" placeholder="Subject" required>
+                            <i class="fa fa-list-alt"></i>
+                        </div>
+                        <div class="fresher-form-group full-width">
+                            <label class="file-label" for="modalCvUpload">Upload CV (PDF, DOC, DOCX, Images):</label>
+                            <input id="modalCvUpload" aria-label="Upload CV" type="file" name="cv" accept=".pdf,.doc,.docx,image/*" required>
+                            <i class="fa fa-upload" style="top: 36px;"></i>
+                        </div>
+                        <div class="fresher-form-group textarea-group full-width">
+                            <textarea aria-label="Enter your message" name="message" rows="4" placeholder="Enter your message" required></textarea>
+                            <i class="fa fa-comments"></i>
+                        </div>
+                        <div class="fresher-form-group full-width">
+                            <div class="recaptcha-wrapper" style="margin: 0; background: #fff; border: 1px solid #d3d3d3; padding: 10px; display: flex; justify-content: space-between; align-items: center; border-radius: 3px; max-width: 302px;">
+                                <div class="recaptcha-checkbox-area" style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+                                    <input type="checkbox" id="modalRecaptcha" required style="width: 24px; height: 24px; border: 2px solid #c1c1c1; border-radius: 2px; cursor: pointer; padding: 0; background: #fff; margin: 0;">
+                                    <label for="modalRecaptcha" style="font-size: 14px; font-weight: 500; color: #000; margin: 0; cursor: pointer;">I'm not a robot</label>
+                                </div>
+                                <div class="recaptcha-logo-area" style="text-align: center; font-size: 8px; color: #555;">
+                                    <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA logo" style="width: 32px; display: block; margin: 0 auto 2px auto;">
+                                    <span>reCAPTCHA</span><br>
+                                    <a href="#" style="font-size: 7px; color: #555;">Privacy</a> - <a href="#" style="font-size: 7px; color: #555;">Terms</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="fresher-submit-btn">Send Message</button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -275,6 +303,33 @@
     <script type="text/javascript">
         window.$crisp=[];
         window.CRISP_WEBSITE_ID="5131cb3e-0e95-4a6f-8f4f-b7487300d9da";
+        
+        // Mock auto-responder listener
+        window.$crisp.push(["on", "message:sent", function(message) {
+            if (message.type === "text") {
+                var userMsg = message.content.toLowerCase();
+                var reply = "";
+                
+                if (userMsg.includes("hello") || userMsg.includes("hi") || userMsg.includes("hey") || userMsg.includes("hyy")) {
+                    reply = "Hello! Welcome to Sortiq Solutions. How can we assist you today?";
+                } else if (userMsg.includes("internship") || userMsg.includes("intern") || userMsg.includes("fresher")) {
+                    reply = "We offer excellent internship opportunities in Web Dev, UI/UX, SEO, Python, and MERN stack! You can apply directly on our /internship/ page or click 'Fresher Hiring' at the top.";
+                } else if (userMsg.includes("service") || userMsg.includes("develop") || userMsg.includes("design") || userMsg.includes("seo")) {
+                    reply = "We specialize in Web Development, App Development, WordPress, Laravel, SEO, SMO, and Graphic Designing. Let us know if you would like a free consultation or custom quote!";
+                } else if (userMsg.includes("contact") || userMsg.includes("phone") || userMsg.includes("email") || userMsg.includes("address")) {
+                    reply = "You can contact us via phone at +91 9646522110, email at info@sortiqsolutions.com, or visit us at E-51, Phase-8, Mohali, Punjab.";
+                } else if (userMsg.includes("career") || userMsg.includes("job") || userMsg.includes("hiring")) {
+                    reply = "We are currently hiring for multiple technical roles! Check out our openings on the Careers page (/our-career/) and submit your CV.";
+                } else {
+                    reply = "Thank you for your message! Our support team is currently offline, but we have logged your inquiry and will email you shortly. Please browse our portfolio and case studies in the meantime!";
+                }
+                
+                setTimeout(function() {
+                    window.$crisp.push(["do", "message:show", ["text", reply]]);
+                }, 1200);
+            }
+        }]);
+
         function loadCrisp() {
             if (window.crispLoaded) return;
             window.crispLoaded = true;
