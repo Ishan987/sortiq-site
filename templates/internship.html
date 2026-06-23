@@ -1,39 +1,697 @@
 {% extends 'base.html' %}
 
-{% block title %}Apply for Internship | Sortiq Solutions{% endblock %}
+{% block title %}Best Career Internship at Sortiq Solutions Chandigarh Mohali{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Hero Banner Area */
+    .intern-hero-banner {
+        background: linear-gradient(rgba(0, 23, 62, 0.85), rgba(0, 23, 62, 0.85)), url('https://sortiqsolutions.com/wp-content/themes/seocify/assets/images/backgrounds/background-1.png') no-repeat center center;
+        background-size: cover;
+        color: var(--white);
+        padding: 80px 0;
+        text-align: center;
+    }
+
+    .intern-hero-banner h1 {
+        font-size: 38px;
+        font-weight: 800;
+        margin-bottom: 15px;
+        font-family: 'Outfit', sans-serif;
+    }
+
+    .intern-hero-banner .breadcrumbs {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 15px;
+        color: #cbd5e1;
+    }
+
+    .intern-hero-banner .breadcrumbs a {
+        color: var(--white);
+        text-decoration: none;
+    }
+
+    .intern-hero-banner .breadcrumbs a:hover {
+        color: var(--accent);
+    }
+
+    /* Main Grid Section (Why Join + Form) */
+    .internship-main-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('/static/images/internship-banner.png') no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed;
+        padding: 80px 0;
+        color: var(--white);
+    }
+
+    .internship-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 20px;
+        align-items: center;
+    }
+
+    .why-join-content h2 {
+        font-size: 36px;
+        font-weight: 800;
+        color: var(--white);
+        margin-bottom: 15px;
+        font-family: 'Outfit', sans-serif;
+        line-height: 1.2;
+    }
+
+    .why-join-content .orange-line {
+        background: var(--accent);
+        display: block;
+        width: 60px;
+        height: 4px;
+        margin-bottom: 25px;
+        border-radius: 2px;
+    }
+
+    .why-join-content p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #cbd5e1;
+        margin-bottom: 20px;
+        text-align: justify;
+    }
+
+    /* Internship Form Card */
+    .intern-form-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+
+    .intern-form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .intern-form-card .form-group {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .intern-form-card .full-width {
+        grid-column: span 2;
+    }
+
+    .intern-form-card input, 
+    .intern-form-card select, 
+    .intern-form-card textarea {
+        width: 100%;
+        padding: 12px 12px 12px 45px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+        font-size: 14px;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    .intern-form-card select option {
+        background: #00173E;
+        color: var(--white);
+    }
+
+    .intern-form-card input::placeholder,
+    .intern-form-card textarea::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .intern-form-card input:focus, 
+    .intern-form-card select:focus, 
+    .intern-form-card textarea:focus {
+        border-color: var(--accent);
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .intern-form-card .form-group i {
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        color: var(--accent);
+        font-size: 16px;
+    }
+
+    .intern-form-card .file-label {
+        display: block;
+        font-size: 12px;
+        color: #cbd5e1;
+        margin-bottom: 6px;
+        font-weight: 600;
+    }
+
+    .intern-form-card input[type="file"] {
+        padding-top: 8px;
+    }
+
+    .intern-form-card button {
+        width: 100%;
+        background: var(--accent);
+        color: var(--white);
+        border: none;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 88, 0, 0.4);
+    }
+
+    .intern-form-card button:hover {
+        background: #e04e00;
+        transform: translateY(-2px);
+    }
+
+    /* Offerings Section */
+    .offerings-section {
+        background-color: #f8fafc;
+        padding: 80px 0;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .section-header-centered {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 50px auto;
+        padding: 0 20px;
+    }
+
+    .section-header-centered h2 {
+        font-size: 36px;
+        font-weight: 800;
+        color: #010e28;
+        margin-bottom: 15px;
+        font-family: 'Outfit', sans-serif;
+    }
+
+    .section-header-centered .orange-line {
+        background: var(--accent);
+        display: inline-block;
+        width: 60px;
+        height: 4px;
+        border-radius: 2px;
+        margin-bottom: 20px;
+    }
+
+    .section-header-centered p {
+        color: var(--text-color);
+        font-size: 1.1rem;
+        line-height: 1.7;
+    }
+
+    .offerings-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .offering-card {
+        border-style: dotted;
+        border-width: 3px;
+        border-radius: 8px;
+        padding: 30px 20px;
+        text-align: center;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .offering-card:hover {
+        transform: translateY(-5px);
+        color: var(--white) !important;
+    }
+
+    .offering-card:hover h3,
+    .offering-card:hover p,
+    .offering-card:hover ul li,
+    .offering-card:hover ul li i {
+        color: var(--white) !important;
+    }
+
+    /* Variant colors matching live Elementor classes */
+    .card-teal {
+        background-color: #E3F2F5;
+        border-color: #07545A;
+        color: #07545A;
+    }
+    .card-teal h3, .card-teal p, .card-teal ul li, .card-teal ul li i {
+        color: #07545A;
+    }
+    .card-teal:hover {
+        background-color: #07545A;
+    }
+
+    .card-indigo {
+        background-color: #EAE9F7;
+        border-color: #100D5E;
+        color: #100D5E;
+    }
+    .card-indigo h3, .card-indigo p, .card-indigo ul li, .card-indigo ul li i {
+        color: #100D5E;
+    }
+    .card-indigo:hover {
+        background-color: #100D5E;
+    }
+
+    .card-blue {
+        background-color: #E3EEF7;
+        border-color: #00305E;
+        color: #00305E;
+    }
+    .card-blue h3, .card-blue p, .card-blue ul li, .card-blue ul li i {
+        color: #00305E;
+    }
+    .card-blue:hover {
+        background-color: #00305E;
+    }
+
+    .card-coral {
+        background-color: #F7E9EA;
+        border-color: #A35F61;
+        color: #A35F61;
+    }
+    .card-coral h3, .card-coral p, .card-coral ul li, .card-coral ul li i {
+        color: #A35F61;
+    }
+    .card-coral:hover {
+        background-color: #A35F61;
+    }
+
+    .offering-card h3 {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        font-family: 'Outfit', sans-serif;
+    }
+
+    .offering-card p {
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .offering-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+    }
+
+    .offering-card ul li {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 12px;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .offering-card ul li i {
+        font-size: 14px;
+        margin-top: 3px;
+    }
+
+    /* Internship Areas Section */
+    .areas-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('/static/images/2150061955.jpg') no-repeat center center;
+        background-size: cover;
+        background-position: center;
+        padding: 80px 0;
+        color: var(--white);
+    }
+
+    .areas-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .area-column ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .area-column ul li {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.6;
+        margin-bottom: 15px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .area-column ul li i {
+        color: var(--accent);
+        font-size: 18px;
+    }
+
+    /* Responsiveness for mobile and iPhone SE */
+    @media (max-width: 991px) {
+        .internship-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .areas-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 575px) {
+        .intern-hero-banner h1 {
+            font-size: 28px;
+        }
+
+        .why-join-content h2,
+        .section-header-centered h2 {
+            font-size: 26px;
+        }
+
+        .intern-form-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .intern-form-card .full-width {
+            grid-column: span 1;
+        }
+
+        .intern-form-card {
+            padding: 25px 20px;
+        }
+
+        .areas-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .area-column ul li {
+            font-size: 15px;
+        }
+    }
+</style>
+{% endblock %}
 
 {% block content %}
-<div style="background: var(--primary); color: var(--white); padding: 60px 10%; text-align: center;">
-    <h1 style="font-size: 36px; font-weight: 700;">Apply for Internship</h1>
-    <p style="color: #cbd5e1; margin-top: 10px;">Kickstart your professional IT career with industry specialists.</p>
-</div>
-
-<section class="section">
-    <div style="max-width: 600px; margin: 0 auto; background: var(--bg-light); padding: 40px; border-radius: 8px;">
-        <h2 class="section-title" style="font-size: 24px; margin-bottom: 20px;">Internship Application</h2>
-        <span class="line"></span>
-        <form action="/submit-fresher" method="POST" enctype="multipart/form-data">
-            <div class="form-item">
-                <input aria-label="Enter Your Name" type="text" name="name" placeholder="Enter Your Name" required>
-            </div>
-            <div class="form-item">
-                <input aria-label="Enter Your Email" type="email" name="email" placeholder="Enter Your Email" required>
-            </div>
-            <div class="form-item">
-                <input aria-label="Enter Your Phone Number" type="tel" name="phone" placeholder="Enter Your Phone Number" required>
-            </div>
-            <div class="form-item">
-                <input aria-label="Desired Role (e.g. Web Dev, UI/UX, SEO)" type="text" name="subject" placeholder="Desired Role (e.g. Web Dev, UI/UX, SEO)" required>
-            </div>
-            <div class="form-item">
-                <label style="display:block; font-size:12px; margin-bottom:5px; font-weight:bold;">Upload Resume/CV:</label>
-                <input aria-label="Cv" type="file" name="cv" accept=".pdf,.doc,.docx" required>
-            </div>
-            <div class="form-textarea" style="margin-bottom:20px;">
-                <textarea aria-label="Tell us why you want to join Sortiq Solutions..." name="message" rows="5" placeholder="Tell us why you want to join Sortiq Solutions..." required style="width:100%; padding:12px; border:1px solid #cbd5e1; border-radius:4px; outline:none;"></textarea>
-            </div>
-            <button type="submit" class="custom-btn">Submit Application</button>
-        </form>
+<!-- Banner Area -->
+<section class="intern-hero-banner">
+    <div class="container">
+        <h1>Career Internship at Sortiq Solutions</h1>
+        <ul class="breadcrumbs">
+            <li><a href="/">Home</a> / Career Internship at Sortiq Solutions</li>
+        </ul>
     </div>
 </section>
+
+<!-- Main Form and Why Join Section -->
+<section class="internship-main-section">
+    <div class="internship-grid">
+        <!-- Left: Why Join Content -->
+        <div class="why-join-content">
+            <h2>Why Join Our Internship Program?</h2>
+            <span class="orange-line"></span>
+            <p>
+                At <strong>Sortiq Solutions Pvt. Ltd.</strong>, we believe in nurturing the next generation of IT professionals by providing real-world experience in a dynamic and innovative environment. Our internship program is designed to help students and recent graduates develop technical and professional skills while working on live projects.
+            </p>
+            <p>
+                We focus on equipping interns with industry-relevant expertise that enhances their employability. By the end of the program, participants are prepared to step confidently into their professional careers.
+            </p>
+        </div>
+
+        <!-- Right: Interactive Application Form -->
+        <div class="intern-form-card">
+            <form id="internshipForm" action="/submit-fresher" method="POST" enctype="multipart/form-data">
+                <div class="intern-form-grid">
+                    <div class="form-group full-width">
+                        <input aria-label="Enter Your Name" type="text" name="your-name" placeholder="Enter Your Name" required>
+                        <i class="fa fa-user"></i>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <input aria-label="Enter Your Email" type="email" name="email" placeholder="Enter Your Email" required>
+                        <i class="fa fa-envelope"></i>
+                    </div>
+
+                    <div class="form-group">
+                        <input aria-label="Enter Your Phone Number" type="tel" name="phone" placeholder="Phone Number" required>
+                        <i class="fa fa-phone"></i>
+                    </div>
+
+                    <div class="form-group">
+                        <input aria-label="Subject" type="text" name="subject" placeholder="Subject" required>
+                        <i class="fa fa-list-alt"></i>
+                    </div>
+
+                    <div class="form-group">
+                        <input aria-label="Enter Your Institute" type="text" name="institute" placeholder="Institute Name" required>
+                        <i class="fa fa-building"></i>
+                    </div>
+
+                    <div class="form-group">
+                        <select aria-label="Select Technology" name="technology" required>
+                            <option value="" disabled selected>Select Technology</option>
+                            <option value="Php">Php</option>
+                            <option value="Java">Java</option>
+                            <option value="IOT">IOT</option>
+                            <option value="Big Data">Big Data</option>
+                            <option value="Digital Marketing">Digital Marketing</option>
+                            <option value="Laravel">Laravel</option>
+                            <option value="Kotlin">Kotlin</option>
+                            <option value="Cloud Computing">Cloud Computing</option>
+                            <option value="Machine Learning/AI">Machine Learning/AI</option>
+                            <option value="Python">Python</option>
+                            <option value="Finance/HR/Marketing">Finance/HR/Marketing</option>
+                            <option value="Embedded System">Embedded System</option>
+                            <option value="Software Testing">Software Testing</option>
+                            <option value="Ethical Hacking">Ethical Hacking</option>
+                            <option value="Android">Android</option>
+                            <option value="Dot Net">Dot Net</option>
+                            <option value="Graphic Designing">Graphic Designing</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="Flutter">Flutter</option>
+                            <option value="Node Js">Node Js</option>
+                            <option value="Angular">Angular</option>
+                            <option value="MERN">MERN</option>
+                            <option value="MEAN">MEAN</option>
+                            <option value="React Js">React Js</option>
+                            <option value="Data Structure">Data Structure</option>
+                            <option value="Data Science">Data Science</option>
+                            <option value="Full Stack Development">Full Stack Development</option>
+                            <option value="Web Designing">Web Designing</option>
+                            <option value="React Native">React Native</option>
+                            <option value="Autocad">Autocad</option>
+                            <option value="PLC">PLC</option>
+                            <option value="SCADA">SCADA</option>
+                            <option value="CAD/CAM">CAD/CAM</option>
+                            <option value="Full Stack Developer">Full Stack Developer</option>
+                            <option value="Networking">Networking</option>
+                            <option value="DevOps">DevOps</option>
+                            <option value="Solid Works">Solid Works</option>
+                            <option value="Deep Learning">Deep Learning</option>
+                            <option value="UI/UX Designing">UI/UX Designing</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <i class="fa fa-laptop-code"></i>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label class="file-label" for="cvUpload">Upload Resume/CV (PDF, DOC, DOCX):</label>
+                        <input id="cvUpload" aria-label="Upload Resume/CV" type="file" name="cv" accept=".pdf,.doc,.docx" required>
+                        <i class="fa fa-upload" style="top: 36px;"></i>
+                    </div>
+
+                    <div class="form-group full-width" style="margin-bottom: 25px;">
+                        <textarea aria-label="Enter your message" name="message" rows="4" placeholder="Enter your message" required style="padding-left: 45px; resize: vertical;"></textarea>
+                        <i class="fa fa-comments"></i>
+                    </div>
+                </div>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Offerings Section -->
+<section class="offerings-section">
+    <div class="section-header-centered">
+        <h2>Comprehensive Internship Offerings</h2>
+        <span class="orange-line"></span>
+        <p>
+            At Sortiq Solutions Pvt. Ltd., we believe in nurturing the next generation of IT professionals by providing real-world experience in a dynamic and innovative environment. Our internship program is designed to help students and recent graduates develop technical and professional skills while working on live projects.
+        </p>
+    </div>
+
+    <div class="offerings-grid">
+        <!-- Card 1: Innovative Environment -->
+        <div class="offering-card card-teal">
+            <div>
+                <h3>Innovative Environment</h3>
+                <p>Work with cutting-edge technology and contribute to transformative IT solutions.</p>
+            </div>
+            <ul>
+                <li><i class="fa fa-check"></i> Ideal for students and freshers seeking quick industry insights</li>
+                <li><i class="fa fa-check"></i> Hands-on experience with real-world IT projects</li>
+                <li><i class="fa fa-check"></i> Guidance from experienced professionals</li>
+                <li><i class="fa fa-check"></i> Completion certificate and recommendation letter</li>
+            </ul>
+        </div>
+
+        <!-- Card 2: Standard Internship -->
+        <div class="offering-card card-indigo">
+            <div>
+                <h3>Standard Internship</h3>
+                <p>Practical Learning & Skill Development</p>
+            </div>
+            <ul>
+                <li><i class="fa fa-check"></i> In-depth exposure to core IT services</li>
+                <li><i class="fa fa-check"></i> Training on the latest technologies and industry best practices</li>
+                <li><i class="fa fa-check"></i> Mentorship and structured learning sessions</li>
+                <li><i class="fa fa-check"></i> Opportunity to work on live projects</li>
+            </ul>
+        </div>
+
+        <!-- Card 3: Advanced Internship -->
+        <div class="offering-card card-blue">
+            <div>
+                <h3>Advanced Internship</h3>
+                <p>Work-Integrated Learning Experience</p>
+            </div>
+            <ul>
+                <li><i class="fa fa-check"></i> Designed for students seeking deep technical knowledge</li>
+                <li><i class="fa fa-check"></i> Hands-on project development with industry experts</li>
+                <li><i class="fa fa-check"></i> Performance-based pre-placement offers</li>
+                <li><i class="fa fa-check"></i> Soft skills and career readiness training</li>
+            </ul>
+        </div>
+
+        <!-- Card 4: Long-Term Internship -->
+        <div class="offering-card card-coral">
+            <div>
+                <h3>Long-Term Internship</h3>
+                <p>Professional IT Career Acceleration</p>
+            </div>
+            <ul>
+                <li><i class="fa fa-check"></i> Comprehensive industry training and project execution</li>
+                <li><i class="fa fa-check"></i> Strong emphasis on leadership and problem-solving skills</li>
+                <li><i class="fa fa-check"></i> Stipend-based internship with performance incentives</li>
+                <li><i class="fa fa-check"></i> High probability of full-time employment with Sortiq Solutions</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Internship Areas Section -->
+<section class="areas-section">
+    <div class="section-header-centered" style="margin-bottom: 40px;">
+        <h2 style="color: var(--white);">Internship Areas</h2>
+        <span class="orange-line"></span>
+    </div>
+
+    <div class="areas-grid">
+        <!-- Col 1 -->
+        <div class="area-column">
+            <ul>
+                <li><i class="fa fa-check"></i> Web Designing</li>
+                <li><i class="fa fa-check"></i> Web Development</li>
+                <li><i class="fa fa-check"></i> Digital Marketing</li>
+                <li><i class="fa fa-check"></i> React JS</li>
+                <li><i class="fa fa-check"></i> Python</li>
+            </ul>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="area-column">
+            <ul>
+                <li><i class="fa fa-check"></i> Java</li>
+                <li><i class="fa fa-check"></i> .NET</li>
+                <li><i class="fa fa-check"></i> HR & Finance</li>
+                <li><i class="fa fa-check"></i> Networking</li>
+                <li><i class="fa fa-check"></i> Graphic Designing</li>
+            </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div class="area-column">
+            <ul>
+                <li><i class="fa fa-check"></i> Android Development</li>
+                <li><i class="fa fa-check"></i> React Native</li>
+                <li><i class="fa fa-check"></i> Kotlin</li>
+                <li><i class="fa fa-check"></i> Machine learning/AI</li>
+                <li><i class="fa fa-check"></i> Networking</li>
+            </ul>
+        </div>
+
+        <!-- Col 4 -->
+        <div class="area-column">
+            <ul>
+                <li><i class="fa fa-check"></i> Data Science</li>
+                <li><i class="fa fa-check"></i> Shopify Development</li>
+                <li><i class="fa fa-check"></i> Cloud Computing</li>
+                <li><i class="fa fa-check"></i> CodeIgniter</li>
+                <li><i class="fa fa-check"></i> Software Testing</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Success/Error alert handles via standard JS -->
+<script>
+    document.getElementById('internshipForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const form = this;
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Submitting...';
+        submitBtn.disabled = true;
+
+        fetch(form.action, {
+            method: form.method,
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert(data.message || 'Application submitted successfully!');
+                form.reset();
+            } else {
+                alert('An error occurred. Please try again.');
+            }
+        })
+        .catch(err => {
+            console.error('Error submitting form:', err);
+            alert('An error occurred. Please try again.');
+        })
+        .finally(() => {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        });
+    });
+</script>
 {% endblock %}
