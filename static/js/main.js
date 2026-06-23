@@ -110,12 +110,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.05 });
 
     const counterSection = document.querySelector('.counter-section');
     if (counterSection) {
         observer.observe(counterSection);
     }
+
+    // YouTube Facade Click Loader
+    const facades = document.querySelectorAll('.youtube-facade');
+    facades.forEach(facade => {
+        facade.addEventListener('click', () => {
+            const videoId = facade.getAttribute('data-video-id');
+            facade.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1" style="border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        });
+    });
 
     // Modal Handling
     const modals = document.querySelectorAll('.modal');
