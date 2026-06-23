@@ -462,5 +462,39 @@ document.addEventListener('DOMContentLoaded', () => {
             buttonObserver.observe(btn);
         });
     }
+
+    // Mobile menu toggle listener
+    const menuToggle = document.querySelector('.xs-menu-toggle');
+    const xsMenus = document.querySelector('.xs-menus');
+    if (menuToggle && xsMenus) {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            xsMenus.classList.toggle('active');
+            
+            // Toggle hamburger icon between bars and times
+            const icon = menuToggle.querySelector('i');
+            if (icon) {
+                if (xsMenus.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+
+        // Close menu on clicking outside
+        document.addEventListener('click', (e) => {
+            if (xsMenus.classList.contains('active') && !xsMenus.contains(e.target) && !menuToggle.contains(e.target)) {
+                xsMenus.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+    }
 });
 

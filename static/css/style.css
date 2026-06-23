@@ -921,13 +921,82 @@ ul {
 }
 
 /* Responsiveness */
+.xs-menu-toggle {
+    display: none;
+}
+
 @media (max-width: 991px) {
     .header-main {
-        flex-direction: column;
-        gap: 15px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        position: relative;
+    }
+    .xs-menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: var(--primary);
+        cursor: pointer;
+        padding: 5px;
+        outline: none;
     }
     .xs-menus {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
         width: 100%;
+        background: var(--white);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        flex-direction: column;
+        padding: 20px;
+        margin: 0;
+        z-index: 1000;
+        border-top: 1px solid #e2e8f0;
+    }
+    .xs-menus.active {
+        display: flex;
+    }
+    .nav-menu {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+    .menu-item {
+        width: 100%;
+        padding: 5px 0;
+    }
+    .menu-item:hover .nav-dropdown {
+        display: block;
+    }
+    .nav-dropdown {
+        position: static;
+        width: 100% !important;
+        box-shadow: none;
+        padding: 10px 0 10px 15px;
+        border-left: 2px solid var(--accent);
+        margin-top: 5px;
+    }
+    .nav-dropdown.services-mega-menu {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .nav-dropdown.about-mega-menu {
+        grid-template-columns: 1fr;
+    }
+    .xs-menu-tools {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        margin-top: 15px;
+    }
+    .xs-menu-tools a, .xs-menu-tools button {
+        width: 100%;
+        text-align: center;
         justify-content: center;
     }
     .hero-slider {
@@ -943,6 +1012,39 @@ ul {
     }
     .slide-image {
         max-width: 100%;
+    }
+}
+
+/* Mobile top bar and widget optimizations */
+@media (max-width: 767px) {
+    .xs-top-bar {
+        padding: 8px 15px;
+        justify-content: center;
+        gap: 8px;
+    }
+    .xs-top-bar-info {
+        justify-content: center;
+        gap: 8px;
+        font-size: 11px;
+    }
+    .xs-top-bar-info .separator {
+        margin: 0 5px;
+    }
+    .xs-top-bar .xs-list {
+        margin-top: 5px;
+        justify-content: center;
+        width: 100%;
+    }
+    #whatsapp-widget {
+        left: 20px !important;
+        right: auto !important;
+    }
+    .hero-slider h1 {
+        font-size: 24px !important;
+    }
+    .hero-slider p {
+        font-size: 13px !important;
+        line-height: 1.4 !important;
     }
 }
 

@@ -13,7 +13,7 @@
     <!-- CSS imports -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=1.0.4">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=1.0.5">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
@@ -44,6 +44,9 @@
         <a href="/" class="xs-logo" aria-label="Sortiq Solutions Home">
             <img loading="lazy" src="/static/images/final-logo.png" alt="Sortiq Solutions">
         </a>
+        <button class="xs-menu-toggle" aria-label="Toggle Navigation">
+            <i class="fa fa-bars"></i>
+        </button>
         <nav class="xs-menus">
             <ul class="nav-menu">
                 <li class="menu-item"><a href="/">Home</a></li>
