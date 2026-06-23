@@ -164,7 +164,7 @@
                 <div class="blog-body">
                     <h4>Kebaonish E-commerce Redesign</h4>
                     <p style="font-size: 0.9rem; color: #666; margin: 10px 0;">A premium storefront redesign using certified Wix Studio systems, resulting in +40% user retention increase.</p>
-                    <a href="https://www.behance.net/sortiqsolutions71" target="_blank" class="apply-internship">View on Behance <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://www.behance.net/sortiqsolutions71" target="_blank" class="apply-internship" rel="noopener noreferrer">View on Behance <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </div>
             </div>
             <div class="blog-card">
@@ -174,7 +174,7 @@
                 <div class="blog-body">
                     <h4>Helium Mobile App Prototype</h4>
                     <p style="font-size: 0.9rem; color: #666; margin: 10px 0;">Creative mobile app UX wireframe mockups and cross-platform Flutter integration blueprint.</p>
-                    <a href="https://www.behance.net/sortiqsolutions71" target="_blank" class="apply-internship">View on Behance <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="https://www.behance.net/sortiqsolutions71" target="_blank" class="apply-internship" rel="noopener noreferrer">View on Behance <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </div>
             </div>
         </div>
@@ -227,19 +227,19 @@
                 
                 <form action="{{ url_for('contact') }}" method="POST" style="margin-top: 30px;">
                     <div class="form-group">
-                        <input type="text" name="name" class="form-control" placeholder="Enter Your Name" required>
+                        <input aria-label="Enter Your Name" type="text" name="name" class="form-control" placeholder="Enter Your Name" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" class="form-control" placeholder="Enter Your Email" required>
+                        <input aria-label="Enter Your Email" type="email" name="email" class="form-control" placeholder="Enter Your Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="tel" name="phone" class="form-control" placeholder="Enter Your Phone Number" required>
+                        <input aria-label="Enter Your Phone Number" type="tel" name="phone" class="form-control" placeholder="Enter Your Phone Number" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                        <input aria-label="Subject" type="text" name="subject" class="form-control" placeholder="Subject" required>
                     </div>
                     <div class="form-group">
-                        <textarea name="message" class="form-control form-textarea" placeholder="Enter your query details..." required></textarea>
+                        <textarea aria-label="Enter your query details..." name="message" class="form-control form-textarea" placeholder="Enter your query details..." required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
                 </form>
@@ -247,7 +247,7 @@
             <div class="ideas-image" style="background-color: var(--light-bg); border-radius: 10px; padding: 30px;">
                 <h3>Our Offices</h3>
                 <p style="margin-top: 15px;"><strong>Chandigarh Office:</strong><br>Sortiq Solutions Pvt. Ltd.<br>IT Park, Block B, Chandigarh, 160101</p>
-                <p style="margin-top: 15px;"><strong>Support Email:</strong><br><a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ email }}" target="_blank">{{ email }}</a></p>
+                <p style="margin-top: 15px;"><strong>Support Email:</strong><br><a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ email }}" target="_blank" rel="noopener noreferrer">{{ email }}</a></p>
                 <p style="margin-top: 15px;"><strong>Calling Support:</strong><br><a href="tel:{{ phone }}">{{ phone }}</a></p>
                 <!-- Embedded SVG map symbol -->
                 <svg viewBox="0 0 100 100" fill="none" stroke="#FF5800" stroke-width="2" style="width: 100%; height: auto; margin-top: 20px;">
@@ -264,23 +264,23 @@
             <h2 class="text-center" style="margin-bottom: 20px;">Fresher Internship Application</h2>
             <form action="{{ url_for('internship') }}" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                    <input aria-label="Your Name" type="text" name="name" class="form-control" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" class="form-control" placeholder="Your Email Address" required>
+                    <input aria-label="Your Email Address" type="email" name="email" class="form-control" placeholder="Your Email Address" required>
                 </div>
                 <div class="form-group">
-                    <input type="tel" name="phone" class="form-control" placeholder="Mobile Number" required>
+                    <input aria-label="Mobile Number" type="tel" name="phone" class="form-control" placeholder="Mobile Number" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="subject" class="form-control" placeholder="Applying for Domain (e.g. Flask, SEO, Design)" required>
+                    <input aria-label="Applying for Domain (e.g. Flask, SEO, Design)" type="text" name="subject" class="form-control" placeholder="Applying for Domain (e.g. Flask, SEO, Design)" required>
                 </div>
                 <div class="form-group">
                     <label style="display: block; margin-bottom: 5px; color: #555;">Attach CV / Resume (PDF / Word):</label>
-                    <input type="file" name="cv" class="form-control" required>
+                    <input aria-label="Cv" type="file" name="cv" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <textarea name="message" class="form-control form-textarea" placeholder="Tell us why you want to intern with us..." required></textarea>
+                    <textarea aria-label="Tell us why you want to intern with us..." name="message" class="form-control form-textarea" placeholder="Tell us why you want to intern with us..." required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Internship Request</button>
             </form>
@@ -326,7 +326,7 @@
                     {% for c in contacts %}
                     <tr>
                         <td style="padding: 12px; border: 1px solid #ddd;">{{ c.name }}</td>
-                        <td style="padding: 12px; border: 1px solid #ddd;"><a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ c.email }}" target="_blank">{{ c.email }}</a></td>
+                        <td style="padding: 12px; border: 1px solid #ddd;"><a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ c.email }}" target="_blank" rel="noopener noreferrer">{{ c.email }}</a></td>
                         <td style="padding: 12px; border: 1px solid #ddd;"><a href="tel:{{ c.phone }}">{{ c.phone }}</a></td>
                         <td style="padding: 12px; border: 1px solid #ddd;">{{ c.subject }}</td>
                         <td style="padding: 12px; border: 1px solid #ddd;">{{ c.message }}</td>
@@ -356,12 +356,12 @@
                     {% for i in interns %}
                     <tr>
                         <td style="padding: 12px; border: 1px solid #ddd;">{{ i.name }}</td>
-                        <td style="padding: 12px; border: 1px solid #ddd;"><a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ i.email }}" target="_blank">{{ i.email }}</a></td>
+                        <td style="padding: 12px; border: 1px solid #ddd;"><a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ i.email }}" target="_blank" rel="noopener noreferrer">{{ i.email }}</a></td>
                         <td style="padding: 12px; border: 1px solid #ddd;"><a href="tel:{{ i.phone }}">{{ i.phone }}</a></td>
                         <td style="padding: 12px; border: 1px solid #ddd;">{{ i.subject }}</td>
                         <td style="padding: 12px; border: 1px solid #ddd;">
                             {% if i.cv_filename %}
-                            <a href="{{ url_for('static', filename='uploads/' + i.cv_filename) }}" target="_blank" style="color: var(--accent-color); font-weight: 700;">Download Resume</a>
+                            <a href="{{ url_for('static', filename='uploads/' + i.cv_filename) }}" target="_blank" style="color: var(--accent-color); font-weight: 700;" rel="noopener noreferrer">Download Resume</a>
                             {% else %}
                             No CV attached
                             {% endif %}

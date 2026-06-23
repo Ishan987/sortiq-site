@@ -14,23 +14,23 @@
         <span class="line"></span>
         <form action="/submit-fresher" method="POST" enctype="multipart/form-data">
             <div class="form-item">
-                <input type="text" name="name" placeholder="Enter Your Name" required>
+                <input aria-label="Enter Your Name" type="text" name="name" placeholder="Enter Your Name" required>
             </div>
             <div class="form-item">
-                <input type="email" name="email" placeholder="Enter Your Email" required>
+                <input aria-label="Enter Your Email" type="email" name="email" placeholder="Enter Your Email" required>
             </div>
             <div class="form-item">
-                <input type="tel" name="phone" placeholder="Enter Your Phone Number" required>
+                <input aria-label="Enter Your Phone Number" type="tel" name="phone" placeholder="Enter Your Phone Number" required>
             </div>
             <div class="form-item">
-                <input type="text" name="subject" placeholder="Desired Role (e.g. Web Dev, UI/UX, SEO)" required>
+                <input aria-label="Desired Role (e.g. Web Dev, UI/UX, SEO)" type="text" name="subject" placeholder="Desired Role (e.g. Web Dev, UI/UX, SEO)" required>
             </div>
             <div class="form-item">
                 <label style="display:block; font-size:12px; margin-bottom:5px; font-weight:bold;">Upload Resume/CV:</label>
-                <input type="file" name="cv" accept=".pdf,.doc,.docx" required>
+                <input aria-label="Cv" type="file" name="cv" accept=".pdf,.doc,.docx" required>
             </div>
             <div class="form-textarea" style="margin-bottom:20px;">
-                <textarea name="message" rows="5" placeholder="Tell us why you want to join Sortiq Solutions..." required style="width:100%; padding:12px; border:1px solid #cbd5e1; border-radius:4px; outline:none;"></textarea>
+                <textarea aria-label="Tell us why you want to join Sortiq Solutions..." name="message" rows="5" placeholder="Tell us why you want to join Sortiq Solutions..." required style="width:100%; padding:12px; border:1px solid #cbd5e1; border-radius:4px; outline:none;"></textarea>
             </div>
             <button type="submit" class="custom-btn">Submit Application</button>
         </form>
