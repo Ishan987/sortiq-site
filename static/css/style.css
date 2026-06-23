@@ -1513,3 +1513,72 @@ ul {
 @keyframes reviewSpinner {
     to { transform: rotate(360deg); }
 }
+
+/* iPhone SE & Small Mobile Screen (<= 375px) Responsiveness */
+@media (max-width: 375px) {
+    /* Main Layout adjustments */
+    body {
+        font-size: 14px;
+    }
+    
+    /* Top Bar adjustments */
+    .xs-top-bar {
+        padding: 8px 10px;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+        justify-content: center;
+    }
+    .xs-top-bar-info {
+        flex-direction: column;
+        gap: 6px;
+        width: 100%;
+        justify-content: center;
+    }
+    .xs-top-bar-info .separator {
+        display: none; /* Hide separators on small screens to stack elements nicely */
+    }
+    .xs-list {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    /* Header & Navigation */
+    .header-main {
+        padding: 15px 10px;
+    }
+    .xs-logo img {
+        max-height: 40px; /* Scale down logo slightly to fit smaller screens */
+    }
+    .xs-menu-tools {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: center;
+    }
+    
+    /* Hero Slider content adjustments */
+    .slide-content h1 {
+        font-size: 22px !important;
+        line-height: 1.3 !important;
+    }
+    .slide-content p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+    }
+    .slide-content .btn-primary {
+        padding: 10px 20px !important;
+        font-size: 13px !important;
+    }
+    
+    /* Headers & Sections */
+    .section-title {
+        font-size: 24px !important;
+    }
+    .career-hero-banner h1, 
+    .about-hero-banner h1, 
+    .video-gallery-banner h1 {
+        font-size: 22px !important;
+    }
+}
+
