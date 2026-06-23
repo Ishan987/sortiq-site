@@ -120,9 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // YouTube Facade Click Loader
     const facades = document.querySelectorAll('.youtube-facade');
     facades.forEach(facade => {
-        facade.addEventListener('click', () => {
-            const videoId = facade.getAttribute('data-video-id');
-            facade.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1" style="border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        facade.addEventListener('click', function(e) {
+            const videoId = this.getAttribute('data-video-id');
+            this.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1" style="border:0; width:100%; height:100%; position:absolute; top:0; left:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
         });
     });
 

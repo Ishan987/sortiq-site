@@ -1514,6 +1514,16 @@ ul {
     to { transform: rotate(360deg); }
 }
 
+/* YouTube Facade pointer-events fixes */
+.youtube-facade img,
+.youtube-facade .play-button,
+.youtube-facade .play-button i {
+    pointer-events: none;
+}
+.youtube-facade:hover .play-button {
+    background: #ff5a00 !important;
+}
+
 /* iPhone SE & Small Mobile Screen (<= 375px) Responsiveness */
 @media (max-width: 375px) {
     /* Main Layout adjustments */
