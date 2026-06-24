@@ -1606,7 +1606,7 @@ def admin_login():
         username = request.form.get('username') or request.form.get('email')
         password = request.form.get('password')
         
-        if (username == 'admin' or username == 'sortiqsolutions@gmail.com') and password == 'sortiq':
+        if (username == 'admin' or username == 'sortiqsolutions@gmail.com' or username == 'admin@sortiq.com') and (password == 'admin123' or password == 'sortiq'):
             session['admin_logged_in'] = True
             flash('Successfully logged in!', 'success')
             return redirect(url_for('admin_dashboard'))
@@ -1638,13 +1638,30 @@ def admin_dashboard():
     resumes_count = conn.execute('SELECT COUNT(*) FROM fresher_applications WHERE cv_filename IS NOT NULL AND cv_filename != ""').fetchone()[0]
     conn.close()
     
+    blogs = load_blogs()
+    reviews = load_reviews()
+    
+    # Calculate counts
+    blogs_count = len(blogs)
+    reviews_count = len(reviews)
+    logos_count = sum(len(logos) for logos in CLIENTS_DATA.values())
+    videos_count = sum(len(vids) for vids in VIDEOS_DATA.values())
+    
     return render_template(
         'admin_dashboard.html',
         enquiries=enquiries,
         applications=applications,
         enquiries_count=enquiries_count,
         applications_count=applications_count,
-        resumes_count=resumes_count
+        resumes_count=resumes_count,
+        blogs=blogs,
+        reviews=reviews,
+        blogs_count=blogs_count,
+        reviews_count=reviews_count,
+        logos_count=logos_count,
+        videos_count=videos_count,
+        clients_data=CLIENTS_DATA,
+        videos_data=VIDEOS_DATA
     )
 
 @app.route('/admin/delete-enquiry/<int:id>', methods=['POST'])
