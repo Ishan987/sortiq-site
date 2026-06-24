@@ -6,6 +6,50 @@ app = Flask(__name__)
 Compress(app)
 app.secret_key = 'sortiq_clone_secret_key'
 
+import sqlite3
+from werkzeug.utils import secure_filename
+
+DATABASE = os.path.join(app.root_path, 'sortiq.db')
+UPLOAD_FOLDER = os.path.join(app.root_path, 'static', 'uploads', 'resumes')
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+def get_db_connection():
+    conn = sqlite3.connect(DATABASE)
+    conn.row_factory = sqlite3.Row
+    return conn
+
+def init_db():
+    conn = get_db_connection()
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS enquiries (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            email TEXT NOT NULL,
+            phone TEXT,
+            subject TEXT,
+            message TEXT,
+            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS fresher_applications (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            email TEXT NOT NULL,
+            phone TEXT,
+            subject TEXT,
+            institute TEXT,
+            technology TEXT,
+            message TEXT,
+            cv_filename TEXT,
+            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    conn.commit()
+    conn.close()
+
+init_db()
+
 @app.after_request
 def add_header(response):
     if request.path.startswith('/static/'):
@@ -1458,21 +1502,182 @@ def videos(page=1):
 # Form submissions
 @app.route('/submit-enquiry', methods=['POST'])
 def submit_enquiry():
-    data = request.form
-    # In a real app, this would send an email or store in database
-    return jsonify({'status': 'success', 'message': 'Thank you! Your enquiry has been received.'})
-
-@app.route('/submit-fresher', methods=['POST'])
-def submit_fresher():
-    # Handle files
-    cv_file = request.files.get('cv')
-    # Save file or send email
-    return jsonify({'status': 'success', 'message': 'Application submitted successfully.'})
+    try:
+        data = request.form
+        name = data.get('name') or data.get('your-name')
+        email = data.get('email')
+        phone = data.get('phone')
+        subject = data.get('subject')
+        message = data.get('message')
+        
+        if not name or not email:
+            return jsonify({'status': 'error', 'message': 'Name and Email are required.'}), 400
+            
+        conn = get_db_connection()
+        conn.execute(
+            'INSERT INTO enquiries (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)',
+            (name, email, phone, subject, message)
+        )
+        conn.commit()
+        conn.close()
+        return jsonify({'status': 'success', 'message': 'Thank you! Your enquiry has been received.'})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': f'Server Error: {str(e)}'}), 500
 
 @app.route('/submit-contact', methods=['POST'])
 def submit_contact():
-    # Handle message
-    return jsonify({'status': 'success', 'message': 'Message sent successfully.'})
+    try:
+        data = request.form
+        name = data.get('name') or data.get('your-name')
+        email = data.get('email')
+        phone = data.get('phone')
+        subject = data.get('subject')
+        message = data.get('message')
+        
+        if not name or not email:
+            return jsonify({'status': 'error', 'message': 'Name and Email are required.'}), 400
+            
+        conn = get_db_connection()
+        conn.execute(
+            'INSERT INTO enquiries (name, email, phone, subject, message) VALUES (?, ?, ?, ?, ?)',
+            (name, email, phone, subject, message)
+        )
+        conn.commit()
+        conn.close()
+        return jsonify({'status': 'success', 'message': 'Message sent successfully.'})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': f'Server Error: {str(e)}'}), 500
+
+@app.route('/submit-fresher', methods=['POST'])
+def submit_fresher():
+    try:
+        data = request.form
+        name = data.get('name') or data.get('your-name')
+        email = data.get('email')
+        phone = data.get('phone')
+        subject = data.get('subject')
+        institute = data.get('institute', '')
+        technology = data.get('technology', '')
+        message = data.get('message')
+        
+        if not name or not email:
+            return jsonify({'status': 'error', 'message': 'Name and Email are required.'}), 400
+            
+        cv_file = request.files.get('cv')
+        cv_filename = None
+        if cv_file and cv_file.filename != '':
+            original_filename = secure_filename(cv_file.filename)
+            import time
+            cv_filename = f"{int(time.time())}_{original_filename}"
+            cv_file.save(os.path.join(UPLOAD_FOLDER, cv_filename))
+            
+        conn = get_db_connection()
+        conn.execute(
+            'INSERT INTO fresher_applications (name, email, phone, subject, institute, technology, message, cv_filename) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+            (name, email, phone, subject, institute, technology, message, cv_filename)
+        )
+        conn.commit()
+        conn.close()
+        return jsonify({'status': 'success', 'message': 'Application submitted successfully.'})
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': f'Server Error: {str(e)}'}), 500
+
+
+# Admin Panel Authentication & Management
+from functools import wraps
+from flask import session
+
+def admin_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not session.get('admin_logged_in'):
+            flash('Please log in to access this page.', 'warning')
+            return redirect(url_for('admin_login'))
+        return f(*args, **kwargs)
+    return decorated_function
+
+@app.route('/admin/login', methods=['GET', 'POST'])
+@app.route('/admin/login/', methods=['GET', 'POST'])
+def admin_login():
+    if session.get('admin_logged_in'):
+        return redirect(url_for('admin_dashboard'))
+        
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        
+        if username == 'admin' and password == 'admin123':
+            session['admin_logged_in'] = True
+            flash('Successfully logged in!', 'success')
+            return redirect(url_for('admin_dashboard'))
+        else:
+            flash('Invalid username or password.', 'danger')
+            
+    return render_template('admin_login.html')
+
+@app.route('/admin/logout')
+@app.route('/admin/logout/')
+def admin_logout():
+    session.pop('admin_logged_in', None)
+    flash('Successfully logged out.', 'success')
+    return redirect(url_for('admin_login'))
+
+@app.route('/admin/dashboard')
+@app.route('/admin/dashboard/')
+@admin_required
+def admin_dashboard():
+    conn = get_db_connection()
+    enquiries = conn.execute('SELECT * FROM enquiries ORDER BY timestamp DESC').fetchall()
+    applications = conn.execute('SELECT * FROM fresher_applications ORDER BY timestamp DESC').fetchall()
+    
+    enquiries_count = len(enquiries)
+    applications_count = len(applications)
+    resumes_count = conn.execute('SELECT COUNT(*) FROM fresher_applications WHERE cv_filename IS NOT NULL AND cv_filename != ""').fetchone()[0]
+    conn.close()
+    
+    return render_template(
+        'admin_dashboard.html',
+        enquiries=enquiries,
+        applications=applications,
+        enquiries_count=enquiries_count,
+        applications_count=applications_count,
+        resumes_count=resumes_count
+    )
+
+@app.route('/admin/delete-enquiry/<int:id>', methods=['POST'])
+@admin_required
+def delete_enquiry(id):
+    try:
+        conn = get_db_connection()
+        conn.execute('DELETE FROM enquiries WHERE id = ?', (id,))
+        conn.commit()
+        conn.close()
+        flash('Enquiry successfully deleted.', 'success')
+    except Exception as e:
+        flash(f'Error deleting enquiry: {str(e)}', 'danger')
+    return redirect(url_for('admin_dashboard'))
+
+@app.route('/admin/delete-fresher/<int:id>', methods=['POST'])
+@admin_required
+def delete_fresher(id):
+    try:
+        conn = get_db_connection()
+        app_row = conn.execute('SELECT cv_filename FROM fresher_applications WHERE id = ?', (id,)).fetchone()
+        if app_row and app_row['cv_filename']:
+            file_path = os.path.join(UPLOAD_FOLDER, app_row['cv_filename'])
+            if os.path.exists(file_path):
+                try:
+                    os.remove(file_path)
+                except Exception as file_err:
+                    print(f"Error removing file: {file_err}")
+                
+        conn.execute('DELETE FROM fresher_applications WHERE id = ?', (id,))
+        conn.commit()
+        conn.close()
+        flash('Application successfully deleted.', 'success')
+    except Exception as e:
+        flash(f'Error deleting application: {str(e)}', 'danger')
+    return redirect(url_for('admin_dashboard'))
 
 @app.route('/reviews/')
 @app.route('/reviews/page/<int:page>/')

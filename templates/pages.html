@@ -225,7 +225,7 @@
                 <h2>Let's <span>Connect</span></h2>
                 <p>Have a project in mind or want to explore customized options? Submit our inquiry form below and a technical coordinator will contact you.</p>
                 
-                <form action="{{ url_for('contact') }}" method="POST" style="margin-top: 30px;">
+                <form action="/submit-contact" method="POST" style="margin-top: 30px;">
                     <div class="form-group">
                         <input aria-label="Enter Your Name" type="text" name="name" class="form-control" placeholder="Enter Your Name" required>
                     </div>
@@ -262,7 +262,7 @@
         {% elif page_type == 'internship' %}
         <div style="max-width: 600px; margin: 0 auto; background-color: var(--light-bg); padding: 40px; border-radius: 10px;">
             <h2 class="text-center" style="margin-bottom: 20px;">Fresher Internship Application</h2>
-            <form action="{{ url_for('internship') }}" method="POST" enctype="multipart/form-data">
+            <form action="/submit-fresher" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <input aria-label="Your Name" type="text" name="name" class="form-control" placeholder="Your Name" required>
                 </div>
