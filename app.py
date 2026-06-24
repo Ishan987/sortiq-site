@@ -1606,7 +1606,7 @@ def admin_login():
         username = request.form.get('username')
         password = request.form.get('password')
         
-        if username == 'admin' and password == 'admin123':
+        if username == 'SortiqSolutions' and password == 'SortiqS9876':
             session['admin_logged_in'] = True
             flash('Successfully logged in!', 'success')
             return redirect(url_for('admin_dashboard'))
@@ -1627,8 +1627,11 @@ def admin_logout():
 @admin_required
 def admin_dashboard():
     conn = get_db_connection()
-    enquiries = conn.execute('SELECT * FROM enquiries ORDER BY timestamp DESC').fetchall()
-    applications = conn.execute('SELECT * FROM fresher_applications ORDER BY timestamp DESC').fetchall()
+    enquiries_rows = conn.execute('SELECT * FROM enquiries ORDER BY timestamp DESC').fetchall()
+    applications_rows = conn.execute('SELECT * FROM fresher_applications ORDER BY timestamp DESC').fetchall()
+    
+    enquiries = [dict(row) for row in enquiries_rows]
+    applications = [dict(row) for row in applications_rows]
     
     enquiries_count = len(enquiries)
     applications_count = len(applications)
