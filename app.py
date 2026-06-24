@@ -1603,10 +1603,10 @@ def admin_login():
         return redirect(url_for('admin_dashboard'))
         
     if request.method == 'POST':
-        username = request.form.get('username')
+        username = request.form.get('username') or request.form.get('email')
         password = request.form.get('password')
         
-        if username == 'SortiqSolutions' and password == 'SortiqS9876':
+        if (username == 'admin' or username == 'admin@sortiq.com') and password == 'admin123':
             session['admin_logged_in'] = True
             flash('Successfully logged in!', 'success')
             return redirect(url_for('admin_dashboard'))
