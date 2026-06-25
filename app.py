@@ -1922,13 +1922,28 @@ def inject_globals():
         conn.close()
         settings = {row['key']: row['value'] for row in settings_rows}
         
-        site_layout = DEFAULT_SITE_LAYOUT
+        import copy
+        site_layout = copy.deepcopy(DEFAULT_SITE_LAYOUT)
         if 'site_layout' in settings:
             try:
-                site_layout = json.loads(settings['site_layout'])
+                loaded = json.loads(settings['site_layout'])
+                if loaded:
+                    site_layout.update(loaded)
             except Exception:
                 pass
                 
+        # Pad nav_links to always have at least 8 elements to prevent Jinja index errors
+        nav_links = site_layout.get('nav_links', [])
+        while len(nav_links) < 8:
+            nav_links.append({"label": "", "url": "", "has_dropdown": "0"})
+        site_layout['nav_links'] = nav_links
+        
+        # Pad footer_badges to always have at least 8 elements
+        badges = site_layout.get('footer_badges', [])
+        while len(badges) < 8:
+            badges.append({"label": "", "image": ""})
+        site_layout['footer_badges'] = badges
+        
         return {
             'phone': site_layout['header'].get('phone', '+91 9646522110'),
             'email': site_layout['header'].get('email', 'info@sortiqsolutions.com'),
