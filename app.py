@@ -204,23 +204,35 @@ def init_db():
     # Seed Blogs
     cursor.execute('SELECT COUNT(*) FROM blogs')
     if cursor.fetchone()[0] == 0:
-        blogs_data = load_blogs()
-        for blog in blogs_data:
-            cats = ",".join(blog.get('categories', []))
-            conn.execute(
-                'INSERT INTO blogs (title, slug, date, categories, summary, image, content) VALUES (?, ?, ?, ?, ?, ?, ?)',
-                (blog['title'], blog['slug'], blog['date'], cats, blog.get('summary', ''), blog.get('image', ''), blog.get('content', ''))
-            )
+        blogs_json = os.path.join(app.root_path, 'static', 'blogs.json')
+        if os.path.exists(blogs_json):
+            try:
+                with open(blogs_json, 'r', encoding='utf-8') as f:
+                    blogs_data = json.load(f)
+                for blog in blogs_data:
+                    cats = ",".join(blog.get('categories', []))
+                    conn.execute(
+                        'INSERT INTO blogs (title, slug, date, categories, summary, image, content) VALUES (?, ?, ?, ?, ?, ?, ?)',
+                        (blog['title'], blog['slug'], blog['date'], cats, blog.get('summary', ''), blog.get('image', ''), blog.get('content', ''))
+                    )
+            except Exception as e:
+                print(f"Error seeding blogs: {e}")
             
     # Seed Reviews
     cursor.execute('SELECT COUNT(*) FROM reviews')
     if cursor.fetchone()[0] == 0:
-        reviews_data = load_reviews()
-        for rev in reviews_data:
-            conn.execute(
-                'INSERT INTO reviews (author, platform, text) VALUES (?, ?, ?)',
-                (rev['author'], rev.get('platform', 'Google'), rev['text'])
-            )
+        reviews_json = os.path.join(app.root_path, 'static', 'reviews.json')
+        if os.path.exists(reviews_json):
+            try:
+                with open(reviews_json, 'r', encoding='utf-8') as f:
+                    reviews_data = json.load(f)
+                for rev in reviews_data:
+                    conn.execute(
+                        'INSERT INTO reviews (author, platform, text) VALUES (?, ?, ?)',
+                        (rev['author'], rev.get('platform', 'Google'), rev['text'])
+                    )
+            except Exception as e:
+                print(f"Error seeding reviews: {e}")
 
     # Seed Portfolios
     cursor.execute('SELECT COUNT(*) FROM portfolios')
@@ -335,6 +347,9 @@ def load_blogs():
         rows = conn.execute('SELECT * FROM blogs ORDER BY id DESC').fetchall()
         conn.close()
         
+        if not rows:
+            raise Exception("No blogs in database, fallback to JSON")
+            
         blogs_list = []
         for r in rows:
             b = dict(r)
@@ -342,7 +357,6 @@ def load_blogs():
             blogs_list.append(b)
         return blogs_list
     except Exception as e:
-        print(f"Error loading blogs from database: {e}")
         json_path = os.path.join(app.root_path, 'static', 'blogs.json')
         if os.path.exists(json_path):
             with open(json_path, 'r', encoding='utf-8') as f:
@@ -355,9 +369,10 @@ def load_reviews():
         conn.row_factory = sqlite3.Row
         rows = conn.execute('SELECT * FROM reviews ORDER BY id DESC').fetchall()
         conn.close()
+        if not rows:
+            raise Exception("No reviews in database, fallback to JSON")
         return [dict(r) for r in rows]
     except Exception as e:
-        print(f"Error loading reviews from database: {e}")
         json_path = os.path.join(app.root_path, 'static', 'reviews.json')
         if os.path.exists(json_path):
             with open(json_path, 'r', encoding='utf-8') as f:
