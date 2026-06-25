@@ -184,7 +184,11 @@
                 <a href="/" class="sidebar-brand-link">
                     <img src="https://staging.sortiqsolutions.com/frontend-assets/media/admin-use.png" alt="Sortiq Solutions" class="sidebar-brand-logo">
                 </a>
-                <div class="sidebar-brand-pill">9 sections</div>
+                <div class="sidebar-brand-pill">Admin Workspace</div>
+                <div class="sidebar-brand-copy">
+                    <strong>Sortiq Control Room</strong>
+                    <p>Publishing, trust signals, and site settings in one polished workflow.</p>
+                </div>
             </div>
             
             <ul class="sidebar-nav" style="list-style: none;">
@@ -267,16 +271,72 @@
                             </a>
                         </li>
                         <!-- Tab 7: Pages -->
-                        <li class="sidebar-dropdown-row" id="side-pages">
-                            <a href="javascript:void(0)" onclick="switchSidebarTab('pages', 'Pages', 'Meta titles and descriptions.')" class="sidebar-dropdown-link">
-                                <div class="nav-icon">PC</div>
-                                <div class="sidebar-link-main">
-                                    <div class="sidebar-link-copy">
-                                        <strong>Pages</strong>
-                                        <small>Meta titles and descriptions f...</small>
+                        <li class="sidebar-dropdown-row" id="side-pages" style="display: flex; flex-direction: column; align-items: stretch;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; position: relative;">
+                                <a href="javascript:void(0)" onclick="switchSidebarTab('pages', 'Pages', 'Meta titles and descriptions.')" class="sidebar-dropdown-link" style="flex: 1; border-right: none;">
+                                    <div class="nav-icon">PG</div>
+                                    <div class="sidebar-link-main">
+                                        <div class="sidebar-link-copy">
+                                            <strong>Pages</strong>
+                                            <small>Meta titles and descriptions f...</small>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                                <button onclick="togglePagesDropdown(event)" style="background: transparent; border: none; padding: 0; margin-right: 12px; color: rgba(255,255,255,0.4); cursor: pointer; outline: none; transition: color 0.2s;">
+                                    <i class="fa-solid fa-chevron-down" id="pages-caret" style="font-size: 11px;"></i>
+                                </button>
+                            </div>
+                            
+                            <!-- Dropdown Submenu -->
+                            <ul id="pages-submenu" style="display: none; list-style: none; padding: 5px 0 10px 42px; margin: 0; border-top: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.15);">
+                                <!-- COMPANY PAGES -->
+                                <li style="padding: 10px 0 4px; font-size: 9px; font-weight: 800; color: rgba(255,255,255,0.3); letter-spacing: 0.8px; text-transform: uppercase;">COMPANY PAGES</li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('home')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Home</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('about')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">About</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('why-choose-us')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Why Us</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('our-expertise')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Expertise</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('case-studies')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Case Studies</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('our-career')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Careers</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('internship')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Internship</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('faq')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">FAQ</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('support')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Support</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('terms')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Terms</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('contact')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Contact</a></li>
+                                
+                                <!-- CONTENT PAGES -->
+                                <li style="padding: 10px 0 4px; font-size: 9px; font-weight: 800; color: rgba(255,255,255,0.3); letter-spacing: 0.8px; text-transform: uppercase;">CONTENT PAGES</li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('blog')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Blog</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('portfolio')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Portfolio</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('reviews')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Reviews</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('clients')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Clients</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('videos')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Videos</a></li>
+                                
+                                <!-- SERVICE PAGES -->
+                                <li style="padding: 10px 0 4px; font-size: 9px; font-weight: 800; color: rgba(255,255,255,0.3); letter-spacing: 0.8px; text-transform: uppercase;">SERVICE PAGES</li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('services-overview')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Services Overview</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('website-design')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Website Design</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('laravel')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Laravel</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('wordpress')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">WordPress</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('ecommerce')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Ecommerce</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('digital-marketing')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Digital Marketing</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('seo')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">SEO</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('smo')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">SMO</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('graphics')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Graphics</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('banners')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Banners</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('logos')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Logos</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('maintenance')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Maintenance</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('bigcommerce')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">BigCommerce</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('mern-stack')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">MERN Stack</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('app-development')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">App Development</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('testing')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Testing</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('cyber-security')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Cyber Security</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('hubspot')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">HubSpot</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('zoho')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Zoho</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('php')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">PHP</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('codeigniter')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">CodeIgniter</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('shopify')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">Shopify</a></li>
+                                <li><a href="javascript:void(0)" onclick="selectSubPage('react')" style="display: block; padding: 5px 0; color: rgba(255,255,255,0.7); font-size: 11.5px; text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">React</a></li>
+                            </ul>
                         </li>
                         <!-- Tab 8: Messages -->
                         <li class="sidebar-dropdown-row" id="side-messages">
@@ -524,8 +584,13 @@
                             <div class="list-tabs">
                                 <a href="javascript:void(0)" class="is-active">All Reviews <span>({{ reviews_count }})</span></a>
                             </div>
-                            <div class="search-box">
-                                <input type="search" id="reviews-search" placeholder="Search by author or content..." onkeyup="searchLocalTable('reviews-table', this.value)">
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <button type="button" class="primary-btn" onclick="openAddReviewModal()">
+                                    <i class="fa-solid fa-plus"></i> Add Review
+                                </button>
+                                <div class="search-box">
+                                    <input type="search" id="reviews-search" placeholder="Search by author or content..." onkeyup="searchLocalTable('reviews-table', this.value)">
+                                </div>
                             </div>
                         </div>
                         <div class="reviews-table-wrap">
@@ -536,6 +601,7 @@
                                         <th>Platform</th>
                                         <th>Rating</th>
                                         <th>Review Content</th>
+                                        <th style="width: 150px; text-align: center;">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -549,6 +615,20 @@
                                             {% for i in range(5) %}<i class="fa-solid fa-star"></i>{% endfor %}
                                         </td>
                                         <td style="color: var(--text); font-size: 12.5px; line-height: 1.5;">{{ rev.text }}</td>
+                                        <td style="text-align: center;">
+                                            <div class="row-actions" style="justify-content: center;">
+                                                <a href="javascript:void(0)" title="Edit" onclick="openEditReviewModal({{ rev | tojson | safe }})" style="color: var(--blue); background: var(--blue-light); padding: 4px 8px; border-radius: var(--r-xs); font-size: 11px; text-decoration: none;">
+                                                    <i class="fa-solid fa-edit"></i> Edit
+                                                </a>
+                                                <form action="{{ url_for('delete_review', id=rev.id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this review?');" style="display:inline;">
+                                                    <button type="submit" style="border: none; background: none; padding: 0; margin: 0; cursor: pointer;">
+                                                        <a style="color: var(--red); background: #ffeeef; pointer-events: none; padding: 4px 8px; border-radius: var(--r-xs); font-size: 11px;">
+                                                            <i class="fa-solid fa-trash-can"></i> Delete
+                                                        </a>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
@@ -564,8 +644,13 @@
                             <div class="list-tabs">
                                 <a href="javascript:void(0)" class="is-active">All Posts <span>({{ blogs_count }})</span></a>
                             </div>
-                            <div class="search-box">
-                                <input type="search" id="blogs-search" placeholder="Search by title..." onkeyup="searchLocalTable('blogs-table', this.value)">
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <button type="button" class="primary-btn" onclick="openAddBlogModal()">
+                                    <i class="fa-solid fa-plus"></i> Add Post
+                                </button>
+                                <div class="search-box">
+                                    <input type="search" id="blogs-search" placeholder="Search by title..." onkeyup="searchLocalTable('blogs-table', this.value)">
+                                </div>
                             </div>
                         </div>
                         <div class="reviews-table-wrap">
@@ -576,6 +661,7 @@
                                         <th>Title</th>
                                         <th>Category</th>
                                         <th>Slug</th>
+                                        <th style="width: 150px; text-align: center;">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -585,6 +671,20 @@
                                         <td class="searchable-title" style="font-weight: 700; color: var(--text); font-size: 13px;">{{ post.title }}</td>
                                         <td style="width: 130px;"><span style="font-size: 11px; padding: 2px 6px; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-xs);">{{ post.category or 'Technology' }}</span></td>
                                         <td style="color: var(--caption); font-family: monospace; font-size: 11px;">{{ post.slug }}</td>
+                                        <td style="text-align: center;">
+                                            <div class="row-actions" style="justify-content: center;">
+                                                <a href="javascript:void(0)" title="Edit" onclick="openEditBlogModal({{ post | tojson | safe }})" style="color: var(--blue); background: var(--blue-light); padding: 4px 8px; border-radius: var(--r-xs); font-size: 11px; text-decoration: none;">
+                                                    <i class="fa-solid fa-edit"></i> Edit
+                                                </a>
+                                                <form action="{{ url_for('delete_blog', id=post.id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this blog post?');" style="display:inline;">
+                                                    <button type="submit" style="border: none; background: none; padding: 0; margin: 0; cursor: pointer;">
+                                                        <a style="color: var(--red); background: #ffeeef; pointer-events: none; padding: 4px 8px; border-radius: var(--r-xs); font-size: 11px;">
+                                                            <i class="fa-solid fa-trash-can"></i> Delete
+                                                        </a>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
@@ -598,57 +698,66 @@
                     <div class="admin-content-panel" style="margin-top: 10px;">
                         <div class="list-tools">
                             <div class="list-tabs">
-                                <a href="javascript:void(0)" class="is-active">Projects <span>(92)</span></a>
+                                <a href="javascript:void(0)" class="is-active">Projects <span>({{ portfolios_count }})</span></a>
                             </div>
-                            <div class="search-box">
-                                <input type="search" id="portfolio-search" placeholder="Search projects..." onkeyup="searchLocalTable('portfolio-table', this.value)">
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <button type="button" class="primary-btn" onclick="openAddPortfolioModal()">
+                                    <i class="fa-solid fa-plus"></i> Add Project
+                                </button>
+                                <div class="search-box">
+                                    <input type="search" id="portfolio-search" placeholder="Search projects..." onkeyup="searchLocalTable('portfolio-table', this.value)">
+                                </div>
                             </div>
                         </div>
                         <div class="reviews-table-wrap">
                             <table class="reviews-table" id="portfolio-table">
                                 <thead>
                                     <tr>
-                                        <th>Project ID</th>
-                                        <th>Client Name</th>
+                                        <th>Project Code</th>
+                                        <th>Client Name / Title</th>
                                         <th>Technology Stack</th>
                                         <th>Location</th>
                                         <th>Status</th>
+                                        <th style="width: 150px; text-align: center;">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% for project in portfolios %}
                                     <tr class="data-row">
-                                        <td style="font-weight: 700; color: var(--text);">#PRJ-092</td>
-                                        <td class="searchable-title">Zeitgeist Logistics Dashboard</td>
-                                        <td>MERN Stack, Redis, AWS</td>
-                                        <td>Munich, Germany</td>
-                                        <td><span style="padding: 2px 6px; background: var(--green-light); color: var(--green); border-radius: var(--r-xs); font-size: 10px; font-weight: 700;">Completed</span></td>
-                                    </tr>
-                                    <tr class="data-row">
-                                        <td style="font-weight: 700; color: var(--text);">#PRJ-091</td>
-                                        <td class="searchable-title">Advantage Plus Tax Gateway</td>
-                                        <td>React, Laravel, PostgreSQL</td>
-                                        <td>Toronto, Canada</td>
-                                        <td><span style="padding: 2px 6px; background: var(--green-light); color: var(--green); border-radius: var(--r-xs); font-size: 10px; font-weight: 700;">Completed</span></td>
-                                    </tr>
-                                    <tr class="data-row">
-                                        <td style="font-weight: 700; color: var(--text);">#PRJ-090</td>
-                                        <td class="searchable-title">Helium Recruiting Portal</td>
-                                        <td>WordPress Custom API, PHP</td>
-                                        <td>London, UK</td>
-                                        <td><span style="padding: 2px 6px; background: var(--green-light); color: var(--green); border-radius: var(--r-xs); font-size: 10px; font-weight: 700;">Completed</span></td>
-                                    </tr>
-                                    <tr class="data-row">
-                                        <td style="font-weight: 700; color: var(--text);">#PRJ-089</td>
-                                        <td class="searchable-title">Kebaonish Brand E-commerce</td>
-                                        <td>Shopify Plus, Liquid API</td>
-                                        <td>Vancouver, Canada</td>
-                                        <td><span style="padding: 2px 6px; background: var(--green-light); color: var(--green); border-radius: var(--r-xs); font-size: 10px; font-weight: 700;">Completed</span></td>
-                                    </tr>
-                                    <tr class="data-row">
-                                        <td colspan="5" style="text-align: center; color: var(--caption); padding: 20px;">
-                                            Showing first 4 records. Standard configuration contains 92 projects.
+                                        <td style="font-weight: 700; color: var(--text);">{{ project.project_code or '#PRJ-000' }}</td>
+                                        <td class="searchable-title" style="font-weight: 700; color: var(--text); font-size: 13.5px;">{{ project.title }}</td>
+                                        <td>{{ project.technology }}</td>
+                                        <td>{{ project.location or '-' }}</td>
+                                        <td>
+                                            {% if project.status == 'Completed' or project.status == 'Active' %}
+                                            <span style="padding: 2px 6px; background: var(--green-light); color: var(--green); border-radius: var(--r-xs); font-size: 10px; font-weight: 700;">{{ project.status }}</span>
+                                            {% else %}
+                                            <span style="padding: 2px 6px; background: var(--blue-light); color: var(--blue); border-radius: var(--r-xs); font-size: 10px; font-weight: 700;">{{ project.status }}</span>
+                                            {% endif %}
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <div class="row-actions" style="justify-content: center;">
+                                                <a href="javascript:void(0)" title="Edit" onclick="openEditPortfolioModal({{ project | tojson | safe }})" style="color: var(--blue); background: var(--blue-light); padding: 4px 8px; border-radius: var(--r-xs); font-size: 11px; text-decoration: none;">
+                                                    <i class="fa-solid fa-edit"></i> Edit
+                                                </a>
+                                                <form action="{{ url_for('delete_portfolio', id=project.id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this project?');" style="display:inline;">
+                                                    <button type="submit" style="border: none; background: none; padding: 0; margin: 0; cursor: pointer;">
+                                                        <a style="color: var(--red); background: #ffeeef; pointer-events: none; padding: 4px 8px; border-radius: var(--r-xs); font-size: 11px;">
+                                                            <i class="fa-solid fa-trash-can"></i> Delete
+                                                        </a>
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
+                                    {% endfor %}
+                                    {% if not portfolios %}
+                                    <tr>
+                                        <td colspan="6" style="text-align: center; color: var(--caption); padding: 30px;">
+                                            No portfolio projects found in the system. Click "Add Project" to add one.
+                                        </td>
+                                    </tr>
+                                    {% endif %}
                                 </tbody>
                             </table>
                         </div>
@@ -658,19 +767,32 @@
                 <!-- VIEW 5: VIDEOS -->
                 <div class="tab-panel-item" id="view-videos">
                     <div class="admin-content-panel" style="margin-top: 10px; padding: 20px;">
+                        <div class="list-tools" style="margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px;">
+                            <div class="list-tabs">
+                                <a href="javascript:void(0)" class="is-active">Website Videos <span>({{ videos_count }})</span></a>
+                            </div>
+                            <button type="button" class="primary-btn" onclick="openAddVideoModal()">
+                                <i class="fa-solid fa-plus"></i> Add Video
+                            </button>
+                        </div>
                         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px;">
-                            {% for pg, vids in videos_data.items() %}
-                                {% for vid in vids %}
-                                <div style="background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-md); overflow: hidden;">
+                            {% for vid in videos %}
+                                <div style="background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-md); overflow: hidden; position: relative;">
                                     <div style="position: relative; width: 100%; aspect-ratio: 16/9; background: #000; display: flex; align-items: center; justify-content: center; color: #fff;">
-                                        <i class="fa-solid fa-circle-play" style="font-size: 32px; color: var(--primary);"></i>
+                                        <i class="fa-solid fa-circle-play" style="font-size: 32px; color: var(--primary); z-index: 2;"></i>
                                     </div>
-                                    <div style="padding: 12px;">
+                                    <div style="padding: 12px; padding-bottom: 48px;">
                                         <h4 style="font-size: 12.5px; font-weight: 700; color: var(--text);">{{ vid.title }}</h4>
                                         <span style="font-size: 10px; color: var(--caption); display: block; margin-top: 4px; font-family: monospace;">{{ vid.src }}</span>
                                     </div>
+                                    <div style="position: absolute; bottom: 10px; right: 10px; z-index: 5;">
+                                        <form action="{{ url_for('delete_video', id=vid.id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this video?');">
+                                            <button type="submit" class="small-btn" style="color: var(--red); background: #ffeeef; border-color: rgba(220,38,38,0.15); display: inline-flex; align-items: center; gap: 4px;">
+                                                <i class="fa-solid fa-trash-can"></i> Delete
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
-                                {% endfor %}
                             {% endfor %}
                         </div>
                     </div>
@@ -679,13 +801,24 @@
                 <!-- VIEW 6: CLIENT LOGOS -->
                 <div class="tab-panel-item" id="view-logos">
                     <div class="admin-content-panel" style="margin-top: 10px; padding: 20px;">
-                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px;">
-                            {% for pg, logos in clients_data.items() %}
-                                {% for logo in logos %}
-                                <div style="background: #fff; border: 1px solid var(--border); border-radius: var(--r-sm); padding: 12px; display: flex; align-items: center; justify-content: center; aspect-ratio: 4/3; box-shadow: var(--shadow-xs);">
-                                    <img src="{{ logo }}" alt="Client Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                        <div class="list-tools" style="margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px;">
+                            <div class="list-tabs">
+                                <a href="javascript:void(0)" class="is-active">Client Logos <span>({{ logos_count }})</span></a>
+                            </div>
+                            <button type="button" class="primary-btn" onclick="openAddLogoModal()">
+                                <i class="fa-solid fa-plus"></i> Add Client Logo
+                            </button>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px;">
+                            {% for logo in client_logos %}
+                                <div style="background: #fff; border: 1px solid var(--border); border-radius: var(--r-sm); padding: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; aspect-ratio: 4/3; box-shadow: var(--shadow-xs); position: relative;">
+                                    <img src="{{ logo.url }}" alt="Client Logo" style="max-width: 100%; max-height: 65%; object-fit: contain; margin-bottom: 10px;">
+                                    <form action="{{ url_for('delete_logo', id=logo.id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this client logo?');" style="width: 100%; display: flex; justify-content: center;">
+                                        <button type="submit" class="small-btn" style="width: 90%; text-align: center; color: var(--red); background: #ffeeef; border-color: rgba(220,38,38,0.15); font-size: 10px; display: inline-flex; align-items: center; justify-content: center; gap: 4px;">
+                                            <i class="fa-solid fa-trash-can"></i> Delete
+                                        </button>
+                                    </form>
                                 </div>
-                                {% endfor %}
                             {% endfor %}
                         </div>
                     </div>
@@ -695,40 +828,102 @@
                 <div class="tab-panel-item" id="view-pages">
                     <div class="admin-content-panel" style="margin-top: 10px; padding: 20px;">
                         <div style="display: flex; flex-direction: column; gap: 15px;">
-                            <div style="background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-md); padding: 16px;">
-                                <h3 style="font-size: 14px; font-weight: 700; color: var(--text);">Homepage (index.html)</h3>
-                                <div style="margin-top: 10px; display: grid; grid-template-columns: 1fr 2fr; gap: 15px;">
-                                    <label style="display: flex; flex-direction: column; gap: 4px; font-size: 11px; font-weight: 700; color: var(--muted);">
-                                        Meta Title
-                                        <input type="text" value="Sortiq Solutions - Smart Sorting IT Solutions" style="padding: 6px 10px; border: 1px solid var(--border-dark); border-radius: var(--r-sm); font-size: 12.5px; outline: none; background: #fff;">
-                                    </label>
-                                    <label style="display: flex; flex-direction: column; gap: 4px; font-size: 11px; font-weight: 700; color: var(--muted);">
-                                        Meta Description
-                                        <input type="text" value="Professional software development, MERN, and SEO consulting agency." style="padding: 6px 10px; border: 1px solid var(--border-dark); border-radius: var(--r-sm); font-size: 12.5px; outline: none; background: #fff;">
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div style="background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-md); padding: 16px;">
-                                <h3 style="font-size: 14px; font-weight: 700; color: var(--text);">About Us (about.html)</h3>
-                                <div style="margin-top: 10px; display: grid; grid-template-columns: 1fr 2fr; gap: 15px;">
-                                    <label style="display: flex; flex-direction: column; gap: 4px; font-size: 11px; font-weight: 700; color: var(--muted);">
-                                        Meta Title
-                                        <input type="text" value="About Us - Sortiq Solutions" style="padding: 6px 10px; border: 1px solid var(--border-dark); border-radius: var(--r-sm); font-size: 12.5px; outline: none; background: #fff;">
-                                    </label>
-                                    <label style="display: flex; flex-direction: column; gap: 4px; font-size: 11px; font-weight: 700; color: var(--muted);">
-                                        Meta Description
-                                        <input type="text" value="Learn more about our vision, core values, and dedicated team." style="padding: 6px 10px; border: 1px solid var(--border-dark); border-radius: var(--r-sm); font-size: 12.5px; outline: none; background: #fff;">
-                                    </label>
-                                </div>
-                            </div>
                             
-                            <div style="text-align: right;">
-                                <button class="primary-btn" onclick="alert('Settings mock-saved successfully!')" style="background: var(--blue); color: #fff;">Save Metadata Settings</button>
-                            </div>
+                            <label style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 5px; max-width: 350px;">
+                                Select Page to Edit Meta Data
+                                <select id="page-metadata-selector" onchange="switchMetadataPage(this.value)" style="padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--r-sm); font-size: 13.5px; background: var(--surface-1); color: var(--text); font-weight: 600; cursor: pointer; outline: none; width: 100%;">
+                                    <optgroup label="COMPANY PAGES">
+                                        <option value="home">Home (index.html)</option>
+                                        <option value="about">About (about.html)</option>
+                                        <option value="why-choose-us">Why Us (why_choose_us.html)</option>
+                                        <option value="our-expertise">Expertise (our_expertise.html)</option>
+                                        <option value="case-studies">Case Studies (case_studies.html)</option>
+                                        <option value="our-career">Careers (our_career.html)</option>
+                                        <option value="internship">Internship (internship.html)</option>
+                                        <option value="faq">FAQ</option>
+                                        <option value="support">Support</option>
+                                        <option value="terms">Terms</option>
+                                        <option value="contact">Contact (contact.html)</option>
+                                    </optgroup>
+                                    <optgroup label="CONTENT PAGES">
+                                        <option value="blog">Blog (blog.html)</option>
+                                        <option value="portfolio">Portfolio (portfolio.html)</option>
+                                        <option value="reviews">Reviews (reviews.html)</option>
+                                        <option value="clients">Clients (clients.html)</option>
+                                        <option value="videos">Videos (video.html)</option>
+                                    </optgroup>
+                                    <optgroup label="SERVICE PAGES">
+                                        <option value="services-overview">Services Overview (services.html)</option>
+                                        <option value="website-design">Website Design</option>
+                                        <option value="laravel">Laravel</option>
+                                        <option value="wordpress">WordPress</option>
+                                        <option value="ecommerce">Ecommerce</option>
+                                        <option value="digital-marketing">Digital Marketing</option>
+                                        <option value="seo">SEO</option>
+                                        <option value="smo">SMO</option>
+                                        <option value="graphics">Graphics</option>
+                                        <option value="banners">Banners</option>
+                                        <option value="logos">Logos</option>
+                                        <option value="maintenance">Maintenance</option>
+                                        <option value="bigcommerce">BigCommerce</option>
+                                        <option value="mern-stack">MERN Stack</option>
+                                        <option value="app-development">App Development</option>
+                                        <option value="testing">Testing</option>
+                                        <option value="cyber-security">Cyber Security</option>
+                                        <option value="hubspot">HubSpot</option>
+                                        <option value="zoho">Zoho</option>
+                                        <option value="php">PHP</option>
+                                        <option value="codeigniter">CodeIgniter</option>
+                                        <option value="shopify">Shopify</option>
+                                        <option value="react">React</option>
+                                    </optgroup>
+                                </select>
+                            </label>
+
+                            <form action="{{ url_for('update_pages_meta') }}" method="POST" style="background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-md); padding: 18px;">
+                                <input type="hidden" name="page_path" id="meta-page-path" value="home">
+                                <div style="display: flex; flex-direction: column; gap: 15px;">
+                                    <label style="display: flex; flex-direction: column; gap: 4px; font-size: 11px; font-weight: 700; color: var(--muted);">
+                                        Meta Title
+                                        <input type="text" name="title" id="meta-title-input" required style="padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--r-sm); font-size: 13px; outline: none; background: #fff; color: var(--text);">
+                                    </label>
+                                    <label style="display: flex; flex-direction: column; gap: 4px; font-size: 11px; font-weight: 700; color: var(--muted);">
+                                        Meta Description
+                                        <textarea name="description" id="meta-desc-input" rows="4" required style="padding: 8px 12px; border: 1px solid var(--border); border-radius: var(--r-sm); font-size: 13px; outline: none; background: #fff; color: var(--text); resize: vertical;"></textarea>
+                                    </label>
+                                </div>
+                                <div style="text-align: right; margin-top: 15px;">
+                                    <button type="submit" class="primary-btn" style="background: var(--blue); color: #fff; padding: 8px 20px;">Save Metadata Settings</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
+
+                <script>
+                    const pagesMetadataMap = {
+                        {% for pm in pages_metadata %}
+                        "{{ pm.page_path }}": {
+                            "title": {{ pm.title | tojson }},
+                            "description": {{ pm.description | tojson }}
+                        },
+                        {% endfor %}
+                    };
+                    
+                    function switchMetadataPage(pagePath) {
+                        const pageData = pagesMetadataMap[pagePath] || { title: "", description: "" };
+                        document.getElementById('meta-page-path').value = pagePath;
+                        document.getElementById('meta-title-input').value = pageData.title;
+                        document.getElementById('meta-desc-input').value = pageData.description;
+                    }
+                    
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const selector = document.getElementById('page-metadata-selector');
+                        if (selector) {
+                            switchMetadataPage(selector.value);
+                        }
+                    });
+                </script>
 
                 <!-- VIEW 8: MESSAGES (FORM SUBMISSIONS DB) -->
                 <div class="tab-panel-item" id="view-messages">
@@ -872,26 +1067,241 @@
                 <!-- VIEW 9: SETTINGS -->
                 <div class="tab-panel-item" id="view-settings">
                     <div class="admin-content-panel" style="margin-top: 10px; padding: 20px;">
-                        <div style="display: flex; flex-direction: column; gap: 15px; max-width: 650px;">
-                            <label style="display: flex; flex-direction: column; gap: 4px; font-size: 11px; font-weight: 700; color: var(--muted);">
-                                Primary Contact Phone
-                                <input type="text" value="+91 98889 00877" style="padding: 8px 12px; border: 1px solid var(--border-dark); border-radius: var(--r-sm); font-size: 13px; outline: none; background: #fff; color: var(--text);">
-                            </label>
-
-                            <label style="display: flex; flex-direction: column; gap: 4px; font-size: 11px; font-weight: 700; color: var(--muted);">
-                                Corporate Email Address
-                                <input type="email" value="info@sortiqsolutions.com" style="padding: 8px 12px; border: 1px solid var(--border-dark); border-radius: var(--r-sm); font-size: 13px; outline: none; background: #fff; color: var(--text);">
-                            </label>
-
-                            <label style="display: flex; flex-direction: column; gap: 4px; font-size: 11px; font-weight: 700; color: var(--muted);">
-                                Main Address Location
-                                <textarea rows="3" style="padding: 8px 12px; border: 1px solid var(--border-dark); border-radius: var(--r-sm); font-size: 13px; outline: none; background: #fff; color: var(--text); resize: vertical;">IT Park, Block B, Chandigarh, India</textarea>
-                            </label>
+                        <form id="site-layout-form" action="{{ url_for('update_site_settings') }}" method="POST" enctype="multipart/form-data" class="site-settings-form" novalidate>
                             
-                            <div style="margin-top: 10px;">
-                                <button class="primary-btn" onclick="alert('Settings saved successfully!')" style="background: var(--blue); color: #fff;">Save Site Configurations</button>
+                            <div class="settings-grid">
+                                <section class="settings-panel">
+                                    <div class="settings-panel-title">
+                                        <span>Header Brand</span>
+                                        <strong>Logo and top strip</strong>
+                                    </div>
+                                    <div class="settings-panel-body">
+                                        <div class="settings-logo-preview">
+                                            {% if site_layout.header.logo %}
+                                                <img src="{{ site_layout.header.logo }}" alt="Logo" style="max-height: 40px; object-fit: contain;">
+                                            {% else %}
+                                                <span>{{ site_layout.header.logo_text }}</span>
+                                            {% endif %}
+                                        </div>
+                                        <label class="settings-field">
+                                            Logo Image
+                                            <input type="file" name="header_logo_file" accept="image/*">
+                                        </label>
+                                        <label class="settings-field">
+                                            Logo Text
+                                            <input type="text" name="header[logo_text]" value="{{ site_layout.header.logo_text }}">
+                                        </label>
+                                        <div class="two-column-fields">
+                                            <label class="settings-field">
+                                                Top Phone
+                                                <input type="text" name="header[phone]" value="{{ site_layout.header.phone }}">
+                                            </label>
+                                            <label class="settings-field">
+                                                Top Email
+                                                <input type="email" name="header[email]" value="{{ site_layout.header.email }}">
+                                            </label>
+                                        </div>
+                                        <div class="two-column-fields">
+                                            <label class="settings-field">
+                                                Internship Label
+                                                <input type="text" name="header[apply_label]" value="{{ site_layout.header.apply_label }}">
+                                            </label>
+                                            <label class="settings-field">
+                                                Internship URL
+                                                <input type="text" name="header[apply_url]" value="{{ site_layout.header.apply_url }}">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="settings-panel settings-preview-panel">
+                                    <div class="settings-panel-title">
+                                        <span>Header Preview</span>
+                                        <strong>Desktop shape</strong>
+                                    </div>
+                                    <div class="header-admin-preview">
+                                        <div class="header-preview-top">
+                                            <span>{{ site_layout.header.phone }}</span>
+                                            <span>{{ site_layout.header.email }}</span>
+                                            <strong>{{ site_layout.header.apply_label }}</strong>
+                                        </div>
+                                        <div class="header-preview-main">
+                                            <div class="header-preview-logo">
+                                                {% if site_layout.header.logo %}
+                                                    <img src="{{ site_layout.header.logo }}" alt="Logo" style="max-height: 30px; object-fit: contain;">
+                                                {% else %}
+                                                    <span>{{ site_layout.header.logo_text }}</span>
+                                                {% endif %}
+                                            </div>
+                                            <div class="header-preview-nav">
+                                                {% for link in site_layout.nav_links %}
+                                                    {% if link.label %}
+                                                        <span>{{ link.label }}</span>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
                             </div>
-                        </div>
+
+                            <section class="settings-panel">
+                                <div class="settings-panel-title">
+                                    <span>Main Menu</span>
+                                    <strong>Navigation links</strong>
+                                </div>
+                                <div class="settings-table">
+                                    <div class="settings-table-head three-cols">
+                                        <span>Label</span>
+                                        <span>URL</span>
+                                        <span>Dropdown</span>
+                                    </div>
+                                    {% for link in site_layout.nav_links %}
+                                        <div class="settings-row three-cols">
+                                            <input type="text" name="nav_links[{{ loop.index0 }}][label]" value="{{ link.label }}" placeholder="Menu label">
+                                            <input type="text" name="nav_links[{{ loop.index0 }}][url]" value="{{ link.url }}" placeholder="/page-url">
+                                            <select name="nav_links[{{ loop.index0 }}][has_dropdown]">
+                                                <option value="0" {% if link.has_dropdown == '0' %}selected{% endif %}>No</option>
+                                                <option value="1" {% if link.has_dropdown == '1' %}selected{% endif %}>Yes</option>
+                                            </select>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </section>
+
+                            <section class="settings-panel">
+                                <div class="settings-panel-title">
+                                    <span>Footer Badges</span>
+                                    <strong>Top certification logos</strong>
+                                </div>
+                                <div class="badge-settings-grid">
+                                    {% for badge in site_layout.footer_badges %}
+                                        <div class="badge-settings-card">
+                                            <div class="badge-preview">
+                                                {% if badge.image %}
+                                                    <img src="{{ badge.image }}" alt="{{ badge.label }}" style="max-height: 40px; object-fit: contain;">
+                                                {% else %}
+                                                    <span>{{ badge.label or 'Badge' }}</span>
+                                                {% endif %}
+                                            </div>
+                                            <input type="hidden" name="footer_badges[{{ loop.index0 }}][image]" value="{{ badge.image }}">
+                                            <label class="settings-field">
+                                                Label
+                                                <input type="text" name="footer_badges[{{ loop.index0 }}][label]" value="{{ badge.label }}">
+                                            </label>
+                                            <label class="settings-field">
+                                                Image
+                                                <input type="file" name="footer_badge_files[{{ loop.index0 }}]" accept="image/*">
+                                            </label>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </section>
+
+                            <div class="settings-grid">
+                                <section class="settings-panel">
+                                    <div class="settings-panel-title">
+                                        <span>Footer Contact</span>
+                                        <strong>Address and support</strong>
+                                    </div>
+                                    <div class="settings-panel-body">
+                                        <label class="settings-field">
+                                            Address
+                                            <textarea name="footer[address]">{{ site_layout.footer.address }}</textarea>
+                                        </label>
+                                        <div class="two-column-fields">
+                                            <label class="settings-field">
+                                                Phone
+                                                <input type="text" name="footer[phone]" value="{{ site_layout.footer.phone }}">
+                                            </label>
+                                            <label class="settings-field">
+                                                Email
+                                                <input type="email" name="footer[email]" value="{{ site_layout.footer.email }}">
+                                            </label>
+                                        </div>
+                                        <label class="settings-field">
+                                            Certificate Text
+                                            <textarea name="footer[certificate_text]">{{ site_layout.footer.certificate_text }}</textarea>
+                                        </label>
+                                        <div class="two-column-fields">
+                                            <label class="settings-field">
+                                                Certificate Button
+                                                <input type="text" name="footer[certificate_button_label]" value="{{ site_layout.footer.certificate_button_label }}">
+                                            </label>
+                                            <label class="settings-field">
+                                                Certificate URL
+                                                <input type="text" name="footer[certificate_url]" value="{{ site_layout.footer.certificate_url }}">
+                                            </label>
+                                        </div>
+                                        <div class="two-column-fields">
+                                            <label class="settings-field">
+                                                Chat Label
+                                                <input type="text" name="footer[chat_label]" value="{{ site_layout.footer.chat_label }}">
+                                            </label>
+                                            <label class="settings-field">
+                                                Chat URL
+                                                <input type="text" name="footer[chat_url]" value="{{ site_layout.footer.chat_url }}">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="settings-panel settings-preview-panel">
+                                    <div class="settings-panel-title">
+                                        <span>Footer Preview</span>
+                                        <strong>Contact strip</strong>
+                                    </div>
+                                    <div class="footer-admin-preview">
+                                        <div class="footer-preview-badges">
+                                            {% for badge in site_layout.footer_badges %}
+                                                {% if badge.label %}
+                                                    <span>{{ badge.label }}</span>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                        <div class="footer-preview-contact">
+                                            <p>{{ site_layout.footer.address }}</p>
+                                            <p>{{ site_layout.footer.phone }}</p>
+                                            <p>{{ site_layout.footer.email }}</p>
+                                        </div>
+                                        <button type="button">{{ site_layout.footer.certificate_button_label }}</button>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <div class="settings-columns-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 20px;">
+                                {% for col_key, col in site_layout.footer_columns.items() %}
+                                    <section class="settings-panel" style="margin-bottom: 0;">
+                                        <div class="settings-panel-title">
+                                            <span>{{ col.title }}</span>
+                                            <strong>Footer column</strong>
+                                        </div>
+                                        <div class="settings-panel-body">
+                                            <label class="settings-field">
+                                                Column Title
+                                                <input type="text" name="footer_columns[{{ col_key }}][title]" value="{{ col.title }}">
+                                            </label>
+                                            <div class="settings-table compact">
+                                                <div class="settings-table-head two-cols">
+                                                    <span>Label</span>
+                                                    <span>URL</span>
+                                                </div>
+                                                {% for link in col.links %}
+                                                    <div class="settings-row two-cols">
+                                                        <input type="text" name="footer_columns[{{ col_key }}][links][{{ loop.index0 }}][label]" value="{{ link.label }}" placeholder="Link label">
+                                                        <input type="text" name="footer_columns[{{ col_key }}][links][{{ loop.index0 }}][url]" value="{{ link.url }}" placeholder="/page-url">
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </section>
+                                {% endfor %}
+                            </div>
+
+                            <div class="settings-save-bar" style="text-align: right; margin-top: 20px; padding-top: 15px; border-top: 1px solid var(--border);">
+                                <button type="submit" class="primary-btn" style="background: var(--blue); color: #fff; padding: 10px 24px; font-weight: 700; border-radius: var(--r-md); cursor: pointer;">Save Header & Footer Settings</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
@@ -913,7 +1323,202 @@
         </div>
     </div>
 
+    <!-- Review CRUD Modal -->
+    <div id="reviewModal" class="details-modal" onclick="closeReviewModal()">
+        <div class="modal-content" onclick="event.stopPropagation()" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2 id="reviewModalTitle">Add Review</h2>
+                <button class="modal-close" onclick="closeReviewModal()">&times;</button>
+            </div>
+            <form id="reviewModalForm" method="POST" action="">
+                <div class="modal-body">
+                    <div class="form-modal-group">
+                        <label class="form-modal-label">Author Name</label>
+                        <input type="text" name="author" id="reviewAuthor" class="form-modal-input" required placeholder="e.g. John Doe">
+                    </div>
+                    <div class="form-modal-group">
+                        <label class="form-modal-label">Platform</label>
+                        <select name="platform" id="reviewPlatform" class="form-modal-input" required>
+                            <option value="Google">Google Reviews</option>
+                            <option value="Clutch">Clutch.co</option>
+                            <option value="Upwork">Upwork</option>
+                            <option value="GoodFirms">GoodFirms</option>
+                        </select>
+                    </div>
+                    <div class="form-modal-group">
+                        <label class="form-modal-label">Review Content</label>
+                        <textarea name="text" id="reviewText" class="form-modal-input" rows="4" required placeholder="Paste review text here..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer" style="padding: 15px 20px; background: var(--surface-2); border-top: 1px solid var(--border); text-align: right; display: flex; justify-content: flex-end; gap: 10px;">
+                    <button type="button" class="small-btn" onclick="closeReviewModal()" style="padding: 8px 16px;">Cancel</button>
+                    <button type="submit" class="primary-btn" style="padding: 8px 16px;">Save Review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Blog CRUD Modal -->
+    <div id="blogModal" class="details-modal" onclick="closeBlogModal()">
+        <div class="modal-content" onclick="event.stopPropagation()" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2 id="blogModalTitle">Publish Blog Post</h2>
+                <button class="modal-close" onclick="closeBlogModal()">&times;</button>
+            </div>
+            <form id="blogModalForm" method="POST" action="">
+                <div class="modal-body">
+                    <div class="form-modal-group">
+                        <label class="form-modal-label">Title</label>
+                        <input type="text" name="title" id="blogTitle" class="form-modal-input" required placeholder="e.g. 10 Web Design Trends for 2026">
+                    </div>
+                    <div class="form-modal-group">
+                        <label class="form-modal-label">Slug (Optional, auto-generated from Title if blank)</label>
+                        <input type="text" name="slug" id="blogSlug" class="form-modal-input" placeholder="e.g. 10-web-design-trends-2026">
+                    </div>
+                    <div class="form-modal-group">
+                        <label class="form-modal-label">Category</label>
+                        <input type="text" name="category" id="blogCategory" class="form-modal-input" placeholder="e.g. Technology, Web Design">
+                    </div>
+                    <div class="form-modal-group">
+                        <label class="form-modal-label">Summary / Short Excerpt</label>
+                        <input type="text" name="summary" id="blogSummary" class="form-modal-input" placeholder="Short description of the blog post">
+                    </div>
+                    <div class="form-modal-group">
+                        <label class="form-modal-label">Header Image URL</label>
+                        <input type="text" name="image" id="blogImage" class="form-modal-input" placeholder="e.g. /static/images/blog-1.jpg">
+                    </div>
+                    <div class="form-modal-group">
+                        <label class="form-modal-label">Content (HTML allowed)</label>
+                        <textarea name="content" id="blogContent" class="form-modal-input" rows="8" placeholder="Write full HTML post content here..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer" style="padding: 15px 20px; background: var(--surface-2); border-top: 1px solid var(--border); text-align: right; display: flex; justify-content: flex-end; gap: 10px;">
+                    <button type="button" class="small-btn" onclick="closeBlogModal()" style="padding: 8px 16px;">Cancel</button>
+                    <button type="submit" class="primary-btn" style="padding: 8px 16px;">Publish Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Portfolio CRUD Modal -->
+    <div id="portfolioModal" class="details-modal" onclick="closePortfolioModal()">
+        <div class="modal-content" onclick="event.stopPropagation()" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2 id="portfolioModalTitle">Add Project</h2>
+                <button class="modal-close" onclick="closePortfolioModal()">&times;</button>
+            </div>
+            <form id="portfolioModalForm" method="POST" action="">
+                <div class="modal-body">
+                    <div class="form-modal-group">
+                        <label class="form-modal-label">Client Name / Project Title</label>
+                        <input type="text" name="title" id="portfolioTitle" class="form-modal-input" required placeholder="e.g. Zeitgeist Logistics Dashboard">
+                    </div>
+                    <div class="form-modal-group">
+                        <label class="form-modal-label">Technology Stack</label>
+                        <input type="text" name="technology" id="portfolioTech" class="form-modal-input" required placeholder="e.g. MERN Stack, React, Node">
+                    </div>
+                    <div class="form-modal-group">
+                        <label class="form-modal-label">Location / Target Market</label>
+                        <input type="text" name="location" id="portfolioLocation" class="form-modal-input" placeholder="e.g. Munich, Germany">
+                    </div>
+                    <div class="form-modal-group">
+                        <label class="form-modal-label">Status</label>
+                        <select name="status" id="portfolioStatus" class="form-modal-input">
+                            <option value="Completed">Completed</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Active">Active</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer" style="padding: 15px 20px; background: var(--surface-2); border-top: 1px solid var(--border); text-align: right; display: flex; justify-content: flex-end; gap: 10px;">
+                    <button type="button" class="small-btn" onclick="closePortfolioModal()" style="padding: 8px 16px;">Cancel</button>
+                    <button type="submit" class="primary-btn" style="padding: 8px 16px;">Save Project</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Video CRUD Modal -->
+    <div id="videoModal" class="details-modal" onclick="closeVideoModal()">
+        <div class="modal-content" onclick="event.stopPropagation()" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2>Add Video Entry</h2>
+                <button class="modal-close" onclick="closeVideoModal()">&times;</button>
+            </div>
+            <form method="POST" action="{{ url_for('add_video') }}">
+                <div class="modal-body">
+                    <div class="form-modal-group">
+                        <label class="form-modal-label">Video Title</label>
+                        <input type="text" name="title" class="form-modal-input" required placeholder="e.g. Web Design Services Intro">
+                    </div>
+                    <div class="form-modal-group">
+                        <label class="form-modal-label">YouTube Video Embed URL or Source URL</label>
+                        <input type="text" name="src" class="form-modal-input" required placeholder="e.g. https://www.youtube.com/embed/dQw4w9WgXcQ">
+                    </div>
+                </div>
+                <div class="modal-footer" style="padding: 15px 20px; background: var(--surface-2); border-top: 1px solid var(--border); text-align: right; display: flex; justify-content: flex-end; gap: 10px;">
+                    <button type="button" class="small-btn" onclick="closeVideoModal()" style="padding: 8px 16px;">Cancel</button>
+                    <button type="submit" class="primary-btn" style="padding: 8px 16px;">Save Video</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Client Logo CRUD Modal -->
+    <div id="logoModal" class="details-modal" onclick="closeLogoModal()">
+        <div class="modal-content" onclick="event.stopPropagation()" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2>Add Client Partner Logo</h2>
+                <button class="modal-close" onclick="closeLogoModal()">&times;</button>
+            </div>
+            <form method="POST" action="{{ url_for('add_logo') }}" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="form-modal-group">
+                        <label class="form-modal-label">Upload Logo Image File</label>
+                        <input type="file" name="logo_file" accept="image/*" class="form-modal-input">
+                    </div>
+                    <div style="text-align: center; margin: 10px 0; color: var(--caption); font-size: 11px;">— OR PROVIDE LOGO WEB ADDRESS —</div>
+                    <div class="form-modal-group">
+                        <label class="form-modal-label">Logo Image URL</label>
+                        <input type="text" name="url" class="form-modal-input" placeholder="e.g. https://staging.sortiqsolutions.com/...logo.png">
+                    </div>
+                </div>
+                <div class="modal-footer" style="padding: 15px 20px; background: var(--surface-2); border-top: 1px solid var(--border); text-align: right; display: flex; justify-content: flex-end; gap: 10px;">
+                    <button type="button" class="small-btn" onclick="closeLogoModal()" style="padding: 8px 16px;">Cancel</button>
+                    <button type="submit" class="primary-btn" style="padding: 8px 16px;">Save Partner Logo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
+        function togglePagesDropdown(e) {
+            if (e) {
+                e.stopPropagation();
+                e.preventDefault();
+            }
+            const submenu = document.getElementById('pages-submenu');
+            const caret = document.getElementById('pages-caret');
+            if (submenu.style.display === 'none' || submenu.style.display === '') {
+                submenu.style.display = 'block';
+                caret.classList.remove('fa-chevron-down');
+                caret.classList.add('fa-chevron-up');
+            } else {
+                submenu.style.display = 'none';
+                caret.classList.remove('fa-chevron-up');
+                caret.classList.add('fa-chevron-down');
+            }
+        }
+
+        function selectSubPage(pagePath) {
+            switchSidebarTab('pages', 'Pages', 'Meta titles and descriptions.');
+            const selector = document.getElementById('page-metadata-selector');
+            if (selector) {
+                selector.value = pagePath;
+                switchMetadataPage(pagePath);
+            }
+        }
+
         // Tab switching logic for Sidebar menu items
         function switchSidebarTab(tabName, displayName, description) {
             // Update sidebar links active styles
@@ -1103,6 +1708,95 @@
                 .replace(/>/g, "&gt;")
                 .replace(/"/g, "&quot;")
                 .replace(/'/g, "&#039;");
+        }
+
+        // --- Interactive CRUD Modals Actions ---
+        
+        // 1. Review CRUD Actions
+        function openAddReviewModal() {
+            document.getElementById('reviewModalTitle').textContent = 'Add Review';
+            document.getElementById('reviewModalForm').action = "{{ url_for('add_review') }}";
+            document.getElementById('reviewAuthor').value = '';
+            document.getElementById('reviewPlatform').value = 'Google';
+            document.getElementById('reviewText').value = '';
+            document.getElementById('reviewModal').style.display = 'flex';
+        }
+        function openEditReviewModal(data) {
+            document.getElementById('reviewModalTitle').textContent = 'Edit Review';
+            document.getElementById('reviewModalForm').action = "/admin/reviews/edit/" + data.id;
+            document.getElementById('reviewAuthor').value = data.author;
+            document.getElementById('reviewPlatform').value = data.platform || 'Google';
+            document.getElementById('reviewText').value = data.text;
+            document.getElementById('reviewModal').style.display = 'flex';
+        }
+        function closeReviewModal() {
+            document.getElementById('reviewModal').style.display = 'none';
+        }
+
+        // 2. Blog CRUD Actions
+        function openAddBlogModal() {
+            document.getElementById('blogModalTitle').textContent = 'Publish Blog Post';
+            document.getElementById('blogModalForm').action = "{{ url_for('add_blog') }}";
+            document.getElementById('blogTitle').value = '';
+            document.getElementById('blogSlug').value = '';
+            document.getElementById('blogCategory').value = '';
+            document.getElementById('blogSummary').value = '';
+            document.getElementById('blogImage').value = '';
+            document.getElementById('blogContent').value = '';
+            document.getElementById('blogModal').style.display = 'flex';
+        }
+        function openEditBlogModal(data) {
+            document.getElementById('blogModalTitle').textContent = 'Edit Blog Post';
+            document.getElementById('blogModalForm').action = "/admin/blogs/edit/" + data.id;
+            document.getElementById('blogTitle').value = data.title;
+            document.getElementById('blogSlug').value = data.slug || '';
+            document.getElementById('blogCategory').value = data.categories || '';
+            document.getElementById('blogSummary').value = data.summary || '';
+            document.getElementById('blogImage').value = data.image || '';
+            document.getElementById('blogContent').value = data.content || '';
+            document.getElementById('blogModal').style.display = 'flex';
+        }
+        function closeBlogModal() {
+            document.getElementById('blogModal').style.display = 'none';
+        }
+
+        // 3. Portfolio CRUD Actions
+        function openAddPortfolioModal() {
+            document.getElementById('portfolioModalTitle').textContent = 'Add Project';
+            document.getElementById('portfolioModalForm').action = "{{ url_for('add_portfolio') }}";
+            document.getElementById('portfolioTitle').value = '';
+            document.getElementById('portfolioTech').value = '';
+            document.getElementById('portfolioLocation').value = '';
+            document.getElementById('portfolioStatus').value = 'Completed';
+            document.getElementById('portfolioModal').style.display = 'flex';
+        }
+        function openEditPortfolioModal(data) {
+            document.getElementById('portfolioModalTitle').textContent = 'Edit Project';
+            document.getElementById('portfolioModalForm').action = "/admin/portfolio/edit/" + data.id;
+            document.getElementById('portfolioTitle').value = data.title;
+            document.getElementById('portfolioTech').value = data.technology;
+            document.getElementById('portfolioLocation').value = data.location || '';
+            document.getElementById('portfolioStatus').value = data.status || 'Completed';
+            document.getElementById('portfolioModal').style.display = 'flex';
+        }
+        function closePortfolioModal() {
+            document.getElementById('portfolioModal').style.display = 'none';
+        }
+
+        // 4. Video Add Modal
+        function openAddVideoModal() {
+            document.getElementById('videoModal').style.display = 'flex';
+        }
+        function closeVideoModal() {
+            document.getElementById('videoModal').style.display = 'none';
+        }
+
+        // 5. Logo Add Modal
+        function openAddLogoModal() {
+            document.getElementById('logoModal').style.display = 'flex';
+        }
+        function closeLogoModal() {
+            document.getElementById('logoModal').style.display = 'none';
         }
 
         // Set live dates on startup

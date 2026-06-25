@@ -8,10 +8,104 @@ app.secret_key = 'sortiq_clone_secret_key'
 
 import sqlite3
 from werkzeug.utils import secure_filename
+import json
 
 DATABASE = os.path.join(app.root_path, 'sortiq.db')
 UPLOAD_FOLDER = os.path.join(app.root_path, 'static', 'uploads', 'resumes')
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+DEFAULT_SITE_LAYOUT = {
+    "header": {
+        "logo_text": "Sortiq Solutions",
+        "phone": "+91 9646522110",
+        "email": "info@sortiqsolutions.com",
+        "apply_label": "Apply Internship",
+        "apply_url": "/internship/"
+    },
+    "nav_links": [
+        {"label": "Home", "url": "/", "has_dropdown": "0"},
+        {"label": "About Us", "url": "/about-us/", "has_dropdown": "1"},
+        {"label": "Services", "url": "/services/", "has_dropdown": "1"},
+        {"label": "Our Work", "url": "/our-work/", "has_dropdown": "1"},
+        {"label": "Blog", "url": "/blog/", "has_dropdown": "0"},
+        {"label": "Contact Us", "url": "/contact/", "has_dropdown": "0"},
+        {"label": "", "url": "", "has_dropdown": "0"},
+        {"label": "", "url": "", "has_dropdown": "0"}
+    ],
+    "footer_badges": [
+        {"label": "Goodfirms", "image": "/static/images/GF-min.png"},
+        {"label": "Top Rated", "image": "/static/images/digital-marketing-logo-min.png"},
+        {"label": "Upwork", "image": "/static/images/upwork-logo-min.png"},
+        {"label": "Wix Partner", "image": "/static/images/EN_legend_small.png"},
+        {"label": "ISO 9001", "image": "/static/images/iso-certified.webp"},
+        {"label": "", "image": ""},
+        {"label": "", "image": ""},
+        {"label": "", "image": ""}
+    ],
+    "footer": {
+        "address": "E-51, Second Floor, Phase - 8, Industrial Area, S.A.S. Nagar, Mohali, Punjab 160071",
+        "phone": "+91 9646522110",
+        "email": "sortiqsolutions@gmail.com",
+        "certificate_text": "Verify your certificate's authenticity now.",
+        "certificate_button_label": "Verify Now",
+        "certificate_url": "https://erp.sortiqsolutions.com/certificate-verify",
+        "chat_label": "Chat with us",
+        "chat_url": "https://wa.me/+919646522110?text=Hello,%20I%20would%20like%20to%20know%20more%20about%20your%20services!"
+    },
+    "footer_columns": {
+        "company": {
+            "title": "Our Company",
+            "links": [
+                {"label": "Home", "url": "/"},
+                {"label": "About Us", "url": "/about-us/"},
+                {"label": "Why Choose Us", "url": "/why-choose-us/"},
+                {"label": "Terms", "url": "/terms/"},
+                {"label": "Portfolio", "url": "/portfolios/"},
+                {"label": "Our Career", "url": "/our-career/"},
+                {"label": "Our Clients", "url": "/clients/"},
+                {"label": "Blog", "url": "/blog/"},
+                {"label": "Contact Sortiq Solutions", "url": "/contact/"},
+                {"label": "FAQ", "url": "/faq/"},
+                {"label": "", "url": ""},
+                {"label": "", "url": ""}
+            ]
+        },
+        "services": {
+            "title": "Our Services",
+            "links": [
+                {"label": "Web Designing", "url": "/website-designing-company/"},
+                {"label": "Web Development", "url": "/website-development-company/"},
+                {"label": "SEO", "url": "/seo-company/"},
+                {"label": "SMO", "url": "/smo-company/"},
+                {"label": "Digital Marketing", "url": "/digital-marketing-company/"},
+                {"label": "eCommerce Development", "url": "/ecommerce-development-company/"},
+                {"label": "App Development", "url": "/app-development-company/"},
+                {"label": "Software Testing", "url": "/software-testing-company/"},
+                {"label": "", "url": ""},
+                {"label": "", "url": ""},
+                {"label": "", "url": ""},
+                {"label": "", "url": ""}
+            ]
+        },
+        "solutions": {
+            "title": "Solutions",
+            "links": [
+                {"label": "PHP Development", "url": "/php-development-company/"},
+                {"label": "Laravel Development", "url": "/laravel-development-company/"},
+                {"label": "CodeIgniter", "url": "/codeigniter-development-company/"},
+                {"label": "Shopify Development", "url": "/shopify-development-company/"},
+                {"label": "WordPress Development", "url": "/wordpress-development-company/"},
+                {"label": "React JS Development", "url": "/react-js-development-company/"},
+                {"label": "Node JS Development", "url": "/node-js-development-company/"},
+                {"label": "Vue JS Development", "url": "/vue-js-development-company/"},
+                {"label": "", "url": ""},
+                {"label": "", "url": ""},
+                {"label": "", "url": ""},
+                {"label": "", "url": ""}
+            ]
+        }
+    }
+}
 
 def get_db_connection():
     conn = sqlite3.connect(DATABASE)
@@ -45,10 +139,186 @@ def init_db():
             timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
         )
     ''')
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS blogs (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT NOT NULL,
+            slug TEXT NOT NULL,
+            date TEXT,
+            categories TEXT,
+            summary TEXT,
+            image TEXT,
+            content TEXT
+        )
+    ''')
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS reviews (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            author TEXT NOT NULL,
+            platform TEXT,
+            text TEXT
+        )
+    ''')
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS portfolios (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            project_code TEXT,
+            title TEXT NOT NULL,
+            technology TEXT,
+            location TEXT,
+            status TEXT
+        )
+    ''')
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS videos (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT NOT NULL,
+            src TEXT NOT NULL
+        )
+    ''')
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS client_logos (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            url TEXT NOT NULL
+        )
+    ''')
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS pages_metadata (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            page_path TEXT UNIQUE,
+            title TEXT,
+            description TEXT
+        )
+    ''')
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS site_settings (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            key TEXT UNIQUE,
+            value TEXT
+        )
+    ''')
+    conn.commit()
+    
+    cursor = conn.cursor()
+    
+    # Seed Blogs
+    cursor.execute('SELECT COUNT(*) FROM blogs')
+    if cursor.fetchone()[0] == 0:
+        blogs_data = load_blogs()
+        for blog in blogs_data:
+            cats = ",".join(blog.get('categories', []))
+            conn.execute(
+                'INSERT INTO blogs (title, slug, date, categories, summary, image, content) VALUES (?, ?, ?, ?, ?, ?, ?)',
+                (blog['title'], blog['slug'], blog['date'], cats, blog.get('summary', ''), blog.get('image', ''), blog.get('content', ''))
+            )
+            
+    # Seed Reviews
+    cursor.execute('SELECT COUNT(*) FROM reviews')
+    if cursor.fetchone()[0] == 0:
+        reviews_data = load_reviews()
+        for rev in reviews_data:
+            conn.execute(
+                'INSERT INTO reviews (author, platform, text) VALUES (?, ?, ?)',
+                (rev['author'], rev.get('platform', 'Google'), rev['text'])
+            )
+
+    # Seed Portfolios
+    cursor.execute('SELECT COUNT(*) FROM portfolios')
+    if cursor.fetchone()[0] == 0:
+        mock_projects = [
+            ("#PRJ-092", "Zeitgeist Logistics Dashboard", "MERN Stack, Redis, AWS", "Munich, Germany", "Completed"),
+            ("#PRJ-091", "Advantage Plus Tax Gateway", "React, Laravel, PostgreSQL", "Toronto, Canada", "Completed"),
+            ("#PRJ-090", "Helium Recruiting Portal", "WordPress Custom API, PHP", "London, UK", "Completed"),
+            ("#PRJ-089", "Kebaonish Brand E-commerce", "Shopify Plus, Liquid API", "Vancouver, Canada", "Completed"),
+        ]
+        for pcode, title, tech, loc, stat in mock_projects:
+            conn.execute(
+                'INSERT INTO portfolios (project_code, title, technology, location, status) VALUES (?, ?, ?, ?, ?)',
+                (pcode, title, tech, loc, stat)
+            )
+
+    # Seed Videos
+    cursor.execute('SELECT COUNT(*) FROM videos')
+    if cursor.fetchone()[0] == 0:
+        for pg, vids in VIDEOS_DATA.items():
+            for vid in vids:
+                conn.execute(
+                    'INSERT INTO videos (title, src) VALUES (?, ?)',
+                    (vid['title'], vid['src'])
+                )
+
+    # Seed Logos
+    cursor.execute('SELECT COUNT(*) FROM client_logos')
+    if cursor.fetchone()[0] == 0:
+        for pg, logos in CLIENTS_DATA.items():
+            for logo in logos:
+                conn.execute(
+                    'INSERT INTO client_logos (url) VALUES (?)',
+                    (logo,)
+                )
+
+    # Seed Pages Metadata
+    cursor.execute('SELECT COUNT(*) FROM pages_metadata')
+    if cursor.fetchone()[0] == 0:
+        pages_seed = [
+            # COMPANY PAGES
+            ('home', 'Sortiq Solutions - Smart Sorting IT Solutions', 'Professional software development, MERN, and SEO consulting agency.'),
+            ('about', 'About Us - Sortiq Solutions', 'Learn more about our vision, core values, and dedicated team.'),
+            ('why-choose-us', 'Why Choose Us - Sortiq Solutions', 'Understand what makes Sortiq Solutions a premium choice for web services.'),
+            ('our-expertise', 'Our Technical Expertise - Sortiq Solutions', 'Discover the tech stacks, databases, and frameworks we specialize in.'),
+            ('case-studies', 'Case Studies - Sortiq Solutions', 'Explore our success stories and portfolio case studies.'),
+            ('our-career', 'Careers - Join Our Team | Sortiq Solutions', 'Explore job opportunities and internships at Sortiq Solutions.'),
+            ('internship', 'Internship Program - Sortiq Solutions', 'Launch your career with our hands-on IT and software internship.'),
+            ('faq', 'FAQ - Sortiq Solutions', 'Frequently asked questions about our software development and IT agency.'),
+            ('support', 'Support - Sortiq Solutions', 'Get in touch with our helpdesk and customer support services.'),
+            ('terms', 'Terms of Service - Sortiq Solutions', 'Read the terms and conditions governing the use of our services.'),
+            ('contact', 'Contact Us - Sortiq Solutions', 'Reach out for inquiries, consultations, and custom IT project quotes.'),
+            
+            # CONTENT PAGES
+            ('blog', 'Blog - Sortiq Solutions', 'Stay updated with our latest articles, insights, and tech tutorials.'),
+            ('portfolio', 'Our Portfolio - Sortiq Solutions', 'Check out our showcased projects and design work.'),
+            ('reviews', 'Client Reviews - Sortiq Solutions', 'Read what our clients say about our deliverables and services.'),
+            ('clients', 'Our Clients - Sortiq Solutions', 'View our portfolio of satisfied clients and corporate partners.'),
+            ('videos', 'Video Gallery - Sortiq Solutions', 'Watch our promotional material, walkthroughs, and visual portfolio.'),
+            
+            # SERVICE PAGES
+            ('services-overview', 'Services Overview - Sortiq Solutions', 'Overview of all custom development, design, and marketing services.'),
+            ('website-design', 'Website Designing Company - Sortiq Solutions', 'Custom UI/UX website designing services tailored for your brand.'),
+            ('laravel', 'Laravel Development Services - Sortiq Solutions', 'Scalable, secure PHP applications built using the Laravel framework.'),
+            ('wordpress', 'WordPress Development Services - Sortiq Solutions', 'Custom themes, plugins, and high-performance WordPress sites.'),
+            ('ecommerce', 'E-commerce Development Services - Sortiq Solutions', 'Complete online stores, shopping carts, and secure payment integrations.'),
+            ('digital-marketing', 'Digital Marketing Agency - Sortiq Solutions', 'Drive traffic, generate leads, and boost conversions with our digital plans.'),
+            ('seo', 'SEO Consulting & Services - Sortiq Solutions', 'Rank higher on Google with our technical and on-page optimization services.'),
+            ('smo', 'Social Media Optimization (SMO) - Sortiq Solutions', 'Optimize your brand presence across major social media networks.'),
+            ('graphics', 'Graphic Designing Services - Sortiq Solutions', 'Professional layouts, illustrations, and digital branding assets.'),
+            ('banners', 'Banner Designing Services - Sortiq Solutions', 'High-click-through promotional banners and display ads.'),
+            ('logos', 'Logo Designing Services - Sortiq Solutions', 'Unique corporate logos and brand identity packages.'),
+            ('maintenance', 'Website Maintenance Services - Sortiq Solutions', 'Regular backups, security patches, and performance optimizations.'),
+            ('bigcommerce', 'BigCommerce Development Services - Sortiq Solutions', 'Enterprise-grade headless commerce and custom store setups.'),
+            ('mern-stack', 'MERN Stack Development Services - Sortiq Solutions', 'Full-stack Javascript applications using MongoDB, Express, React, Node.js.'),
+            ('app-development', 'Mobile App Development Services - Sortiq Solutions', 'Native and cross-platform apps built for iOS and Android devices.'),
+            ('testing', 'Software Testing & Quality Assurance - Sortiq Solutions', 'Manual and automated testing to ensure bug-free software deployment.'),
+            ('cyber-security', 'Cyber Security Services - Sortiq Solutions', 'Protect your infrastructure with our comprehensive security audits.'),
+            ('hubspot', 'HubSpot Integration & Consulting - Sortiq Solutions', 'CRM setup, marketing automation, and HubSpot pipeline tuning.'),
+            ('zoho', 'Zoho Consulting Services - Sortiq Solutions', 'Maximize efficiency with custom Zoho Creator and CRM solutions.'),
+            ('php', 'Custom PHP Development Services - Sortiq Solutions', 'High-performance web applications built on core and framework PHP.'),
+            ('codeigniter', 'CodeIgniter Development Services - Sortiq Solutions', 'Lightweight, rapid PHP web applications and API architectures.'),
+            ('shopify', 'Shopify Development Services - Sortiq Solutions', 'Launch, optimize, and customize Shopify and Shopify Plus e-shops.'),
+            ('react', 'ReactJS Frontend Development - Sortiq Solutions', 'Build snappy, dynamic single-page web applications with React.')
+        ]
+        for path, title, desc in pages_seed:
+            conn.execute("INSERT OR IGNORE INTO pages_metadata (page_path, title, description) VALUES (?, ?, ?)", (path, title, desc))
+
+    # Seed Site Settings
+    cursor.execute('SELECT COUNT(*) FROM site_settings')
+    if cursor.fetchone()[0] == 0:
+        conn.execute("INSERT OR IGNORE INTO site_settings (key, value) VALUES ('phone', '+91 98889 00877')")
+        conn.execute("INSERT OR IGNORE INTO site_settings (key, value) VALUES ('email', 'info@sortiqsolutions.com')")
+        conn.execute("INSERT OR IGNORE INTO site_settings (key, value) VALUES ('address', 'IT Park, Block B, Chandigarh, India')")
+        conn.execute("INSERT OR IGNORE INTO site_settings (key, value) VALUES ('site_layout', ?)", (json.dumps(DEFAULT_SITE_LAYOUT),))
+
     conn.commit()
     conn.close()
-
-init_db()
 
 @app.after_request
 def add_header(response):
@@ -59,18 +329,40 @@ def add_header(response):
 import json
 
 def load_blogs():
-    json_path = os.path.join(app.root_path, 'static', 'blogs.json')
-    if os.path.exists(json_path):
-        with open(json_path, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    return []
+    try:
+        conn = sqlite3.connect(DATABASE)
+        conn.row_factory = sqlite3.Row
+        rows = conn.execute('SELECT * FROM blogs ORDER BY id DESC').fetchall()
+        conn.close()
+        
+        blogs_list = []
+        for r in rows:
+            b = dict(r)
+            b['categories'] = [c.strip() for c in b['categories'].split(',')] if b['categories'] else []
+            blogs_list.append(b)
+        return blogs_list
+    except Exception as e:
+        print(f"Error loading blogs from database: {e}")
+        json_path = os.path.join(app.root_path, 'static', 'blogs.json')
+        if os.path.exists(json_path):
+            with open(json_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        return []
 
 def load_reviews():
-    json_path = os.path.join(app.root_path, 'static', 'reviews.json')
-    if os.path.exists(json_path):
-        with open(json_path, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    return []
+    try:
+        conn = sqlite3.connect(DATABASE)
+        conn.row_factory = sqlite3.Row
+        rows = conn.execute('SELECT * FROM reviews ORDER BY id DESC').fetchall()
+        conn.close()
+        return [dict(r) for r in rows]
+    except Exception as e:
+        print(f"Error loading reviews from database: {e}")
+        json_path = os.path.join(app.root_path, 'static', 'reviews.json')
+        if os.path.exists(json_path):
+            with open(json_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        return []
 
 @app.route('/')
 def index():
@@ -1606,7 +1898,7 @@ def admin_login():
         username = request.form.get('username') or request.form.get('email')
         password = request.form.get('password')
         
-        if (username == 'admin' or username == 'sortiqsolutions@gmail.com' or username == 'admin@sortiq.com') and (password == 'admin123' or password == 'sortiq'):
+        if (username == 'admin' or username == 'sortiqsolutions@gmail.com' ) and (password == 'sortiq'):
             session['admin_logged_in'] = True
             flash('Successfully logged in!', 'success')
             return redirect(url_for('admin_dashboard'))
@@ -1622,6 +1914,35 @@ def admin_logout():
     flash('Successfully logged out.', 'success')
     return redirect(url_for('admin_login'))
 
+@app.context_processor
+def inject_globals():
+    try:
+        conn = get_db_connection()
+        settings_rows = conn.execute('SELECT * FROM site_settings').fetchall()
+        conn.close()
+        settings = {row['key']: row['value'] for row in settings_rows}
+        
+        site_layout = DEFAULT_SITE_LAYOUT
+        if 'site_layout' in settings:
+            try:
+                site_layout = json.loads(settings['site_layout'])
+            except Exception:
+                pass
+                
+        return {
+            'phone': site_layout['header'].get('phone', '+91 9646522110'),
+            'email': site_layout['header'].get('email', 'info@sortiqsolutions.com'),
+            'address': site_layout['footer'].get('address', 'IT Park, Block B, Chandigarh, India'),
+            'site_layout': site_layout
+        }
+    except Exception:
+        return {
+            'phone': '+91 9646522110',
+            'email': 'info@sortiqsolutions.com',
+            'address': 'IT Park, Block B, Chandigarh, India',
+            'site_layout': DEFAULT_SITE_LAYOUT
+        }
+
 @app.route('/admin/dashboard')
 @app.route('/admin/dashboard/')
 @admin_required
@@ -1636,16 +1957,27 @@ def admin_dashboard():
     enquiries_count = len(enquiries)
     applications_count = len(applications)
     resumes_count = conn.execute('SELECT COUNT(*) FROM fresher_applications WHERE cv_filename IS NOT NULL AND cv_filename != ""').fetchone()[0]
+    
+    # Load from DB tables
+    blogs = [dict(r) for r in conn.execute('SELECT * FROM blogs ORDER BY id DESC').fetchall()]
+    for b in blogs:
+        b['categories'] = [c.strip() for c in b['categories'].split(',')] if b['categories'] else []
+        
+    reviews = [dict(r) for r in conn.execute('SELECT * FROM reviews ORDER BY id DESC').fetchall()]
+    portfolios = [dict(r) for r in conn.execute('SELECT * FROM portfolios ORDER BY id DESC').fetchall()]
+    videos = [dict(r) for r in conn.execute('SELECT * FROM videos ORDER BY id DESC').fetchall()]
+    client_logos = [dict(r) for r in conn.execute('SELECT * FROM client_logos ORDER BY id DESC').fetchall()]
+    pages_meta = [dict(r) for r in conn.execute('SELECT * FROM pages_metadata').fetchall()]
+    settings_rows = conn.execute('SELECT * FROM site_settings').fetchall()
+    settings = {row['key']: row['value'] for row in settings_rows}
+    
     conn.close()
     
-    blogs = load_blogs()
-    reviews = load_reviews()
-    
-    # Calculate counts
     blogs_count = len(blogs)
     reviews_count = len(reviews)
-    logos_count = sum(len(logos) for logos in CLIENTS_DATA.values())
-    videos_count = sum(len(vids) for vids in VIDEOS_DATA.values())
+    logos_count = len(client_logos)
+    videos_count = len(videos)
+    portfolios_count = len(portfolios)
     
     return render_template(
         'admin_dashboard.html',
@@ -1656,12 +1988,16 @@ def admin_dashboard():
         resumes_count=resumes_count,
         blogs=blogs,
         reviews=reviews,
+        portfolios=portfolios,
+        videos=videos,
+        client_logos=client_logos,
+        pages_metadata=pages_meta,
+        site_settings=settings,
         blogs_count=blogs_count,
         reviews_count=reviews_count,
         logos_count=logos_count,
         videos_count=videos_count,
-        clients_data=CLIENTS_DATA,
-        videos_data=VIDEOS_DATA
+        portfolios_count=portfolios_count
     )
 
 @app.route('/admin/delete-enquiry/<int:id>', methods=['POST'])
@@ -1699,6 +2035,393 @@ def delete_fresher(id):
         flash(f'Error deleting application: {str(e)}', 'danger')
     return redirect(url_for('admin_dashboard'))
 
+# Blogs CRUD
+@app.route('/admin/blogs/add', methods=['POST'])
+@admin_required
+def add_blog():
+    try:
+        title = request.form.get('title')
+        slug = request.form.get('slug') or title.lower().replace(' ', '-')
+        category = request.form.get('category', 'Technology')
+        summary = request.form.get('summary', '')
+        image = request.form.get('image', '')
+        content = request.form.get('content', '')
+        
+        import datetime
+        date_str = datetime.datetime.now().strftime("%B %Y")
+        
+        conn = get_db_connection()
+        conn.execute(
+            'INSERT INTO blogs (title, slug, date, categories, summary, image, content) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            (title, slug, date_str, category, summary, image, content)
+        )
+        conn.commit()
+        conn.close()
+        flash('Blog post published successfully!', 'success')
+    except Exception as e:
+        flash(f'Error publishing blog: {str(e)}', 'danger')
+    return redirect(url_for('admin_dashboard'))
+
+@app.route('/admin/blogs/edit/<int:id>', methods=['POST'])
+@admin_required
+def edit_blog(id):
+    try:
+        title = request.form.get('title')
+        slug = request.form.get('slug')
+        category = request.form.get('category')
+        summary = request.form.get('summary')
+        image = request.form.get('image')
+        content = request.form.get('content')
+        
+        conn = get_db_connection()
+        conn.execute(
+            'UPDATE blogs SET title = ?, slug = ?, categories = ?, summary = ?, image = ?, content = ? WHERE id = ?',
+            (title, slug, category, summary, image, content, id)
+        )
+        conn.commit()
+        conn.close()
+        flash('Blog post updated successfully!', 'success')
+    except Exception as e:
+        flash(f'Error updating blog: {str(e)}', 'danger')
+    return redirect(url_for('admin_dashboard'))
+
+@app.route('/admin/blogs/delete/<int:id>', methods=['POST'])
+@admin_required
+def delete_blog(id):
+    try:
+        conn = get_db_connection()
+        conn.execute('DELETE FROM blogs WHERE id = ?', (id,))
+        conn.commit()
+        conn.close()
+        flash('Blog post deleted successfully.', 'success')
+    except Exception as e:
+        flash(f'Error deleting blog: {str(e)}', 'danger')
+    return redirect(url_for('admin_dashboard'))
+
+# Reviews CRUD
+@app.route('/admin/reviews/add', methods=['POST'])
+@admin_required
+def add_review():
+    try:
+        author = request.form.get('author')
+        platform = request.form.get('platform', 'Google')
+        text = request.form.get('text')
+        
+        conn = get_db_connection()
+        conn.execute(
+            'INSERT INTO reviews (author, platform, text) VALUES (?, ?, ?)',
+            (author, platform, text)
+        )
+        conn.commit()
+        conn.close()
+        flash('Review added successfully!', 'success')
+    except Exception as e:
+        flash(f'Error adding review: {str(e)}', 'danger')
+    return redirect(url_for('admin_dashboard'))
+
+@app.route('/admin/reviews/edit/<int:id>', methods=['POST'])
+@admin_required
+def edit_review(id):
+    try:
+        author = request.form.get('author')
+        platform = request.form.get('platform')
+        text = request.form.get('text')
+        
+        conn = get_db_connection()
+        conn.execute(
+            'UPDATE reviews SET author = ?, platform = ?, text = ? WHERE id = ?',
+            (author, platform, text, id)
+        )
+        conn.commit()
+        conn.close()
+        flash('Review updated successfully!', 'success')
+    except Exception as e:
+        flash(f'Error updating review: {str(e)}', 'danger')
+    return redirect(url_for('admin_dashboard'))
+
+@app.route('/admin/reviews/delete/<int:id>', methods=['POST'])
+@admin_required
+def delete_review(id):
+    try:
+        conn = get_db_connection()
+        conn.execute('DELETE FROM reviews WHERE id = ?', (id,))
+        conn.commit()
+        conn.close()
+        flash('Review deleted successfully.', 'success')
+    except Exception as e:
+        flash(f'Error deleting review: {str(e)}', 'danger')
+    return redirect(url_for('admin_dashboard'))
+
+# Portfolios CRUD
+@app.route('/admin/portfolio/add', methods=['POST'])
+@admin_required
+def add_portfolio():
+    try:
+        title = request.form.get('title')
+        tech = request.form.get('technology')
+        loc = request.form.get('location')
+        stat = request.form.get('status', 'Completed')
+        
+        conn = get_db_connection()
+        max_id_row = conn.execute('SELECT MAX(id) FROM portfolios').fetchone()
+        next_id = (max_id_row[0] or 0) + 1
+        pcode = f"#PRJ-{next_id:03d}"
+        
+        conn.execute(
+            'INSERT INTO portfolios (project_code, title, technology, location, status) VALUES (?, ?, ?, ?, ?)',
+            (pcode, title, tech, loc, stat)
+        )
+        conn.commit()
+        conn.close()
+        flash('Portfolio project added successfully!', 'success')
+    except Exception as e:
+        flash(f'Error adding project: {str(e)}', 'danger')
+    return redirect(url_for('admin_dashboard'))
+
+@app.route('/admin/portfolio/edit/<int:id>', methods=['POST'])
+@admin_required
+def edit_portfolio(id):
+    try:
+        title = request.form.get('title')
+        tech = request.form.get('technology')
+        loc = request.form.get('location')
+        stat = request.form.get('status')
+        
+        conn = get_db_connection()
+        conn.execute(
+            'UPDATE portfolios SET title = ?, technology = ?, location = ?, status = ? WHERE id = ?',
+            (title, tech, loc, stat, id)
+        )
+        conn.commit()
+        conn.close()
+        flash('Portfolio project updated successfully!', 'success')
+    except Exception as e:
+        flash(f'Error updating project: {str(e)}', 'danger')
+    return redirect(url_for('admin_dashboard'))
+
+@app.route('/admin/portfolio/delete/<int:id>', methods=['POST'])
+@admin_required
+def delete_portfolio(id):
+    try:
+        conn = get_db_connection()
+        conn.execute('DELETE FROM portfolios WHERE id = ?', (id,))
+        conn.commit()
+        conn.close()
+        flash('Portfolio project deleted successfully.', 'success')
+    except Exception as e:
+        flash(f'Error deleting project: {str(e)}', 'danger')
+    return redirect(url_for('admin_dashboard'))
+
+# Videos CRUD
+@app.route('/admin/videos/add', methods=['POST'])
+@admin_required
+def add_video():
+    try:
+        title = request.form.get('title')
+        src = request.form.get('src')
+        
+        conn = get_db_connection()
+        conn.execute(
+            'INSERT INTO videos (title, src) VALUES (?, ?)',
+            (title, src)
+        )
+        conn.commit()
+        conn.close()
+        flash('Video entry added successfully!', 'success')
+    except Exception as e:
+        flash(f'Error adding video: {str(e)}', 'danger')
+    return redirect(url_for('admin_dashboard'))
+
+@app.route('/admin/videos/delete/<int:id>', methods=['POST'])
+@admin_required
+def delete_video(id):
+    try:
+        conn = get_db_connection()
+        conn.execute('DELETE FROM videos WHERE id = ?', (id,))
+        conn.commit()
+        conn.close()
+        flash('Video entry deleted successfully.', 'success')
+    except Exception as e:
+        flash(f'Error deleting video: {str(e)}', 'danger')
+    return redirect(url_for('admin_dashboard'))
+
+# Logos CRUD
+@app.route('/admin/logos/add', methods=['POST'])
+@admin_required
+def add_logo():
+    try:
+        url = request.form.get('url', '')
+        logo_file = request.files.get('logo_file')
+        if logo_file and logo_file.filename:
+            filename = secure_filename(logo_file.filename)
+            upload_path = os.path.join(app.root_path, 'static', 'images')
+            os.makedirs(upload_path, exist_ok=True)
+            logo_file.save(os.path.join(upload_path, filename))
+            url = '/static/images/' + filename
+        
+        if not url:
+            raise Exception("Please select a file or enter a logo URL")
+            
+        conn = get_db_connection()
+        conn.execute(
+            'INSERT INTO client_logos (url) VALUES (?)',
+            (url,)
+        )
+        conn.commit()
+        conn.close()
+        flash('Partner logo added successfully!', 'success')
+    except Exception as e:
+        flash(f'Error adding partner logo: {str(e)}', 'danger')
+    return redirect(url_for('admin_dashboard'))
+
+
+@app.route('/admin/logos/delete/<int:id>', methods=['POST'])
+@admin_required
+def delete_logo(id):
+    try:
+        conn = get_db_connection()
+        conn.execute('DELETE FROM client_logos WHERE id = ?', (id,))
+        conn.commit()
+        conn.close()
+        flash('Partner logo deleted successfully.', 'success')
+    except Exception as e:
+        flash(f'Error deleting partner logo: {str(e)}', 'danger')
+    return redirect(url_for('admin_dashboard'))
+
+# Pages Metadata Update
+@app.route('/admin/pages/update', methods=['POST'])
+@admin_required
+def update_pages_meta():
+    try:
+        page_path = request.form.get('page_path')
+        title = request.form.get('title')
+        description = request.form.get('description')
+        
+        conn = get_db_connection()
+        conn.execute(
+            'INSERT INTO pages_metadata (page_path, title, description) VALUES (?, ?, ?) '
+            'ON CONFLICT(page_path) DO UPDATE SET title=excluded.title, description=excluded.description',
+            (page_path, title, description)
+        )
+        conn.commit()
+        conn.close()
+        flash('Page metadata settings updated successfully!', 'success')
+    except Exception as e:
+        flash(f'Error updating metadata: {str(e)}', 'danger')
+    return redirect(url_for('admin_dashboard'))
+
+# Site Settings Update
+@app.route('/admin/settings/update', methods=['POST'])
+@admin_required
+def update_site_settings():
+    try:
+        conn = get_db_connection()
+        row = conn.execute("SELECT value FROM site_settings WHERE key = 'site_layout'").fetchone()
+        
+        layout = DEFAULT_SITE_LAYOUT.copy()
+        if row:
+            try:
+                layout = json.loads(row['value'])
+            except:
+                pass
+                
+        # 1. Update header
+        layout['header']['logo_text'] = request.form.get('header[logo_text]', layout['header'].get('logo_text', ''))
+        layout['header']['phone'] = request.form.get('header[phone]', layout['header'].get('phone', ''))
+        layout['header']['email'] = request.form.get('header[email]', layout['header'].get('email', ''))
+        layout['header']['apply_label'] = request.form.get('header[apply_label]', layout['header'].get('apply_label', ''))
+        layout['header']['apply_url'] = request.form.get('header[apply_url]', layout['header'].get('apply_url', ''))
+
+        # Handle header logo file upload
+        logo_file = request.files.get('header_logo_file')
+        if logo_file and logo_file.filename:
+            filename = secure_filename(logo_file.filename)
+            upload_path = os.path.join(app.root_path, 'static', 'images')
+            os.makedirs(upload_path, exist_ok=True)
+            logo_file.save(os.path.join(upload_path, filename))
+            layout['header']['logo'] = '/static/images/' + filename
+
+        # 2. Update nav links
+        new_nav_links = []
+        for i in range(8):
+            label = request.form.get(f'nav_links[{i}][label]')
+            url = request.form.get(f'nav_links[{i}][url]')
+            has_dropdown = request.form.get(f'nav_links[{i}][has_dropdown]', '0')
+            if label is not None:
+                new_nav_links.append({
+                    'label': label,
+                    'url': url or '',
+                    'has_dropdown': has_dropdown
+                })
+        if new_nav_links:
+            layout['nav_links'] = new_nav_links
+
+        # 3. Update footer badges
+        new_badges = []
+        for i in range(8):
+            label = request.form.get(f'footer_badges[{i}][label]', '')
+            badge_file = request.files.get(f'footer_badge_files[{i}]')
+            existing_image = layout['footer_badges'][i]['image'] if i < len(layout['footer_badges']) else ''
+            
+            if badge_file and badge_file.filename:
+                filename = secure_filename(badge_file.filename)
+                upload_path = os.path.join(app.root_path, 'static', 'images')
+                os.makedirs(upload_path, exist_ok=True)
+                badge_file.save(os.path.join(upload_path, filename))
+                image_url = '/static/images/' + filename
+            else:
+                image_url = existing_image
+
+            new_badges.append({
+                'label': label,
+                'image': image_url
+            })
+        layout['footer_badges'] = new_badges
+
+        # 4. Update footer contacts
+        layout['footer']['address'] = request.form.get('footer[address]', layout['footer'].get('address', ''))
+        layout['footer']['phone'] = request.form.get('footer[phone]', layout['footer'].get('phone', ''))
+        layout['footer']['email'] = request.form.get('footer[email]', layout['footer'].get('email', ''))
+        layout['footer']['certificate_text'] = request.form.get('footer[certificate_text]', layout['footer'].get('certificate_text', ''))
+        layout['footer']['certificate_button_label'] = request.form.get('footer[certificate_button_label]', layout['footer'].get('certificate_button_label', ''))
+        layout['footer']['certificate_url'] = request.form.get('footer[certificate_url]', layout['footer'].get('certificate_url', ''))
+        layout['footer']['chat_label'] = request.form.get('footer[chat_label]', layout['footer'].get('chat_label', ''))
+        layout['footer']['chat_url'] = request.form.get('footer[chat_url]', layout['footer'].get('chat_url', ''))
+
+        # 5. Update footer columns (company, services, solutions)
+        for col in ['company', 'services', 'solutions']:
+            title = request.form.get(f'footer_columns[{col}][title]')
+            if title is not None:
+                if col not in layout['footer_columns']:
+                    layout['footer_columns'][col] = {'title': title, 'links': []}
+                else:
+                    layout['footer_columns'][col]['title'] = title
+            
+            new_links = []
+            for j in range(12):
+                lbl = request.form.get(f'footer_columns[{col}][links][{j}][label]')
+                url = request.form.get(f'footer_columns[{col}][links][{j}][url]')
+                if lbl is not None:
+                    new_links.append({
+                        'label': lbl,
+                        'url': url or ''
+                    })
+            if new_links:
+                layout['footer_columns'][col]['links'] = new_links
+
+        # Save back to DB
+        conn.execute(
+            "INSERT INTO site_settings (key, value) VALUES ('site_layout', ?) "
+            "ON CONFLICT(key) DO UPDATE SET value=excluded.value",
+            (json.dumps(layout),)
+        )
+        conn.commit()
+        conn.close()
+        flash('Site layout settings updated successfully!', 'success')
+    except Exception as e:
+        flash(f'Error updating site settings: {str(e)}', 'danger')
+    return redirect(url_for('admin_dashboard'))
+
 @app.route('/reviews/')
 @app.route('/reviews/page/<int:page>/')
 def reviews(page=1):
@@ -1731,6 +2454,8 @@ def reviews_ajax(page):
     page_reviews = all_reviews[start_idx:end_idx]
     
     return render_template('reviews_partial.html', reviews=page_reviews, current_page=page, total_pages=total_pages)
+
+init_db()
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
