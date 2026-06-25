@@ -17,6 +17,7 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 DEFAULT_SITE_LAYOUT = {
     "header": {
         "logo_text": "Sortiq Solutions",
+        "logo": "/static/images/final-logo.png",
         "phone": "+91 9646522110",
         "email": "info@sortiqsolutions.com",
         "apply_label": "Apply Internship",
