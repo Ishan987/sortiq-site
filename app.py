@@ -1916,7 +1916,7 @@ def admin_login():
         username = request.form.get('username') or request.form.get('email')
         password = request.form.get('password')
         
-        if (username == 'admin' or username == 'sortiqsolutions@gmail.com' ) and (password == 'sortiq'):
+        if ( username == 'sortiqsolutions@gmail.com' ) and (password == 'sortiq'):
             session['admin_logged_in'] = True
             flash('Successfully logged in!', 'success')
             return redirect(url_for('admin_dashboard'))
