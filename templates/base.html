@@ -140,26 +140,25 @@
                     {% endif %}
                 {% endfor %}
             </div>
-            <ul class="address-info-list addr-top-align">
-                <li>
-                    <a href="https://www.google.com/maps/search/?api=1&query={{ site_layout.footer.address | urlencode }}" target="_blank" style="color: inherit; text-decoration: none;" rel="noopener noreferrer">
-                        <div class="footer-contact-item">
-                            <i class="fa fa-map-marker-alt"></i>
-                            <div class="address-info">{{ site_layout.footer.address }}</div>
-                        </div>
-                    </a>
-                </li>
-                <li class="contact-inline-group">
-                    <div class="footer-contact-item" style="margin-bottom: 5px;">
-                        <i class="fa fa-phone"></i>
-                        <div class="address-info"><a href="tel:{{ site_layout.footer.phone }}">{{ site_layout.footer.phone }}</a></div>
-                    </div>
+            <div class="footer-address-wrapper">
+                <a href="https://www.google.com/maps/search/?api=1&query={{ site_layout.footer.address | urlencode }}" target="_blank" style="color: inherit; text-decoration: none;" rel="noopener noreferrer">
                     <div class="footer-contact-item">
-                        <i class="fa fa-envelope"></i>
-                        <div class="address-info"><a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ site_layout.footer.email }}" target="_blank" rel="noopener noreferrer">{{ site_layout.footer.email }}</a></div>
+                        <i class="fa fa-map-marked-alt"></i>
+                        <div class="address-info">{{ site_layout.footer.address.replace(', S.A.S.', ',<br>S.A.S.') | safe }}</div>
                     </div>
-                </li>
-            </ul>
+                </a>
+            </div>
+
+            <div class="footer-contact-wrapper contact-inline-group">
+                <div class="footer-contact-item" style="margin-bottom: 10px;">
+                    <i class="fa fa-phone"></i>
+                    <div class="address-info"><a href="tel:{{ site_layout.footer.phone }}">{{ site_layout.footer.phone }}</a></div>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fa fa-envelope"></i>
+                    <div class="address-info"><a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ site_layout.footer.email }}" target="_blank" rel="noopener noreferrer">{{ site_layout.footer.email }}</a></div>
+                </div>
+            </div>
         </div>
 
         <div class="footer-main">

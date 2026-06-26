@@ -66,9 +66,9 @@ DEFAULT_SITE_LAYOUT = {
                 {"label": "Our Clients", "url": "/clients/"},
                 {"label": "Blog", "url": "/blog/"},
                 {"label": "Contact Sortiq Solutions", "url": "/contact/"},
-                {"label": "FAQ", "url": "/faq/"},
-                {"label": "", "url": ""},
-                {"label": "", "url": ""}
+                {"label": "Our Expertise", "url": "/our-expertise/"},
+                {"label": "Support", "url": "/support/"},
+                {"label": "Privacy Policy", "url": "/privacy-policy/"}
             ]
         },
         "services": {
@@ -80,12 +80,14 @@ DEFAULT_SITE_LAYOUT = {
                 {"label": "SMO", "url": "/smo-company/"},
                 {"label": "Digital Marketing", "url": "/digital-marketing-company/"},
                 {"label": "eCommerce Development", "url": "/ecommerce-development-company/"},
+                {"label": "BigCommerce Development", "url": "/bigcommerce-development-company/"},
+                {"label": "Mern Stack", "url": "/mern-stack-development-company/"},
                 {"label": "App Development", "url": "/app-development-company/"},
                 {"label": "Software Testing", "url": "/software-testing-company/"},
-                {"label": "", "url": ""},
-                {"label": "", "url": ""},
-                {"label": "", "url": ""},
-                {"label": "", "url": ""}
+                {"label": "Website Maintenance", "url": "/website-maintenance-company/"},
+                {"label": "Cyber Security Development", "url": "/cyber-security-development/"},
+                {"label": "Hubspot CRM Services", "url": "/hubspot-crm-services/"},
+                {"label": "Zoho CRM Services", "url": "/zoho-crm-services/"}
             ]
         },
         "solutions": {
@@ -99,10 +101,10 @@ DEFAULT_SITE_LAYOUT = {
                 {"label": "React JS Development", "url": "/react-js-development-company/"},
                 {"label": "Node JS Development", "url": "/node-js-development-company/"},
                 {"label": "Vue JS Development", "url": "/vue-js-development-company/"},
-                {"label": "", "url": ""},
-                {"label": "", "url": ""},
-                {"label": "", "url": ""},
-                {"label": "", "url": ""}
+                {"label": "Graphic Designing", "url": "/graphic-designing-company/"},
+                {"label": "Logo Designing", "url": "/logo-designing-company/"},
+                {"label": "Banner Design Services", "url": "/banner-designing-company/"},
+                {"label": "Data Science Development", "url": "/data-science-development/"}
             ]
         }
     }
@@ -2429,7 +2431,7 @@ def update_site_settings():
                     layout['footer_columns'][col]['title'] = title
             
             new_links = []
-            for j in range(12):
+            for j in range(16):
                 lbl = request.form.get(f'footer_columns[{col}][links][{j}][label]')
                 url = request.form.get(f'footer_columns[{col}][links][{j}][url]')
                 if lbl is not None:
