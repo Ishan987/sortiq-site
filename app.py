@@ -2417,7 +2417,17 @@ def update_site_settings():
         layout['footer']['email'] = request.form.get('footer[email]', layout['footer'].get('email', ''))
         layout['footer']['certificate_text'] = request.form.get('footer[certificate_text]', layout['footer'].get('certificate_text', ''))
         layout['footer']['certificate_button_label'] = request.form.get('footer[certificate_button_label]', layout['footer'].get('certificate_button_label', ''))
-        layout['footer']['certificate_url'] = request.form.get('footer[certificate_url]', layout['footer'].get('certificate_url', ''))
+        
+        # Handle footer certificate PDF upload
+        cert_file = request.files.get('footer_certificate_file')
+        if cert_file and cert_file.filename:
+            filename = secure_filename(cert_file.filename)
+            upload_path = os.path.join(app.root_path, 'static', 'uploads')
+            os.makedirs(upload_path, exist_ok=True)
+            cert_file.save(os.path.join(upload_path, filename))
+            layout['footer']['certificate_url'] = '/static/uploads/' + filename
+        else:
+            layout['footer']['certificate_url'] = request.form.get('footer[certificate_url]', layout['footer'].get('certificate_url', ''))
         layout['footer']['chat_label'] = request.form.get('footer[chat_label]', layout['footer'].get('chat_label', ''))
         layout['footer']['chat_url'] = request.form.get('footer[chat_url]', layout['footer'].get('chat_url', ''))
 

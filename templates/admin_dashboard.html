@@ -1223,16 +1223,17 @@
                                             Certificate Text
                                             <textarea name="footer[certificate_text]">{{ site_layout.footer.certificate_text }}</textarea>
                                         </label>
-                                        <div class="two-column-fields">
-                                            <label class="settings-field">
-                                                Certificate Button
-                                                <input type="text" name="footer[certificate_button_label]" value="{{ site_layout.footer.certificate_button_label }}">
-                                            </label>
-                                            <label class="settings-field">
-                                                Certificate URL
-                                                <input type="text" name="footer[certificate_url]" value="{{ site_layout.footer.certificate_url }}">
-                                            </label>
-                                        </div>
+                                         <div class="two-column-fields">
+                                             <label class="settings-field">
+                                                 Certificate Button
+                                                 <input type="text" name="footer[certificate_button_label]" value="{{ site_layout.footer.certificate_button_label }}">
+                                             </label>
+                                             <label class="settings-field">
+                                                 Certificate URL / Upload PDF
+                                                 <input type="text" name="footer[certificate_url]" value="{{ site_layout.footer.certificate_url }}" style="margin-bottom: 5px;">
+                                                 <input type="file" name="footer_certificate_file" accept=".pdf">
+                                             </label>
+                                         </div>
                                         <div class="two-column-fields">
                                             <label class="settings-field">
                                                 Chat Label
