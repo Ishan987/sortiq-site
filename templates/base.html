@@ -134,7 +134,7 @@
             <div class="footer-logos-wrapper">
                 {% for badge in site_layout.footer_badges %}
                     {% if badge.image %}
-                        <a {% if badge.label == 'ISO 9001' or 'iso' in (badge.label|default('')|lower) %}id="iso-certified-link"{% endif %} href="#" aria-label="{{ badge.label or 'Badge' }}">
+                        <a {% if badge.label == 'ISO 9001' or 'iso' in (badge.label|default('')|lower) %}id="iso-certified-link"{% endif %} href="{{ badge.url | default('#') }}" {% if badge.url and badge.url != '#' %}target="_blank" rel="noopener noreferrer"{% endif %} aria-label="{{ badge.label or 'Badge' }}">
                             <img loading="lazy" src="{{ badge.image }}" alt="{{ badge.label or 'Partner badge' }}">
                         </a>
                     {% endif %}

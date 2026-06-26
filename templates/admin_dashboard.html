@@ -1189,6 +1189,10 @@
                                                 Label
                                                 <input type="text" name="footer_badges[{{ loop.index0 }}][label]" value="{{ badge.label }}">
                                             </label>
+                                             <label class="settings-field">
+                                                 Link URL
+                                                 <input type="text" name="footer_badges[{{ loop.index0 }}][url]" value="{{ badge.url or '' }}">
+                                             </label>
                                             <label class="settings-field">
                                                 Image
                                                 <input type="file" name="footer_badge_files[{{ loop.index0 }}]" accept="image/*">

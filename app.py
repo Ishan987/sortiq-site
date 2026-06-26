@@ -34,14 +34,14 @@ DEFAULT_SITE_LAYOUT = {
         {"label": "", "url": "", "has_dropdown": "0"}
     ],
     "footer_badges": [
-        {"label": "Goodfirms", "image": "/static/images/GF-min.png"},
-        {"label": "Top Rated", "image": "/static/images/digital-marketing-logo-min.png"},
-        {"label": "Upwork", "image": "/static/images/upwork-logo-min.png"},
-        {"label": "Wix Partner", "image": "/static/images/EN_legend_small.png"},
-        {"label": "ISO 9001", "image": "/static/images/iso-certified.webp"},
-        {"label": "", "image": ""},
-        {"label": "", "image": ""},
-        {"label": "", "image": ""}
+        {"label": "Goodfirms", "image": "/static/images/GF-min.png", "url": "https://www.goodfirms.co/company/sortiq-solutions-pvt-ltd"},
+        {"label": "Top Rated", "image": "/static/images/digital-marketing-logo-min.png", "url": "#"},
+        {"label": "Upwork", "image": "/static/images/upwork-logo-min.png", "url": "https://www.upwork.com/agencies/1665620950346080256/"},
+        {"label": "Wix Partner", "image": "/static/images/EN_legend_small.png", "url": "https://www.wix.com/"},
+        {"label": "ISO 9001", "image": "/static/images/iso-certified.png", "url": "#"},
+        {"label": "", "image": "", "url": ""},
+        {"label": "", "image": "", "url": ""},
+        {"label": "", "image": "", "url": ""}
     ],
     "footer": {
         "address": "E-51, Second Floor, Phase - 8, Industrial Area, S.A.S. Nagar, Mohali, Punjab 160071",
@@ -2405,9 +2405,11 @@ def update_site_settings():
             else:
                 image_url = existing_image
 
+            badge_url = request.form.get(f'footer_badges[{i}][url]', '')
             new_badges.append({
                 'label': label,
-                'image': image_url
+                'image': image_url,
+                'url': badge_url
             })
         layout['footer_badges'] = new_badges
 
